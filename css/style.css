@@ -4,22 +4,72 @@
     margin: 0;
     padding: 0;
   }
+
+  .main-header {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .logo {
+    height: 40px;
+    margin-right: 15px;
+  }
+  
+  .app-title {
+    font-family: Georgia, serif;
+    font-weight: 900;
+    font-size: 20px;
+    color: #333;
+  }
+
+  .main-header {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centers the content horizontally */
+    padding: 20px;
+    background-color: #4CAF50; /* Change to your desired color */
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+    width: 100%; /* Ensures it stretches across the full width */
+  }
+  
+  .logo {
+    height: 50px; /* Adjust the size of the logo */
+    margin-right: 15px;
+  }
+  
+  .app-title {
+    font-family: 'Georgia', serif;
+    font-weight: 900;
+    font-size: 32px; /* Increase the size of the title */
+    color: white; /* Make the title white for better contrast */
+    text-transform: uppercase; /* Optional: Capitalize all letters */
+  }
+
   
   body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: #FBEBC5;
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* Stack element vertically */
+    justify-content: flex-start; /* Align items to the top of the page */
     align-items: center;
     height: 100vh;
+    margin:0%;
   }
   
   .form-container {
     background-color: #FFFFFF;
     padding: 30px;
     border-radius: 16px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     width: 320px;
+    box-sizing: border-box;
   }
   
   h2 {
