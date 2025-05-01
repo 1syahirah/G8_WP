@@ -22,22 +22,22 @@ document.addEventListener("DOMContentLoaded", () => {
       }
   
       // Check if user already exists (by email)
-      let users = JSON.parse(localStorage.getItem("users")) || [];
-      if (users.find(user => user.email === email)) {
+      let users = JSON.parse(localStorage.getItem("users")) || []; //try to load the list of users from the browser storage. If it doesn't exist yet, start with empty list
+      if (users.find(user => user.email === email)) { //loop through each user in the users list
         alert("An account with this email already exists.");
         return;
       }
   
-      // Store new user
+      // Store new user using the form data
       const newUser = {
         name,
         email,
         password,
-        profilePic: profilePic ? profilePic.name : null,
+        profilePic: profilePic ? profilePic.name : null, //gets the name of the uploaded file (if any), or saves null if no file was selected
       };
   
-      users.push(newUser);
-      localStorage.setItem("users", JSON.stringify(users));
+      users.push(newUser);// adds the new user into that user list
+      localStorage.setItem("users", JSON.stringify(users)); //we can only store text in localStorage, so we user stringify to turn the list into a text format
   
       alert("Registration successful! Redirecting to login...");
       window.location.href = "index.html"; // Redirect to login
