@@ -57,6 +57,7 @@
   .form-container {
     background-color: #FFFFFF;
     padding: 30px;
+    margin: 20px;
     border-radius: 16px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     width: 320px;
