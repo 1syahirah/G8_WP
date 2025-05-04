@@ -1,1 +1,65 @@
 <!--For Profile Management-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Management</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+      <aside class="sidebar">
+        <div class="profile">
+          <div class="avatar"></div>
+          <p>yourname</p>
+        </div>
+        <nav class="menu">
+          <a href="#"><img src="icons/loveIcon.png" alt="Saved" class="icon"> Saved</a>
+          <a href="#"><img src="icons/helpIcon.png" alt="Help Center" class="icon">  Help Center</a>
+          <a href="#"><img src="icons/infoIcon.png" alt="About Us" class="icon">  About Us</a>
+          <a href="#"><img src="icons/deleteIcon.png" alt="Delete Account" class="icon">  Delete Account</a>
+        </nav>
+      </aside>
+  
+      <main class="account-info">
+        <h2>Account Information</h2>
+        <div class="user-details">
+          <div class="photo-section">
+            <div class="avatar large"></div>
+            <a href="#" class="add-photo">Add Photo</a>
+          </div>
+          <div class="field">
+            <label for="username">Preferred Username</label>
+            <div class="input-box">
+              <input type="text" id="username" value="yourname" disabled />
+              <span class="edit-icon">✏️</span>
+            </div>
+          </div>
+          
+          <div class="info-row">
+            <div class="info-labels">
+              <p><strong>Email</strong><br>yourname@gmail.com</p>
+            </div>
+            <button class="edit-btn">Change Email</button>
+          </div>
+          
+          <div class="info-row">
+            <div class="info-labels">
+              <p><strong>Password</strong><br>yourpassword</p>
+            </div>
+            <button class="edit-btn">Change Password</button>
+          </div>
+          
+          <div class="info-row">
+            <div class="info-labels">
+              <p><strong>Phone number</strong><br>+60-12 3456789</p>
+            </div>
+            <button class="edit-btn">Change Phone number</button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
