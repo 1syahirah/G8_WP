@@ -15,3 +15,32 @@
   nav a {
     color: black;
   }
+
+  .dashboard-nav-bar a {
+    color: black;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+
+  
+  .dashboard-nav-bar a:hover {
+    color: white;
+    text-decoration: underline;
+  }
+
+  #news-container {
+    width: 500px;
+    max-height: 500px;
+  }
+  
+  
+
+  
+
+  
+  
+  
+
+
+
+
