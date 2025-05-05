@@ -1,3 +1,13 @@
+:root {
+  --primary: #4CAF50;
+  --accent: #ffe16a;
+  --highlight: #ffe784;
+  --bg-light: #FBEBC5;
+  --text-color: #333;
+  --border: #ccc;
+  --radius: 20px;
+}
+
 /* Reset basic styles */
 * {
     box-sizing: border-box;
@@ -52,6 +62,24 @@
     align-items: center;
     height: 100vh;
     margin:0%;
+  }
+
+  header{
+      background-color: var(--primary);
+      text-align: center;
+      padding: 20px;
+      width: 100%;
+      color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      margin-bottom: 30px;
+  }
+
+  h1 {
+    font-family: 'Gill Sans', serif;
+    font-weight: 900;
+    font-size: 32px;
+    text-transform: uppercase;
+    color: white;
   }
   
   .form-container {

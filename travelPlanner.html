@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EcoTrip Planner</title>
+  <link rel="stylesheet" href="css/style.css"> <!--css for generally-->
+  <link rel="stylesheet" href="css/travel.css"> 
+</head>
+<body>
+
+  <header class="main-header">
+    <img src="assets/logo/Logo ETP.png" alt="Eco Travel Planner Logo" class="logo" />
+    <h1>EcoTrip Planner</h1>
+  </header>
+
+  <section class="search-section">
+    <input type="text" class="search-bar" placeholder="Search eco-friendly stays, rides, or activities in Your Town..." />
+
+    <div class="filters">
+      <select>
+        <option>Accommodations</option>
+        <option>Transport</option>
+        <option>Activities</option>
+      </select>
+      <input type="date" />
+    </div>
+
+    <div class="results-grid">
+      <div class="card">
+        <strong>Eco Lodge</strong>
+        <div>ACCOMMODATION</div>
+        <div>Sustainability Score: 9/10</div>
+        <button>♥ Save</button>
+      </div>
+      <div class="card">
+        <strong>Bike Rental</strong>
+        <div>TRANSPORT</div>
+        <div>Sustainability Score: 8/10</div>
+        <button>♥ Save</button>
+      </div>
+      <!-- Add more cards as needed -->
+    </div>
+  </section>
+
+  <section class="planner-section">
+    <div class="planner-container">
+      <div class="itinerary">
+        <h3>Plan Your Trip</h3>
+        <div><strong>Day 1:</strong> Eco Lodge</div>
+        <div><strong>Day 2:</strong> City Bike Tour</div>
+        <div><strong>Day 3:</strong> Forest Walk</div>
+        <button>Optimize Eco Score</button>
+      </div>
+
+      <div class="favorites">
+        <h3>Your Favorites</h3>
+        <div>Eco Lodge</div>
+        <div>Bike Rental</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="bottom-bar">
+    <button>Preview Itinerary</button>
+    <button>Share / Save as PDF</button>
+    <button>Clear All</button>
+  </div>
+
+</body>
+</html>
