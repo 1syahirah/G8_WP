@@ -9,8 +9,20 @@
 </head>
 
 <body>
+  <!-- Main Side Bar -->
+  <div class="mainHamburger" onclick="toggleSidebar()">☰</div>
+  <div class="container">
+    <div class="mainsidebar" id="mainsidebar">
+    <a href="profileManagement.html"><img src="icons/accountIcon.png" alt="Profile" class="icon">  Profile</a>
+    <a href="index.html"><img src="icons/homeIcon.png" alt="Home" class="icon"> Home</a>
+    <a href="travelPlanner.html"><img src="icons/travelIcon.png" alt="Travel Planner" class="icon"> Travel Planner</a>
+    <a href="weatherModule.html"><img src="icons/sunWeatherIcon.png" alt="Weather" class="icon"> Weather</a>
+    <a href="carbonFootprint.html"><img src="icons/calculatorIcon.png" alt="Calculator" class="icon"> Calculator</a>
+  </div>
+
+  <!-- Profile Side Bar -->
     <div class="container">
-      <aside class="sidebar">
+      <aside class="profilesidebar">
         <div class="profile">
           <div class="avatar"></div>
           <p>yourname</p>
@@ -23,7 +35,7 @@
         </nav>
       </aside>
   
-      <main class="account-info">
+      <main class="account-info">  <!--account info style for account detail pg-->
         <h2>Account Information</h2>
         <div class="user-details">
           <div class="photo-section">
@@ -61,5 +73,27 @@
         </div>
       </main>
     </div>
+
+    <!-- <script>
+      function toggleSidebar() {
+        document.getElementById("sidebar").classList.toggle("open");
+      }
+    </script> -->
+
+    
+   <!--Footer for copywrite-->
+   <footer>
+    <p>Copywritted by Group 8 OCC 3 Web Programming</p>
+</footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+  <script src="js/index.js"></script>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById("mainsidebar").classList.toggle("open");
+    }
+  </script>
   </body>
 </html>

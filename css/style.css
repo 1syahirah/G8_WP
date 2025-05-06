@@ -96,21 +96,98 @@
   .container {
     display: flex;
     min-height: 100vh;
-    padding: 20px;
+    padding: 1px;
     box-sizing: border-box;
     width: 90%;
     max-width: 1200px;
     margin: auto;
+    border: 0.5px solid #e4e6e1;
+    border-radius: 20px;
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); if want the box to be seen lifted*/
+
   }
-  
-  .sidebar {
-    background-color: #ffe784;
+
+  /* Hamburger always visible */
+  .mainHamburger {
+    font-size: 28px;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #fffcf1;
+    position: fixed;
+    top: 10px;
+    right: 10px; /*position hamburger on right*/
+    z-index: 2000;
+    border-radius: 5px;
+  }
+
+  /* Main Sidebar */
+  .mainsidebar {
+    transform: translateX(100%); /*100% for right, -100% for left bar*/
+    transition: transform 0.3s ease;
+    width: 250px;
+    background-color: #fffcf1;
+    padding: 20px;
+    padding-top: 60px;
+    /*transition: transform 0.3s ease; */
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0; /*right for the bar to be at right*/
+    z-index: 1000;
+    border-radius: 0 0 0 20px; /*round bottom-left */
+  }
+
+  /* When open */
+  .mainsidebar.open {
+    transform: translateX(0);
+  }
+
+  .mainsidebar a {
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .mainsidebar a:hover {
+    background-color: #f7d858;
+  }
+
+    /* Main content pushed if needed */
+  .content {
+    margin-left: 0;
+    padding: 30px;
+    transition: margin-left 0.3s ease;
+  }
+
+  .mainsidebar.open ~ .content {
+    margin-right: 250px; /* shift content to right when sidebar is open */
+  }
+
+  .profilesidebar {
+    background-color: #FFE784;
     padding: 20px;
     width: 250px;
-    border-right: 0.5px solid #ffe784;
+    border-right: 0.5px solid #d6d1c9; 
     border-radius: 20px 0 0 20px;
   }
+
+  .profilesidebar a {
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .profilesidebar a:hover {
+    background-color: #ffdc4f;
+  }
   
+    
   .profile {
     display: flex;
     align-items: center;
@@ -147,7 +224,7 @@
   
   .account-info {
     flex: 1;
-    background-color: #ffe16a;
+    background-color: #FFEB9A;
     padding: 30px;
     border-radius: 0 20px 20px 0;
   }
@@ -167,7 +244,7 @@
   
   .edit-btn {
     padding: 8px 12px;
-    background-color: #e4cf67;
+    background-color: #f9e07e;
     border: none;
     border-radius: 5px;
     cursor: pointer;
