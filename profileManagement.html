@@ -28,14 +28,17 @@
           <p>yourname</p>
         </div>
         <nav class="menu">
-          <a href="#"><img src="icons/loveIcon.png" alt="Saved" class="icon"> Saved</a>
-          <a href="#"><img src="icons/helpIcon.png" alt="Help Center" class="icon">  Help Center</a>
-          <a href="#"><img src="icons/infoIcon.png" alt="About Us" class="icon">  About Us</a>
-          <a href="#"><img src="icons/deleteIcon.png" alt="Delete Account" class="icon">  Delete Account</a>
+          <a href="#" onclick="showSection('userAccount')"><img src="icons/accountIcon.png" alt="Your Account" class="icon"> Your Account</a>
+          <a href="#" onclick="showSection('favourite')"><img src="icons/loveIcon.png" alt="Favourite" class="icon"> Favourite</a>
+          <a href="#" onclick="showSection('help')"><img src="icons/helpIcon.png" alt="Help Center" class="icon">  Help Center</a>
+          <a href="#" onclick="showSection('about')"><img src="icons/infoIcon.png" alt="About Us" class="icon">  About Us</a>
+          <a href="#" onclick="showSection('delete')"><img src="icons/deleteIcon.png" alt="Delete Account" class="icon">  Delete Account</a>
         </nav>
       </aside>
   
-      <main class="account-info">  <!--account info style for account detail pg-->
+      
+      <!-- SECTION ACCOUNT INFO-->
+      <main id="userAccount" class="boxStyle content-section">  <!--account info style for account detail pg-->
         <h2>Account Information</h2>
         <div class="user-details">
           <div class="photo-section">
@@ -72,15 +75,34 @@
           </div>
         </div>
       </main>
+    
+
+      <!-- SECTION FAVOURITE-->
+      <main id="favourite" class="boxStyle content-section" style="display: none;">
+      </main>
+
+      <!-- SECTION HELP CENTER-->
+      <main id="help" class="boxStyle content-section" style="display: none;">
+        <h2>Help Center</h2>
+        <!-- Your help content here -->
+      </main>
+
+      <!-- SECTION ABOUT US-->
+      <main id="about" class="boxStyle content-section" style="display: none;">
+        <h2>About Us</h2>
+        <!-- Your about content here -->
+      </main>
+
+      <!-- SECTION DELETE ACC-->
+      <main id="delete" class="boxStyle content-section" style="display: none;">
+        <h2>Delete Account</h2>
+        <!-- Your about content here -->
+      </main>
+
+
+
     </div>
 
-    <!-- <script>
-      function toggleSidebar() {
-        document.getElementById("sidebar").classList.toggle("open");
-      }
-    </script> -->
-
-    
    <!--Footer for copywrite-->
    <footer>
     <p>Copywritted by Group 8 OCC 3 Web Programming</p>
@@ -91,6 +113,15 @@
   <script src="js/index.js"></script>
 
   <script>
+    function showSection(id) {
+      // Hide all sections
+      document.querySelectorAll('.content-section').forEach(sec => {
+        sec.style.display = 'none';
+      });
+      // Show the selected one
+      document.getElementById(id).style.display = 'block';
+    }
+
     function toggleSidebar() {
       document.getElementById("mainsidebar").classList.toggle("open");
     }

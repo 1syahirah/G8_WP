@@ -162,6 +162,10 @@
     transition: margin-left 0.3s ease;
   }
 
+  .content-section {
+    padding: 20px;
+  }
+  
   .mainsidebar.open ~ .content {
     margin-right: 250px; /* shift content to right when sidebar is open */
   }
@@ -170,7 +174,7 @@
     background-color: #FFE784;
     padding: 20px;
     width: 250px;
-    border-right: 0.5px solid #d6d1c9; 
+    border-right: 1px solid #d6d1c9; 
     border-radius: 20px 0 0 20px;
   }
 
@@ -222,7 +226,7 @@
     vertical-align: middle;
   }
   
-  .account-info {
+  .boxStyle {
     flex: 1;
     background-color: #FFEB9A;
     padding: 30px;
