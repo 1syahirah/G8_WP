@@ -32,14 +32,14 @@
 
 
 .weather-data {
-    width: 150%;
+    width: 200%;
     gap: 35px;
     background-color: #FFFFFF;
     padding: 40px;
     margin: 20px;
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    box-sizing: container;
+    box-sizing: border-box;
 }
 
 .weather-data .current-weather {
@@ -52,7 +52,7 @@
 }
 
 .weather-input {
-    width: 550px;
+    width: 700px;
     margin-top: 30px;
 }
 
@@ -110,6 +110,7 @@
 
 .weather-input .location-btn {
     background: #6C757D;
+    margin-bottom: 20px;
 }
 
 .weather-input .location-btn:hover {
@@ -163,6 +164,41 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
+}
+
+
+.weather-input .city-suggestions {
+    width: 100%;
+    column-gap: 35px;
+    background-color: #45a049;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    
+
+    display: flex; /* Enable Flexbox for vertical alignment */
+    flex-direction: column; /* Stack items vertically */
+    align-items: stretch;
+}
+
+
+.weather-input .card {
+    width: 100%;
+    padding: 10px 0;
+    cursor: pointer;
+    outline-color: black;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: black;
+    background: white;
+    transition: 0.2s ease;
+    padding: 10px;
+    margin-bottom: 10px; /* Add some space between city boxes */
+    text-align: center;
+}
+
+.weather-input .card:hover {
+    background: #d1dbd1;
 }
 
 @media (max-width: 1400px) {

@@ -19,11 +19,13 @@
 
         <div class="weather-data">
 
+            <!--location (current/searched)-->
             <div class="location">
                 <img src="icons/locationIcon.svg" alt="Location Icon" class="locationIcon" />
                 <h2>Kuala Lumpur</h2>
             </div>
 
+            <!--current weather forecast-->
             <div class="current-weather">
             <div class="details">
             <h2>_______ ( ______ )</h2>
@@ -35,6 +37,7 @@
 
             <div class="days-forecast">
 
+            <!--5 days weather forecast-->
             <h2>5-Day Forecast</h2>
 
             <ul class="weather-cards">
@@ -72,20 +75,31 @@
                 <h6>Temp: __C</h6>
                 <h6>Wind: __ M/S</h6>
                 <h6>Humidity: __%</h6>
-
-            </li>
-          </ul>
+                </li>
+            </ul>
         </div>
-      </div>
+    </div>
 
-      <div class="weather-input">
+    <div class="weather-input">
+
+        <!--search bar-->
         <h3>Enter a City Name</h3>
         <input class="city-input" type="text" placeholder="Search City">
         <button class="search-btn">Search</button>
         <div class="separator"></div>
         <button class="location-btn">Use Current Location</button>
+
+        <!--city suggestions-->
+        <div class="city-suggestions">
+            <h2>Cities Suggestions</h3>
+            <div class="card">Kuala Terengganu</div>
+            <div class="card">Port Dickson</div>
+            <div class="card">Georgetown</div>
+            <div class="card">Kuantan</div>
+            <div class="card">Bandar Melaka</div>
+        </div>
     </div>
-    
+
     </div>
     
   </body>
