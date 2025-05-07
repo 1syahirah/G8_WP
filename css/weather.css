@@ -49,6 +49,7 @@
     padding: 20px 70px 20px 20px;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 40px;
 }
 
 .weather-input {
@@ -146,6 +147,7 @@
     width: calc(100% / 5);
     background: #6C757D;
     border-radius: 5px;
+    margin-top: 20px;
 }
 
 .weather-cards .card h3 {
