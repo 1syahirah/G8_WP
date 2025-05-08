@@ -52,7 +52,37 @@
     text-transform: uppercase; /* Optional: Capitalize all letters */
   }
 
-  
+  /* Flex container to stack header, content, and footer */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Main content grows to fill space */
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #ffeeaa;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Footer styling */
+footer {
+  background-color: #fffbe9;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 0.9rem;
+}
+
+/*
+footer {
+  font-size: smaller;
+  font-style: italic;
+} */
+
+
   body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: #FBEBC5;
@@ -96,13 +126,15 @@
   .container {
     display: flex;
     min-height: 100vh;
-    padding: 1px;
-    box-sizing: border-box;
-    width: 90%;
+    padding: 40px;  /*gap between top bottom */
+    width: 100%;
     max-width: 1200px;
-    margin: auto;
+    margin:0 auto;
     border: 0.5px solid #e4e6e1;
     border-radius: 20px;
+    box-sizing: border-box;
+    align-items: stretch; 
+    flex: 1;/* ensure sidebar mathces content height */
     /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); if want the box to be seen lifted*/
 
   }
@@ -128,7 +160,6 @@
     background-color: #fffcf1;
     padding: 20px;
     padding-top: 60px;
-    /*transition: transform 0.3s ease; */
     height: 100vh;
     position: fixed;
     top: 0;
@@ -156,19 +187,28 @@
   }
 
     /* Main content pushed if needed */
-  .content {
+  /*.content {
     margin-left: 0;
     padding: 30px;
     transition: margin-left 0.3s ease;
+  } */
+
+  .content {
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
   }
 
   .content-section {
-    padding: 20px;
+    width: 100%;
+    height: auto;
   }
   
+  /*
   .mainsidebar.open ~ .content {
     margin-right: 250px; /* shift content to right when sidebar is open */
-  }
+  
 
   .profilesidebar {
     background-color: #FFE784;
@@ -176,6 +216,7 @@
     width: 250px;
     border-right: 1px solid #d6d1c9; 
     border-radius: 20px 0 0 20px;
+    box-sizing: border-box;
   }
 
   .profilesidebar a {
@@ -226,12 +267,15 @@
     vertical-align: middle;
   }
   
+  /*
   .boxStyle {
-    flex: 1;
+    flex: unset;
     background-color: #FFEB9A;
-    padding: 30px;
+    padding: 20px;
     border-radius: 0 20px 20px 0;
-  }
+    height: auto;
+    min-height: auto;
+  } */
 
   .info-row {
     display: flex;
@@ -354,7 +398,4 @@
     font-size: 14px;
   }
 
-  footer {
-    font-size: smaller;
-    font-style: italic;
-  }
+

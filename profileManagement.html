@@ -9,9 +9,16 @@
 </head>
 
 <body>
+  <div class="page-wrapper">
+
+    <header class="main-header">
+      <img src="assets/logo/Logo ETP.png" alt="Eco Travel Planner Logo" class="logo" />
+      <h1 class="app-title">Eco Travel Planner</h1>
+  </header>
+  
   <!-- Main Side Bar -->
   <div class="mainHamburger" onclick="toggleSidebar()">☰</div>
-  <div class="container">
+  <!-- <div class="container"> -->
     <div class="mainsidebar" id="mainsidebar">
     <a href="profileManagement.html"><img src="icons/accountIcon.png" alt="Profile" class="icon">  Profile</a>
     <a href="index.html"><img src="icons/homeIcon.png" alt="Home" class="icon"> Home</a>
@@ -36,9 +43,10 @@
         </nav>
       </aside>
   
+      <main class="main-content">
       
       <!-- SECTION ACCOUNT INFO-->
-      <main id="userAccount" class="boxStyle content-section">  <!--account info style for account detail pg-->
+      <section id="userAccount" class="content-section">  <!--account info style for account detail pg-->
         <h2>Account Information</h2>
         <div class="user-details">
           <div class="photo-section">
@@ -74,40 +82,39 @@
             <button class="edit-btn">Change Phone number</button>
           </div>
         </div>
-      </main>
+      </section>
     
 
       <!-- SECTION FAVOURITE-->
-      <main id="favourite" class="boxStyle content-section" style="display: none;">
-      </main>
+      <section id="favourite" class="content-section" style="display: none;">
+      </section>
 
       <!-- SECTION HELP CENTER-->
-      <main id="help" class="boxStyle content-section" style="display: none;">
+      <section id="help" class="content-section" style="display: none;">
         <h2>Help Center</h2>
         <!-- Your help content here -->
-      </main>
+      </section>
 
       <!-- SECTION ABOUT US-->
-      <main id="about" class="boxStyle content-section" style="display: none;">
+      <section id="about" class="content-section" style="display: none;">
         <h2>About Us</h2>
         <!-- Your about content here -->
-      </main>
+      </section>
 
       <!-- SECTION DELETE ACC-->
-      <main id="delete" class="boxStyle content-section" style="display: none;">
+      <section id="delete" class="content-section" style="display: none;">
         <h2>Delete Account</h2>
         <!-- Your about content here -->
+      </section>
+
       </main>
-
-
-
     </div>
 
-   <!--Footer for copywrite-->
-   <footer>
+    <!--Footer for copywrite-->
+    <footer>
     <p>Copywritted by Group 8 OCC 3 Web Programming</p>
-</footer>
-
+    </footer>
+  </div>
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
   <script src="js/index.js"></script>
