@@ -9,106 +9,193 @@
 </head>
 
 <body>
-  <div class="page-wrapper">
+  <div class="wrapper">
 
     <header class="main-header">
       <img src="assets/logo/Logo ETP.png" alt="Eco Travel Planner Logo" class="logo" />
       <h1 class="app-title">Eco Travel Planner</h1>
-  </header>
+    </header>
   
-  <!-- Main Side Bar -->
-  <div class="mainHamburger" onclick="toggleSidebar()">☰</div>
-  <!-- <div class="container"> -->
-    <div class="mainsidebar" id="mainsidebar">
-    <a href="profileManagement.html"><img src="icons/accountIcon.png" alt="Profile" class="icon">  Profile</a>
-    <a href="index.html"><img src="icons/homeIcon.png" alt="Home" class="icon"> Home</a>
-    <a href="travelPlanner.html"><img src="icons/travelIcon.png" alt="Travel Planner" class="icon"> Travel Planner</a>
-    <a href="weatherModule.html"><img src="icons/sunWeatherIcon.png" alt="Weather" class="icon"> Weather</a>
-    <a href="carbonFootprint.html"><img src="icons/calculatorIcon.png" alt="Calculator" class="icon"> Calculator</a>
-  </div>
-
-  <!-- Profile Side Bar -->
-    <div class="container">
-      <aside class="profilesidebar">
-        <div class="profile">
-          <div class="avatar"></div>
-          <p>yourname</p>
-        </div>
-        <nav class="menu">
-          <a href="#" onclick="showSection('userAccount')"><img src="icons/accountIcon.png" alt="Your Account" class="icon"> Your Account</a>
-          <a href="#" onclick="showSection('favourite')"><img src="icons/loveIcon.png" alt="Favourite" class="icon"> Favourite</a>
-          <a href="#" onclick="showSection('help')"><img src="icons/helpIcon.png" alt="Help Center" class="icon">  Help Center</a>
-          <a href="#" onclick="showSection('about')"><img src="icons/infoIcon.png" alt="About Us" class="icon">  About Us</a>
-          <a href="#" onclick="showSection('delete')"><img src="icons/deleteIcon.png" alt="Delete Account" class="icon">  Delete Account</a>
-        </nav>
-      </aside>
-  
-      <main class="main-content">
-      
-      <!-- SECTION ACCOUNT INFO-->
-      <section id="userAccount" class="content-section">  <!--account info style for account detail pg-->
-        <h2>Account Information</h2>
-        <div class="user-details">
-          <div class="photo-section">
-            <div class="avatar large"></div>
-            <a href="#" class="add-photo">Add Photo</a>
-          </div>
-          <div class="field">
-            <label for="username">Preferred Username</label>
-            <div class="input-box">
-              <input type="text" id="username" value="yourname" disabled />
-              <span class="edit-icon">✏️</span>
-            </div>
-          </div>
-          
-          <div class="info-row">
-            <div class="info-labels">
-              <p><strong>Email</strong><br>yourname@gmail.com</p>
-            </div>
-            <button class="edit-btn">Change Email</button>
-          </div>
-          
-          <div class="info-row">
-            <div class="info-labels">
-              <p><strong>Password</strong><br>yourpassword</p>
-            </div>
-            <button class="edit-btn">Change Password</button>
-          </div>
-          
-          <div class="info-row">
-            <div class="info-labels">
-              <p><strong>Phone number</strong><br>+60-12 3456789</p>
-            </div>
-            <button class="edit-btn">Change Phone number</button>
-          </div>
-        </div>
-      </section>
-    
-
-      <!-- SECTION FAVOURITE-->
-      <section id="favourite" class="content-section" style="display: none;">
-      </section>
-
-      <!-- SECTION HELP CENTER-->
-      <section id="help" class="content-section" style="display: none;">
-        <h2>Help Center</h2>
-        <!-- Your help content here -->
-      </section>
-
-      <!-- SECTION ABOUT US-->
-      <section id="about" class="content-section" style="display: none;">
-        <h2>About Us</h2>
-        <!-- Your about content here -->
-      </section>
-
-      <!-- SECTION DELETE ACC-->
-      <section id="delete" class="content-section" style="display: none;">
-        <h2>Delete Account</h2>
-        <!-- Your about content here -->
-      </section>
-
-      </main>
+    <!-- Main Side Bar -->
+    <div class="mainHamburger" onclick="toggleSidebar()">☰</div>
+      <div class="mainsidebar" id="mainsidebar">
+      <a href="profileManagement.html"><img src="icons/accountIcon.png" alt="Profile" class="icon">  Profile</a>
+      <a href="index.html"><img src="icons/homeIcon.png" alt="Home" class="icon"> Home</a>
+      <a href="travelPlanner.html"><img src="icons/travelIcon.png" alt="Travel Planner" class="icon"> Travel Planner</a>
+      <a href="weatherModule.html"><img src="icons/sunWeatherIcon.png" alt="Weather" class="icon"> Weather</a>
+      <a href="carbonFootprint.html"><img src="icons/calculatorIcon.png" alt="Calculator" class="icon"> Calculator</a>
     </div>
+
+    <!-- Profile Side Bar -->
+    <main class="content">
+      <div class="container">
+        <aside class="profilesidebar">
+          <div class="profile">
+            <div class="avatar"></div>
+            <p>yourname</p>
+          </div>
+          <nav class="menu">
+            <a href="#" onclick="showSection('userAccount')"><img src="icons/accountIcon.png" alt="Your Account" class="icon"> Your Account</a>
+            <a href="#" onclick="showSection('favourite')"><img src="icons/loveIcon.png" alt="Favourite" class="icon"> Favourite</a>
+            <a href="#" onclick="showSection('help')"><img src="icons/helpIcon.png" alt="Help Center" class="icon">  Help Center</a>
+            <a href="#" onclick="showSection('about')"><img src="icons/infoIcon.png" alt="About Us" class="icon">  About Us</a>
+            <a href="#" onclick="showSection('delete')"><img src="icons/deleteIcon.png" alt="Delete Account" class="icon">  Delete Account</a>
+          </nav>
+        </aside>
+    
+        <main class="main-content">
+        
+          <!-- SECTION ACCOUNT INFO-->
+          <section id="userAccount" class="content-section">  <!--account info style for account detail pg-->
+            <h2>Account Information</h2>
+            <div class="user-details">
+              <div class="photo-section">
+                <div class="avatar large"></div>
+                <a href="#" class="add-photo">Add Photo</a>
+              </div>
+              <div class="field">
+                <label for="username">Preferred Username</label>
+                <div class="input-box">
+                  <input type="text" id="username" value="yourname" disabled />
+                  <span class="edit-icon">✏️</span>
+                </div>
+              </div>
+              
+              <div class="info-row">
+                <div class="info-labels">
+                  <p><strong>Email</strong><br>yourname@gmail.com</p>
+                </div>
+                <button class="edit-btn">Change Email</button>
+              </div>
+              
+              <div class="info-row">
+                <div class="info-labels">
+                  <p><strong>Password</strong><br>yourpassword</p>
+                </div>
+                <button class="edit-btn">Change Password</button>
+              </div>
+              
+              <div class="info-row">
+                <div class="info-labels">
+                  <p><strong>Phone number</strong><br>+60-12 3456789</p>
+                </div>
+                <button class="edit-btn">Change Phone number</button>
+              </div>
+            </div>
+          </section>
+        
+
+          <!-- SECTION FAVOURITE-->
+          <section id="favourite" class="content-section" style="display: none;">
+          </section>
+
+          <!-- SECTION HELP CENTER-->
+          <section id="help" class="content-section" style="display: none;">
+            <h2>Help Center</h2>
+            <div class="field">
+              <label for="concern">Tell us your concern !</label>
+              <div class="input-button-group">
+                <div class="input-box">
+                  <input type="text" id="concern" value="Write here..." disabled />
+                  <span class="edit-icon">✏️</span>
+                </div>
+                <button class="edit-btn">Enter</button>
+              </div>
+            </div>
+
+            <h3 style="margin-bottom: 10px;">FAQs</h3>
+            <div class="faq-item">
+              <div class="faq-question">
+                <p><strong> How do you calculate eco-friendliness?</strong></p>
+                <button class="edit-btn">+</button>
+              </div>
+              <div class="faq-answer">
+                <p>Our eco-friendliness score is calculated based on a variety of factors...</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <div class="faq-question">
+                <p><strong> How are green accommodations selected? </strong></p>
+                <button class="edit-btn">+</button>
+              </div>
+              <div class="faq-answer">
+                <p>Green accommodations are selected based on certifications, sustainable practices...</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <div class="faq-question">
+                <p><strong> How do I recover my account?</strong></p>
+                <button class="edit-btn">+</button>
+              </div>
+              <div class="faq-answer">
+                <p>To recover your account, please follow these steps: 1. Go to the login page...</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <p><strong> I forgot my password. What should I do?</strong></p>
+                <button class="edit-btn">+</button>
+              </div>
+              <div class="faq-answer">
+                <p>On the login page, click Forgot Password? Follow the instructions to reset your password using your email.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <div class="faq-question">
+                <p><strong> Is the information accurate and up to date?</strong></p>
+                <button class="edit-btn">+</button>
+              </div>
+              <div class="faq-answer">
+                <p>Yes, we update our data sources regularly and aim to provide current recommendations, especially for weather, transportation, and eco-ratings.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <p><strong> Is this a free service?</strong></p>
+                <button class="edit-btn">+</button>
+              </div>
+              <div class="faq-answer">
+                <p>Yes! All core features are free to use. </p>
+              </div>
+            </div>
+
+            <section class="tips-section">
+              <h3 style="margin-bottom: 10px; margin-top: 10px;">Tips for Sustainable Travel</h3>
+              <ul class="tips-list">
+                <li><span>🚆</span> Choose eco-friendly transport like trains, buses, or walking.</li>
+                <li><span>🛍️</span> Support local businesses for food, crafts, and stays.</li>
+                <li><span>🎒</span> Pack light to reduce emissions.</li>
+                <li><span>♻️</span> Bring reusable bottles and bags to cut plastic waste.</li>
+                <li><span>🌱</span> Respect local cultures and natural sites.</li>
+                <li><span>💡</span> Save energy by unplugging and switching off unused electronics.</li>
+                <li><span>🌍</span> Offset your travel emissions with verified carbon offset programs.</li>
+              </ul>
+            </section>
+            <p style="text-align: center;"> Need more help? Feel free to contact our support team. We're happy to help !</p>
+            <p style="text-align: center;"> Support team: ecotravelplanner@gmail.com / 012-5429812</p>
+          </section>
+
+          <!-- SECTION ABOUT US-->
+          <section id="about" class="content-section" style="display: none;">
+            <h2>About Us</h2>
+            <!-- Your about content here -->
+          </section>
+
+          <!-- SECTION DELETE ACC-->
+          <section id="delete" class="content-section" style="display: none;">
+            <h2>Delete Account</h2>
+            <!-- Your about content here -->
+          </section>
+
+        </main>
+      </div>
+    </main>
+  
 
     <!--Footer for copywrite-->
     <footer>
@@ -132,6 +219,20 @@
     function toggleSidebar() {
       document.getElementById("mainsidebar").classList.toggle("open");
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      const toggleButton = item.querySelector('.toggle-button');
+
+      question.addEventListener('click', () => {
+        item.classList.toggle('open');
+      });
+    });
+    });
+
   </script>
   </body>
 </html>
