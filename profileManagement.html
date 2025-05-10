@@ -1,11 +1,14 @@
 <!--For Profile Management-->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Management</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Management</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/aboutus.css">
+
 </head>
 
 <body>
@@ -15,11 +18,11 @@
       <img src="assets/logo/Logo ETP.png" alt="Eco Travel Planner Logo" class="logo" />
       <h1 class="app-title">Eco Travel Planner</h1>
     </header>
-  
+
     <!-- Main Side Bar -->
     <div class="mainHamburger" onclick="toggleSidebar()">☰</div>
-      <div class="mainsidebar" id="mainsidebar">
-      <a href="profileManagement.html"><img src="icons/accountIcon.png" alt="Profile" class="icon">  Profile</a>
+    <div class="mainsidebar" id="mainsidebar">
+      <a href="profileManagement.html"><img src="icons/accountIcon.png" alt="Profile" class="icon"> Profile</a>
       <a href="index.html"><img src="icons/homeIcon.png" alt="Home" class="icon"> Home</a>
       <a href="travelPlanner.html"><img src="icons/travelIcon.png" alt="Travel Planner" class="icon"> Travel Planner</a>
       <a href="weatherModule.html"><img src="icons/sunWeatherIcon.png" alt="Weather" class="icon"> Weather</a>
@@ -35,18 +38,23 @@
             <p>yourname</p>
           </div>
           <nav class="menu">
-            <a href="#" onclick="showSection('userAccount')"><img src="icons/accountIcon.png" alt="Your Account" class="icon"> Your Account</a>
-            <a href="#" onclick="showSection('favourite')"><img src="icons/loveIcon.png" alt="Favourite" class="icon"> Favourite</a>
-            <a href="#" onclick="showSection('help')"><img src="icons/helpIcon.png" alt="Help Center" class="icon">  Help Center</a>
-            <a href="#" onclick="showSection('about')"><img src="icons/infoIcon.png" alt="About Us" class="icon">  About Us</a>
-            <a href="#" onclick="showSection('delete')"><img src="icons/deleteIcon.png" alt="Delete Account" class="icon">  Delete Account</a>
+            <a href="#" onclick="showSection('userAccount')"><img src="icons/accountIcon.png" alt="Your Account"
+                class="icon"> Your Account</a>
+            <a href="#" onclick="showSection('favourite')"><img src="icons/loveIcon.png" alt="Favourite" class="icon">
+              Favourite</a>
+            <a href="#" onclick="showSection('help')"><img src="icons/helpIcon.png" alt="Help Center" class="icon"> Help
+              Center</a>
+            <a href="#" onclick="showSection('about')"><img src="icons/infoIcon.png" alt="About Us" class="icon"> About
+              Us</a>
+            <a href="#" onclick="showSection('delete')"><img src="icons/deleteIcon.png" alt="Delete Account"
+                class="icon"> Delete Account</a>
           </nav>
         </aside>
-    
+
         <main class="main-content">
-        
+
           <!-- SECTION ACCOUNT INFO-->
-          <section id="userAccount" class="content-section">  <!--account info style for account detail pg-->
+          <section id="userAccount" class="content-section"> <!--account info style for account detail pg-->
             <h2>Account Information</h2>
             <div class="user-details">
               <div class="photo-section">
@@ -70,14 +78,14 @@
                 </div>
                 <button class="edit-btn">Change Email</button>
               </div>
-              
+
               <div class="info-row">
                 <div class="info-labels">
                   <p><strong>Password</strong><br>yourpassword</p>
                 </div>
                 <button class="edit-btn">Change Password</button>
               </div>
-              
+
               <div class="info-row">
                 <div class="info-labels">
                   <p><strong>Phone number</strong><br>+60-12 3456789</p>
@@ -86,7 +94,7 @@
               </div>
             </div>
           </section>
-        
+
 
           <!-- SECTION FAVOURITE-->
           <section id="favourite" class="content-section" style="display: none;">
@@ -116,7 +124,7 @@
                 <p>Our eco-friendliness score is calculated based on a variety of factors...</p>
               </div>
             </div>
-            
+
             <div class="faq-item">
               <div class="faq-question">
                 <p><strong> How are green accommodations selected? </strong></p>
@@ -126,7 +134,7 @@
                 <p>Green accommodations are selected based on certifications, sustainable practices...</p>
               </div>
             </div>
-            
+
             <div class="faq-item">
               <div class="faq-question">
                 <p><strong> How do I recover my account?</strong></p>
@@ -143,17 +151,19 @@
                 <button class="edit-btn">+</button>
               </div>
               <div class="faq-answer">
-                <p>On the login page, click Forgot Password? Follow the instructions to reset your password using your email.</p>
+                <p>On the login page, click Forgot Password? Follow the instructions to reset your password using your
+                  email.</p>
               </div>
             </div>
-            
+
             <div class="faq-item">
               <div class="faq-question">
                 <p><strong> Is the information accurate and up to date?</strong></p>
                 <button class="edit-btn">+</button>
               </div>
               <div class="faq-answer">
-                <p>Yes, we update our data sources regularly and aim to provide current recommendations, especially for weather, transportation, and eco-ratings.</p>
+                <p>Yes, we update our data sources regularly and aim to provide current recommendations, especially for
+                  weather, transportation, and eco-ratings.</p>
               </div>
             </div>
 
@@ -179,28 +189,161 @@
                 <li><span>🌍</span> Offset your travel emissions with verified carbon offset programs.</li>
               </ul>
             </section>
-            <p style="text-align: center;"> Need more help? Feel free to contact our support team. We're happy to help !</p>
+            <p style="text-align: center;"> Need more help? Feel free to contact our support team. We're happy to help !
+            </p>
             <p style="text-align: center;"> Support team: ecotravelplanner@gmail.com | 012-5429812</p>
           </section>
 
           <!-- SECTION ABOUT US-->
           <section id="about" class="content-section" style="display: none;">
             <h2>About Us</h2>
-            <!-- Your about content here -->
+
+            <div class="about-us-container">
+              <h2>Our Story</h2>
+              <p>Eco Travel Planner was born from a simple idea: travel should enrich our lives without depleting our
+                planet. Founded in 2025
+                by a group of environmentally conscious students, we set out to create a platform that makes sustainable
+                travel accessible to everyone.</p>
+
+              <p>We believe that exploring the world and protecting it can go hand in hand. By connecting travelers with
+                eco-friendly accommodations, transportation options, and activities, we're helping to reduce the
+                environmental
+                impact of tourism while supporting local communities.
+              </p>
+            </div>
+
+            <div class="text-center">
+              <h2 class="title">Our Values</h2>
+              <p class="subtitle">The principles that guide everything we do at Eco Travel Planner.</p>
+            </div>
+
+            <div class="values-grid">
+              <div class="card">
+                <div class="icon-container">
+                  <svg class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h3 class="card-title">Environmental Responsibility</h3>
+                <p class="card-description">We prioritize the health of our planet in every decision we make, from
+                  the partners we work with to the features we develop.</p>
+              </div>
+
+              <div class="card">
+                <div class="icon-container">
+                  <svg class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
+                <h3 class="card-title">Transparency</h3>
+                <p class="card-description">We provide clear, honest information about the environmental impact of
+                  travel options, empowering users to make informed choices.</p>
+              </div>
+            </div>
+
+            <div class="team-section">
+              <div class="team-container">
+                <div class="team-header">
+                  <h2 class="team-title">Meet Our Team</h2>
+                  <p class="team-subtitle">The passionate individuals behind Eco travel Planner.</p>
+                </div>
+
+                <div class="team-grid">
+                  <!-- Team Member 1 -->
+                  <div class="team-member">
+                    <div class="member-image">
+                      <!-- SVG goes here -->
+                    </div>
+                    <div class="member-content">
+                      <h3 class="member-name">Muhammad Syukri Bin Othman</h3>
+                      <p class="member-title">Leader</p>
+                      <p class="member-description">Former environmental scientist with a passion for sustainable
+                        tourism and outdoor adventures.</p>
+                    </div>
+                  </div>
+
+                  <!-- Team Member 2 -->
+                  <div class="team-member">
+                    <div class="member-image">
+                      <!-- SVG goes here -->
+                    </div>
+                    <div class="member-content">
+                      <h3 class="member-name">Amna Suraya Binti Abdul Halim</h3>
+                      <p class="member-title">Member</p>
+                      <p class="member-description">Tech innovator focused on creating digital solutions that promote
+                        sustainability in the travel industry.</p>
+                    </div>
+                  </div>
+
+                  <!-- Team Member 3 -->
+                  <div class="team-member">
+                    <div class="member-image">
+                      <img src="assets/images/sya.jpg" alt="Wan Nur Syahirah">
+                    </div>
+                    <div class="member-content">
+                      <h3 class="member-name">Wan Nur Syahirah Binti Wan Aziz</h3>
+                      <p class="member-title">Member</p>
+                      <p class="member-description">Builds relationships with eco-friendly businesses worldwide to
+                        expand our network of sustainable options.</p>
+                    </div>
+                  </div>
+
+                  <!-- Team Member 4 -->
+                  <div class="team-member">
+                    <div class="member-image">
+                      <img src="assets/images/dina.jpg" alt="Dina Zahirah">
+                    </div>
+                    <div class="member-content">
+                      <h3 class="member-name">Dina Zahirah Binti Zaidi</h3>
+                      <p class="member-title">Member</p>
+                      <p class="member-description">Experienced software engineer dedicated to creating intuitive,
+                        accessible tools for sustainable travel planning.</p>
+                    </div>
+                  </div>
+                  <!-- Team Member 5 -->
+                  <div class="team-member">
+                    <div class="member-image">
+                      <!-- SVG goes here -->
+                    </div>
+                    <div class="member-content">
+                      <h3 class="member-name">Nur Insyirah Binti Mohd Isham</h3>
+                      <p class="member-title">Member</p>
+                      <p class="member-description">Experienced software engineer dedicated to creating intuitive,
+                        accessible tools for sustainable travel planning.</p>
+                    </div>
+                  </div>
+                  <!-- Team Member 6 -->
+                  <div class="team-member">
+                    <div class="member-image">
+                      <!-- SVG goes here -->
+                    </div>
+                    <div class="member-content">
+                      <h3 class="member-name">Nur Aisya Binti Che Zulkifli</h3>
+                      <p class="member-title">Member</p>
+                      <p class="member-description">Experienced software engineer dedicated to creating intuitive,
+                        accessible tools for sustainable travel planning.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </section>
 
           <!-- SECTION DELETE ACC-->
           <section id="delete" class="content-section" style="display: none;">
             <h2>Delete Account</h2>
             <p class="warning-text">
-              Deleting your account is permanent and cannot be undone. This will remove all your data, saved travel plans, preferences, and profile information.
+              Deleting your account is permanent and cannot be undone. This will remove all your data, saved travel
+              plans, preferences, and profile information.
             </p>
 
             <ul class="delete-consequences">
               <li><img src="icons/XIcon.png" alt="X" class="icon"> All saved trips and data will be erased</li>
               <li> <img src="icons/XIcon.png" alt="X" class="icon">Your profile and preferences will be lost</li>
               <li><img src="icons/XIcon.png" alt="X" class="icon"> You won't be able to log in again</li>
-             <!-- ❌ --> 
+              <!-- ❌ -->
             </ul>
 
             <p>Are you absolutely sure you want to delete your account?</p>
@@ -212,24 +355,26 @@
         </main>
       </div>
     </main>
-  
+
 
     <!--Footer for copywrite-->
     <footer>
-    <p>Copywritted by Group 8 OCC 3 Web Programming</p>
+      <p>Copywritted by Group 8 OCC 3 Web Programming</p>
     </footer>
   </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+    crossorigin="anonymous"></script>
   <script src="js/index.js"></script>
-  
+
   <script>
     // for preview image for profile pic
-     document.getElementById('photoUpload').addEventListener('change', function(event) {
+    document.getElementById('photoUpload').addEventListener('change', function (event) {
       const file = event.target.files[0];
       if (file) {
         const reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = function (e) {
           document.getElementById('avatarPreview').style.backgroundImage = `url(${e.target.result})`;
           document.getElementById('avatarPreview').style.backgroundSize = 'cover';
           document.getElementById('avatarPreview').style.backgroundPosition = 'center';
@@ -251,17 +396,17 @@
       document.getElementById("mainsidebar").classList.toggle("open");
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-    const faqItems = document.querySelectorAll('.faq-item');
+    document.addEventListener('DOMContentLoaded', function () {
+      const faqItems = document.querySelectorAll('.faq-item');
 
-    faqItems.forEach(item => {
-      const question = item.querySelector('.faq-question');
-      const toggleButton = item.querySelector('.toggle-button');
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const toggleButton = item.querySelector('.toggle-button');
 
-      question.addEventListener('click', () => {
-        item.classList.toggle('open');
+        question.addEventListener('click', () => {
+          item.classList.toggle('open');
+        });
       });
-    });
     });
 
     function confirmDelete() {
@@ -273,5 +418,6 @@
     }
 
   </script>
-  </body>
+</body>
+
 </html>
