@@ -36,7 +36,7 @@
     color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin-bottom: 20px;
-    width: 100%; /* Ensures it stretches across the full width */
+    width: 100vw; /* Ensures it stretches across the full width */
   }
   
   .logo {
@@ -192,8 +192,6 @@ footer {
     padding: 20px;
     position: relative;
     z-index: 1;
-    
-
   }
 
   .content-section {

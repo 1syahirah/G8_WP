@@ -17,28 +17,35 @@
         <header class="main-header">
             <img src="assets/logo/Logo ETP.png" alt="Eco Travel Planner Logo" class="logo" />
             <h1 class="app-title">Eco Travel Planner</h1>
+
+            <!-- sign up/log in button-->
+            <div class="login-signup-container">
+            <a href="login.html">Log in</a>
+            <button>Sign up</button>
+            </div>
+            
         </header>
+
         <!--Navigation bar-->
         <nav class="dashboard-nav-bar">
             <a href="index.html">Home</a> |
-            <a href="about.html">About Us</a> |
+            <a href="profileManagement.html">Profile</a> |
             <a href="login.html" onclick="return confirmLogout()">Logout</a>
         </nav>
 
         <!-- Main Side Bar -->
         <div class="mainHamburger" onclick="toggleSidebar()">☰</div>
         <div class="mainsidebar" id="mainsidebar">
-            <a href="profileManagement.html"><img src="icons/accountIcon.png" alt="Profile" class="icon"> Profile</a>
-            <a href="index.html"><img src="icons/homeIcon.png" alt="Home" class="icon"> Home</a>
-            <a href="travelPlanner.html"><img src="icons/travelIcon.png" alt="Travel Planner" class="icon">
-                TravelPlanner</a>
-            <a href="weatherModule.html"><img src="icons/sunWeatherIcon.png" alt="Weather" class="icon"> Weather</a>
-            <a href="carbonFootprint.html"><img src="icons/calculatorIcon.png" alt="Calculator"
-                    class="icon">Calculator</a>
-            <a href="login.html" onclick="return confirmLogout()"><img src="icons/logout.png" alt="Logout"
-                    class="icon">Logout</a>
+        <a href="profileManagement.html"><img src="icons/accountIcon.png" alt="Profile" class="icon">  Profile</a>
+        <a href="index.html"><img src="icons/homeIcon.png" alt="Home" class="icon"> Home</a>
+        <a href="travelPlanner.html"><img src="icons/travelIcon.png" alt="Travel Planner" class="icon"> Travel Planner</a>
+        <a href="weatherModule.html"><img src="icons/sunWeatherIcon.png" alt="Weather" class="icon"> Weather</a>
+        <a href="carbonFootprint.html"><img src="icons/calculatorIcon.png" alt="Calculator" class="icon"> Calculator</a>
+        <a href="login.html" onclick="return confirmLogout()"><img src="icons/logout.png" alt="Logout"class="icon">Logout</a>
         </div>
 
+       
+        
         <main class="content">
             <!--Welcome section-->
             <div class="container">
