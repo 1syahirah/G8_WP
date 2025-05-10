@@ -39,16 +39,14 @@ h3 {
     padding: 30px;
 }
 
-
 .weather-data {
     width: 200%;
     gap: 35px;
     background-color: #FFFFFF;
-    padding: 40px;
-    margin: 20px;
+    padding: 60px;
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    box-sizing: border-box;
+    box-sizing: content-box;
 }
 
 .weather-data .current-weather {
@@ -134,82 +132,58 @@ h3 {
 
 .weather-data h6 {
     margin-top: 12px;
-    font-size: 1rem;
+    font-size: 18px;
     font-weight: 500;
+}
+
+.weather-data h7 {
+    margin-top: 12px;
+    margin-left: 30px;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.weather-data h2 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: white;
 }
 
 .days-forecast h2 {
     margin-top: 20px;
     margin: 20px 0;
     font-size: 1.5rem;
+    color: black;
 }
 
 .days-forecast .weather-cards {
     display: flex;
-    gap: 20px;
+    gap: 24px;
 }
 
 .weather-cards .card {
     color: #fff;
-    padding: 18px 16px;
+    padding: 16px 16px;
     list-style: none;
-    width: calc(100% / 5);
+    width: calc(100% / 4);
     background: #6C757D;
-    border-radius: 5px;
     margin-top: 20px;
+    
 }
 
 .weather-cards .card h3 {
-    font-size: 1.3rem;
+    font-size: 1.0rem;
     font-weight: 600;
 }
 
 .weather-cards .card img {
     max-width: 70px;
-    margin: 5px 0 -12px 0;
 }
   
 .forecast-results {
-    float: left;
-    width: 70%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
-}
-
-
-.weather-input .city-suggestions {
-    width: 100%;
-    column-gap: 35px;
-    background-color: #4CAF50;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    
-
-    display: flex; /* Enable Flexbox for vertical alignment */
-    flex-direction: column; /* Stack items vertically */
-    align-items: stretch;
-}
-
-
-.weather-input .card {
-    width: 100%;
-    padding: 10px 0;
-    cursor: pointer;
-    outline-color: black;
-    border-radius: 5px;
-    font-size: 1rem;
-    color: black;
-    background: white;
-    transition: 0.2s ease;
-    padding: 10px;
-    margin-bottom: 10px; /* Add some space between city boxes */
-    text-align: center;
-}
-
-.weather-input .card:hover {
-    background: #d1dbd1;
 }
 
 @media (max-width: 1400px) {
