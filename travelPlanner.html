@@ -1,71 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EcoTrip Planner</title>
+  <link rel="stylesheet" href="css/dashboard.css"> <!--css for dashboard-->
   <link rel="stylesheet" href="css/style.css"> <!--css for generally-->
-  <link rel="stylesheet" href="css/travel.css"> 
+  <link rel="stylesheet" href="css/travel.css">
 </head>
+
 <body>
-
-  <header class="main-header">
-    <img src="assets/logo/Logo ETP.png" alt="Eco Travel Planner Logo" class="logo" />
-    <h1>EcoTrip Planner</h1>
-  </header>
-
-  <section class="search-section">
-    <input type="text" class="search-bar" placeholder="Search eco-friendly stays, rides, or activities in Your Town..." />
-
-    <div class="filters">
-      <select>
-        <option>Accommodations</option>
-        <option>Transport</option>
-        <option>Activities</option>
-      </select>
-      <input type="date" />
-    </div>
-
-    <div class="results-grid">
-      <div class="card">
-        <strong>Eco Lodge</strong>
-        <div>ACCOMMODATION</div>
-        <div>Sustainability Score: 9/10</div>
-        <button>♥ Save</button>
-      </div>
-      <div class="card">
-        <strong>Bike Rental</strong>
-        <div>TRANSPORT</div>
-        <div>Sustainability Score: 8/10</div>
-        <button>♥ Save</button>
-      </div>
-      <!-- Add more cards as needed -->
-    </div>
-  </section>
-
-  <section class="planner-section">
-    <div class="planner-container">
-      <div class="itinerary">
-        <h3>Plan Your Trip</h3>
-        <div><strong>Day 1:</strong> Eco Lodge</div>
-        <div><strong>Day 2:</strong> City Bike Tour</div>
-        <div><strong>Day 3:</strong> Forest Walk</div>
-        <button>Optimize Eco Score</button>
-      </div>
-
-      <div class="favorites">
-        <h3>Your Favorites</h3>
-        <div>Eco Lodge</div>
-        <div>Bike Rental</div>
-      </div>
-    </div>
-  </section>
-
-  <div class="bottom-bar">
-    <button>Preview Itinerary</button>
-    <button>Share / Save as PDF</button>
-    <button>Clear All</button>
+  <!-- Main Side Bar -->
+  <div class="mainHamburger" onclick="toggleSidebar()">☰</div>
+  <div class="mainsidebar" id="mainsidebar">
+    <a href="profileManagement.html"><img src="icons/accountIcon.png" alt="Profile" class="icon"> Profile</a>
+    <a href="index.html"><img src="icons/homeIcon.png" alt="Home" class="icon"> Home</a>
+    <a href="travelPlanner.html"><img src="icons/travelIcon.png" alt="Travel Planner" class="icon"> Travel Planner</a>
+    <a href="weatherModule.html"><img src="icons/sunWeatherIcon.png" alt="Weather" class="icon"> Weather</a>
+    <a href="carbonFootprint.html"><img src="icons/calculatorIcon.png" alt="Calculator" class="icon"> Calculator</a>
   </div>
 
+  <div class="wrapper">
+    <header class="main-header">
+      <img src="assets/logo/Logo ETP.png" alt="Eco Travel Planner Logo" class="logo" />
+      <h1 class="app-title">EcoTrip Planner</h1>
+    </header>
+
+    <nav class="dashboard-nav-bar">
+      <a href="index.html">Home</a> |
+      <a href="about.html">About Us</a> |
+      <a href="login.html" onclick="return confirmLogout()">Logout</a>
+    </nav>
+
+    <section class="search-section">
+      <input type="text" class="search-bar"
+        placeholder="Search eco-friendly stays, rides, or activities in Your Town..." />
+
+      <div class="filters">
+        <select>
+          <option>Accommodations</option>
+          <option>Transport</option>
+          <option>Activities</option>
+        </select>
+        <input type="date" />
+      </div>
+
+      <div class="results-grid">
+        <div class="card">
+          <strong>Eco Lodge</strong>
+          <div>ACCOMMODATION</div>
+          <div>Sustainability Score: 9/10</div>
+          <button>♥ Save</button>
+        </div>
+        <div class="card">
+          <strong>Bike Rental</strong>
+          <div>TRANSPORT</div>
+          <div>Sustainability Score: 8/10</div>
+          <button>♥ Save</button>
+        </div>
+        <!-- Add more cards as needed -->
+      </div>
+    </section>
+
+    <section class="planner-section">
+      <div class="planner-container">
+        <div class="itinerary">
+          <h3>Plan Your Trip</h3>
+          <div><strong>Day 1:</strong> Eco Lodge</div>
+          <div><strong>Day 2:</strong> City Bike Tour</div>
+          <div><strong>Day 3:</strong> Forest Walk</div>
+          <button>Optimize Eco Score</button>
+        </div>
+
+        <div class="favorites">
+          <h3>Your Favorites</h3>
+          <div>Eco Lodge</div>
+          <div>Bike Rental</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="bottom-bar">
+      <button>Preview Itinerary</button>
+      <button>Share / Save as PDF</button>
+      <button>Clear All</button>
+    </div>
+
+    <script>
+      function confirmLogout() {
+        return confirm("Are you sure you want to logout?")
+      }
+    </script>
 </body>
+
+<footer>
+  <p>Copywritted by Group 8 OCC 3 Web Programming</p>
+</footer>
+
 </html>

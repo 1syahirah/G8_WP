@@ -2,111 +2,136 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Weather Forecast - Eco Travel Planner</title>
-  <link rel="stylesheet" href="css/style.css"> <!--css for generally-->
-  <link rel="stylesheet" href="css/weather.css"> 
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Forecast - Eco Travel Planner</title>
+    <link rel="stylesheet" href="css/style.css"> <!--css for generally-->
+    <link rel="stylesheet" href="css/weather.css">
+    <link rel="stylesheet" href="css/dashboard.css"> <!--css for dashboard-->
 </head>
 
 <body>
-    <header class="main-header">
-        <img src="assets/logo/Logo ETP.png" alt="Eco Travel Planner Logo" class="logo" />
-        <h1>Eco Travel Planner</h1>
-    </header>
 
-    <div class="container">
+    <!-- Main Side Bar -->
+    <div class="mainHamburger" onclick="toggleSidebar()">☰</div>
+    <div class="mainsidebar" id="mainsidebar">
+        <a href="profileManagement.html"><img src="icons/accountIcon.png" alt="Profile" class="icon"> Profile</a>
+        <a href="index.html"><img src="icons/homeIcon.png" alt="Home" class="icon"> Home</a>
+        <a href="travelPlanner.html"><img src="icons/travelIcon.png" alt="Travel Planner" class="icon"> Travel
+            Planner</a>
+        <a href="weatherModule.html"><img src="icons/sunWeatherIcon.png" alt="Weather" class="icon"> Weather</a>
+        <a href="carbonFootprint.html"><img src="icons/calculatorIcon.png" alt="Calculator" class="icon"> Calculator</a>
+    </div>
 
-        <div class="weather-data">
+    <div class="wrapper">
+        <header class="main-header">
+            <img src="assets/logo/Logo ETP.png" alt="Eco Travel Planner Logo" class="logo" />
+            <h1 class="app-title">Eco Travel Planner</h1>
+        </header>
 
-            <!--location (current/searched)-->
-            <div class="location">
-                <img src="icons/locationIcon.svg" alt="Location Icon" class="locationIcon" />
-                <h2>Kuala Lumpur</h2>
+        <nav class="dashboard-nav-bar">
+            <a href="index.html">Home</a> |
+            <a href="about.html">About Us</a> |
+            <a href="login.html" onclick="return confirmLogout()">Logout</a>
+        </nav>
+        <div class="container">
+
+            <div class="weather-data">
+
+                <!--location (current/searched)-->
+                <div class="location">
+                    <img src="icons/locationIcon.svg" alt="Location Icon" class="locationIcon" />
+                    <h2>Kuala Lumpur</h2>
+                </div>
+
+                <!--current weather forecast-->
+                <div class="current-weather">
+                    <div class="details">
+                        <h2>_______ ( ______ )</h2>
+                        <h6>Temperature: __°C</h6>
+                        <h6>Wind: __ M/S</h6>
+                        <h6>Humidity: __%</h6>
+                    </div>
+                </div>
+
+                <div class="days-forecast">
+
+                    <!--5 days weather forecast-->
+                    <h2>5-Day Forecast</h2>
+
+                    <ul class="weather-cards">
+
+                        <li class="card">
+                            <h3>( ______ )</h3>
+                            <h6>Temp: __C</h6>
+                            <h6>Wind: __ M/S</h6>
+                            <h6>Humidity: __%</h6>
+                        </li>
+
+                        <li class="card">
+                            <h3>( ______ )</h3>
+                            <h6>Temp: __C</h6>
+                            <h6>Wind: __ M/S</h6>
+                            <h6>Humidity: __%</h6>
+                        </li>
+
+                        <li class="card">
+                            <h3>( ______ )</h3>
+                            <h6>Temp: __C</h6>
+                            <h6>Wind: __ M/S</h6>
+                            <h6>Humidity: __%</h6>
+                        </li>
+
+                        <li class="card">
+                            <h3>( ______ )</h3>
+                            <h6>Temp: __C</h6>
+                            <h6>Wind: __ M/S</h6>
+                            <h6>Humidity: __%</h6>
+                        </li>
+
+                        <li class="card">
+                            <h3>( ______ )</h3>
+                            <h6>Temp: __C</h6>
+                            <h6>Wind: __ M/S</h6>
+                            <h6>Humidity: __%</h6>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
-            <!--current weather forecast-->
-            <div class="current-weather">
-            <div class="details">
-            <h2>_______ ( ______ )</h2>
-            <h6>Temperature: __°C</h6>
-            <h6>Wind: __ M/S</h6>
-            <h6>Humidity: __%</h6>
+            <div class="weather-input">
+
+                <!--search bar-->
+                <h3>Enter a City Name</h3>
+                <input class="city-input" type="text" placeholder="Search City">
+                <button class="search-btn">Search</button>
+                <div class="separator"></div>
+                <button class="location-btn">Use Current Location</button>
+
+                <!--city suggestions-->
+                <div class="city-suggestions">
+                    <h2>Cities Suggestions</h3>
+                        <div class="card">Kuala Terengganu</div>
+                        <div class="card">Port Dickson</div>
+                        <div class="card">Georgetown</div>
+                        <div class="card">Kuantan</div>
+                        <div class="card">Bandar Melaka</div>
+                </div>
             </div>
-            </div>
 
-            <div class="days-forecast">
-
-            <!--5 days weather forecast-->
-            <h2>5-Day Forecast</h2>
-
-            <ul class="weather-cards">
-
-                <li class="card">
-                <h3>( ______ )</h3>
-                <h6>Temp: __C</h6>
-                <h6>Wind: __ M/S</h6>
-                <h6>Humidity: __%</h6>
-                </li>
-
-                <li class="card">
-                <h3>( ______ )</h3>
-                <h6>Temp: __C</h6>
-                <h6>Wind: __ M/S</h6>
-                <h6>Humidity: __%</h6>
-                </li>
-
-                <li class="card">
-                <h3>( ______ )</h3>
-                <h6>Temp: __C</h6>
-                <h6>Wind: __ M/S</h6>
-                <h6>Humidity: __%</h6>
-                </li>
-
-                <li class="card">
-                <h3>( ______ )</h3>
-                <h6>Temp: __C</h6>
-                <h6>Wind: __ M/S</h6>
-                <h6>Humidity: __%</h6>
-                </li>
-
-                <li class="card">
-                <h3>( ______ )</h3>
-                <h6>Temp: __C</h6>
-                <h6>Wind: __ M/S</h6>
-                <h6>Humidity: __%</h6>
-                </li>
-            </ul>
         </div>
-    </div>
 
-    <div class="weather-input">
+        <script>
+            function confirmLogout() {
+                return confirm("Are you sure you want to logout?")
+            }
+        </script>
 
-        <!--search bar-->
-        <h3>Enter a City Name</h3>
-        <input class="city-input" type="text" placeholder="Search City">
-        <button class="search-btn">Search</button>
-        <div class="separator"></div>
-        <button class="location-btn">Use Current Location</button>
-
-        <!--city suggestions-->
-        <div class="city-suggestions">
-            <h2>Cities Suggestions</h3>
-            <div class="card">Kuala Terengganu</div>
-            <div class="card">Port Dickson</div>
-            <div class="card">Georgetown</div>
-            <div class="card">Kuantan</div>
-            <div class="card">Bandar Melaka</div>
-        </div>
-    </div>
-
-    </div>
-    
-  </body>
+</body>
 
 <!--Footer for copywrite-->
 <footer>
-  <p>Copywritted by Group 8 OCC 3 Web Programming</p>
+    <p>Copywritted by Group 8 OCC 3 Web Programming</p>
 </footer>
 
 </html>
