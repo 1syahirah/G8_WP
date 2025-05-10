@@ -33,6 +33,36 @@
     max-height: 500px;
   }
   
+    .login-signup-container {
+    display: flex; /* Arrange items in a row */
+    align-items: center; /* Vertically align items in the center */
+    gap: 5px;
+    position: fixed;
+    left: 20px;
+    z-index: 100;
+  }
+
+  .login-signup-container a {
+    text-decoration: none; /* Remove underline from the link */
+    color: #333; /* Example text color */
+    font-weight: bold; /* Make it stand out */
+    padding: 10px;
+    white-space: nowrap; /*prevent text from wrapping*/
+  }
+
+  .login-signup-container button {
+    background-color: #C85F40; 
+    color: white; /* White text color */
+    border: none; /* Remove default button border */
+    padding: 10px 10px; /* Add padding inside the button */
+    border-radius: 15px; /*rounded corners */
+    cursor: pointer; /* Change cursor to indicate it's clickable */
+    font-weight: bold;
+  }
+
+  .login-signup-container button:hover {
+    background-color: #be5139; /* Darker shade on hover */
+  }
   
 
   
