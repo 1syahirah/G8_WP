@@ -1,3 +1,17 @@
+body {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: #FBEBC5;
+  display: flex;
+  flex-direction: column;
+  /* Stack element vertically */
+  justify-content: flex-start;
+  /* Align items to the top of the page */
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
 :root {
   --primary: #4CAF50;
   --accent: #ffe16a;
@@ -10,49 +24,56 @@
 
 /* Reset basic styles */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  .logo {
-    height: 40px;
-    margin-right: 15px;
-  }
-  
-  .app-title {
-    font-family: Georgia, serif;
-    font-weight: 900;
-    font-size: 20px;
-    color: #333;
-  }
+.logo {
+  height: 40px;
+  margin-right: 15px;
+}
 
-  .main-header {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Centers the content horizontally */
-    padding: 10px;
-    background-color: #4CAF50; /* Change to your desired color */
-    color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-bottom: 20px;
-    width: 100vw; /* Ensures it stretches across the full width */
-  }
-  
-  .logo {
-    height: 50px; /* Adjust the size of the logo */
-    margin-right: 15px;
-  }
-  
-  .app-title {
-    font-family: 'Gill Sans', serif;
-    font-weight: 900;
-    font-size: 32px; /* Increase the size of the title */
-    color: white; /* Make the title white for better contrast */
-    text-transform: uppercase; /* Optional: Capitalize all letters */
-  }
+.app-title {
+  font-family: Georgia, serif;
+  font-weight: 900;
+  font-size: 20px;
+  color: #333;
+}
 
-  /* Flex container to stack header, content, and footer */
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Centers the content horizontally */
+  padding: 10px;
+  background-color: #4CAF50;
+  /* Change to your desired color */
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  width: 100vw;
+  /* Ensures it stretches across the full width */
+}
+
+.logo {
+  height: 50px;
+  /* Adjust the size of the logo */
+  margin-right: 15px;
+}
+
+.app-title {
+  font-family: 'Gill Sans', serif;
+  font-weight: 900;
+  font-size: 32px;
+  /* Increase the size of the title */
+  color: white;
+  /* Make the title white for better contrast */
+  text-transform: uppercase;
+  /* Optional: Capitalize all letters */
+}
+
+/* Flex container to stack header, content, and footer */
 .page-wrapper {
   display: flex;
   flex-direction: column;
@@ -68,7 +89,7 @@
   box-sizing: border-box;
   border-radius: 20px;
   border-right: 3px solid #ddb872;
-  border-top: 3px solid #ddb872 ;
+  border-top: 3px solid #ddb872;
   border-bottom: 3px solid #ddb872;
 }
 
@@ -86,201 +107,193 @@ footer {
   font-style: italic;
 } */
 
+header {
+  background-color: var(--primary);
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
+}
 
-  body {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: #FBEBC5;
-    display: flex;
-    flex-direction: column; /* Stack element vertically */
-    justify-content: flex-start; /* Align items to the top of the page */
-    align-items: center;
-    height: 100vh;
-    margin:0;
-    padding: 0;
-  }
+h1 {
+  font-family: 'Gill Sans', serif;
+  font-weight: 900;
+  font-size: 32px;
+  text-transform: uppercase;
+  color: white;
+}
 
-  header{
-      background-color: var(--primary);
-      text-align: center;
-      padding: 20px;
-      width: 100%;
-      color: white;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      margin-bottom: 30px;
-  }
+.form-container {
+  background-color: #FFFFFF;
+  padding: 30px;
+  margin: 20px;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  width: 320px;
+  width: 50%;
+  box-sizing: border-box;
+}
 
-  h1 {
-    font-family: 'Gill Sans', serif;
-    font-weight: 900;
-    font-size: 32px;
-    text-transform: uppercase;
-    color: white;
-  }
-  
-  .form-container {
-    background-color: #FFFFFF;
-    padding: 30px;
-    margin: 20px;
-    border-radius: 16px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    width: 320px;
-    width: 50%;
-    box-sizing: border-box;
-  }
+.container {
+  display: flex;
+  min-height: 100vh;
+  padding: 0px;
+  /*gap between top bottom */
+  width: 80vw;
+  max-width: none;
+  margin: 0 auto;
+  border-radius: 20px;
+  box-sizing: border-box;
+  align-items: stretch;
+}
 
-  .container {
-    display: flex;
-    min-height: 100vh;
-    padding: 0px;  /*gap between top bottom */
-    width: 80vw;
-    max-width: none;
-    margin:0 auto;
-    border-radius: 20px;
-    box-sizing: border-box;
-    align-items: stretch; 
-  }
+.feature-section {
+  display: grid;
+  padding: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 90%;
+  margin: 0 auto;
+}
 
-  .feature-section{
-    display: grid;
-    padding: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-    gap: 20px; 
-    max-width: 90%;
-    margin: 0 auto;
-  }
+.feature-card {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+}
 
-  .feature-card{
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 15px;
-    padding: 25px;
-    text-align: center;
-  }
+.feature-card img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
 
-  .feature-card img{
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-  }
-
-  /* Hamburger always visible */
-  .mainHamburger {
-    font-size: 28px;
-    padding: 5px 20px;
-    cursor: pointer;
-    background-color: #fffcf1;
-    position: fixed;
-    top: 10px;
-    right: 10px; /*position hamburger on right*/
-    z-index: 2000;
-    border-radius: 5px;
-  }
+/* Hamburger always visible */
+.mainHamburger {
+  font-size: 28px;
+  padding: 5px 20px;
+  cursor: pointer;
+  background-color: #fffcf1;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  /*position hamburger on right*/
+  z-index: 2000;
+  border-radius: 5px;
+}
 
 
-  /* Main Sidebar */
-  .mainsidebar {
-    transform: translateX(100%); /*100% for right, -100% for left bar*/
-    transition: transform 0.3s ease;
-    width: 250px;
-    background-color: #fffcf1;
-    padding: 20px;
-    padding-top: 60px;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    right: 0; /*right for the bar to be at right*/
-    z-index: 1000;
-    border-radius: 0 0 0 20px; /*round bottom-left */
-  }
+/* Main Sidebar */
+.mainsidebar {
+  transform: translateX(100%);
+  /*100% for right, -100% for left bar*/
+  transition: transform 0.3s ease;
+  width: 250px;
+  background-color: #fffcf1;
+  padding: 20px;
+  padding-top: 60px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  /*right for the bar to be at right*/
+  z-index: 1000;
+  border-radius: 0 0 0 20px;
+  /*round bottom-left */
+}
 
-  /* When open */
-  .mainsidebar.open {
-    transform: translateX(0);
-  }
+/* When open */
+.mainsidebar.open {
+  transform: translateX(0);
+}
 
-  .mainsidebar a {
-    display: block;
-    margin-bottom: 10px;
-    text-decoration: none;
-    color: #333;
-    padding: 10px;
-    border-radius: 5px;
-  }
+.mainsidebar a {
+  display: block;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #333;
+  padding: 10px;
+  border-radius: 5px;
+}
 
-  .mainsidebar a:hover {
-    background-color: #f7d858;
-  }
+.mainsidebar a:hover {
+  background-color: #f7d858;
+}
 
-  .content {
-    margin: 0 auto;
-    padding: 20px;
-    position: relative;
-    z-index: 1;
-  }
+.content {
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
 
-  .content-section {
-    width: 100%;
-    height: auto;
-  }
-  
-  .profilesidebar {
-    background-color: #FFE784;
-    padding: 20px;
-    width: 250px;
-    border-radius: 20px 0 0 20px;
-    box-sizing: border-box;
-    border: 3px solid #ddb872;
-  }
+.content-section {
+  width: 100%;
+  height: auto;
+}
 
-  .profilesidebar a {
-    display: block;
-    margin-bottom: 10px;
-    text-decoration: none;
-    color: #333;
-    padding: 10px;
-    border-radius: 5px;
-  }
+.profilesidebar {
+  background-color: #FFE784;
+  padding: 20px;
+  width: 250px;
+  border-radius: 20px 0 0 20px;
+  box-sizing: border-box;
+  border: 3px solid #ddb872;
+}
 
-  .profilesidebar a:hover {
-    background-color: #ffdc4f;
-  }
-  
-    
-  .profile {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 30px;
-  }
+.profilesidebar a {
+  display: block;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #333;
+  padding: 10px;
+  border-radius: 5px;
+}
 
-  .avatar {
-    width: 50px;
-    height: 50px;
-    background-color: white;
-    border-radius: 50%;
-  }
-  
-  .avatar.large {
-    width: 80px;
-    height: 80px;
-  }
-  
-  .menu a {
-    display: block;
-    margin: 10px 0;
-    text-decoration: none;
-    color: #333;
-    font-size: 18px;
-  }
+.profilesidebar a:hover {
+  background-color: #ffdc4f;
+}
 
-  .menu .icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-    vertical-align: middle;
-  }
-  
-  /*
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.avatar.large {
+  width: 80px;
+  height: 80px;
+}
+
+.menu a {
+  display: block;
+  margin: 10px 0;
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+}
+
+.menu .icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+/*
   .boxStyle {
     flex: unset;
     background-color: #FFEB9A;
@@ -290,248 +303,266 @@ footer {
     min-height: auto;
   } */
 
-  .info-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: left;
-    margin-bottom: 20px;
-  }
-  
-  .info-labels p {
-    margin: 0;
-    font-size: 16px;
-    text-align: left;
-  }
-  
-  .edit-btn {
-    padding: 8px 12px;
-    background-color: #f9e07e;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    width: auto;      /*width of box follow the text inside*/
-    white-space: nowrap;
-    vertical-align: middle;
-  }
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+  margin-bottom: 20px;
+}
 
-  .user-details {
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    gap: 20px; /* space between photo and field */
-    flex-wrap: wrap; /* allows wrapping on smaller screens */
-  }
+.info-labels p {
+  margin: 0;
+  font-size: 16px;
+  text-align: left;
+}
 
-  .info-edit {
-    margin-top: 20px;
-  }
-  
-  .photo-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 20px;
-  }
+.edit-btn {
+  padding: 8px 12px;
+  background-color: #f9e07e;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: auto;
+  /*width of box follow the text inside*/
+  white-space: nowrap;
+  vertical-align: middle;
+}
 
-    .avatar.large {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background-color: #ccc;
-    background-image: url('');
-    background-size: cover;
-    background-position: center;
-  }
-  
-  .add-photo {
-    color: blue;
-    font-size: 14px;
-    text-decoration: underline;
-    cursor: pointer;
-  }
-  
-  .field {
-    margin-bottom: 20px;
-    flex: 1;
-  }
+.user-details {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  /* space between photo and field */
+  flex-wrap: wrap;
+  /* allows wrapping on smaller screens */
+}
 
-  .input-button-group {
-    display: flex;
-    align-items: center; /* Vertically align items in the center */
-  }
-  
-  .input-box {
-    display: flex;
-    flex-grow:1;
-    margin-right:10px;
-    align-items: center;
-    background-color: #d6d1c9;
-    border-radius: 20px;
-    padding: 8px 12px;
-    max-width: 300px;
-  }
-  
-  .input-box input {
-    border: none;
-    background: transparent;
-    font-size: 16px;
-    flex: 1;
-    outline: none;
-  }
-  
-  .edit-icon {
-    cursor: pointer;
-    margin-left: 10px;
-  }  
-  
-  
-  h2 {
-    font-family: Georgia, serif;
-    font-weight: 900;
-    font-size: 24px;
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  form label {
-    display: block;
-    margin: 10px 0 5px;
-    font-weight: 500;
-  }
-  
-  form input {
-    width: 100%;
-    padding: 10px;
-    background-color: #CEC5BA;
-    border: none;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    font-size: 14px;
-  }
+.info-edit {
+  margin-top: 20px;
+}
 
-  .form-check-input {
-    margin-right:10px ;
-  }
-  
-  
-    button {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-right: 5px;
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    align-items: center;
-  }
+.photo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
 
-  .getNowButton{
-    width: 50%;
-    background-color: hsl(217, 100%, 80%);
-    color: rgb(58, 59, 60);
-    margin:auto;
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    align-items: center;
-    text-decoration: none;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
+.avatar.large {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #ccc;
+  background-image: url('');
+  background-size: cover;
+  background-position: center;
+}
 
-  
-  .faq-item {
-    background-color: #FFEB9A; /* Your yellow color */
-    border: 1px solid #ffc862; /* Optional border */
-    margin-bottom: 0px; /* Space between items */
-    border-radius: 10px; /*  rounded corners */
-    overflow: hidden; /* Important for the slide-down effect */
-  }
-  
-  .faq-question {
-    display: flex;
-    justify-content: space-between; /* Space out question and button */
-    align-items: center; /* Vertically align them */
-    padding: 1px;
-    margin-left: 5px;
-    cursor: pointer; /* Indicate it's interactive */
-  }
-  
-  .faq-question p {
-    margin: 0;
-    font-size: 1rem; /* Adjust as needed */
-    display: inline-block; /* Make the h3 inline-level for vertical-align to work */
-    vertical-align: middle; /* Align the h3 with the button */
-    color: rgba(68, 66, 66, 0.998);
-  }
-  
-  
-  .faq-answer {
-    padding: 0 15px;
-    max-height: 0; /* Initially hide the answer */
-    overflow: hidden;
-    transition: max-height 0.3s ease-in-out; /* Smooth transition for the expand/collapse effect */
-  }
-  
-  .faq-answer p {
-    margin-top: 10px;
-    margin-bottom: 15px;
-    text-align: left;
-  }
-  
-  /* Style for when the answer is expanded */
-  .faq-item.open .faq-answer {
-    max-height: 500px; /* Adjust to a reasonable maximum height */
-  }
-  
-  .tips-section {
-    padding: 30px;
-    background-color: #fce1ddda;
-    margin: 40px auto;
-    max-width: 800px;
-    border-left: 4px solid #ffe387;
-    border-radius: 10px;
-  }
-  
-  .tips-section h2 {
-    font-size: 1.8rem;
-    color: #2e7d32;
-    margin-bottom: 20px;
-  }
-  
-  .tips-list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .tips-list li {
-    font-size: 1rem;
-    padding: 12px 0;
-    border-bottom: 1px solid #b8b6b6;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-  }
-  
-  .tips-list li span {
-    font-size: 1.3rem;
-    line-height: 1;
-  }
-  
-  .warning-text {
+.add-photo {
+  color: blue;
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.field {
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.input-button-group {
+  display: flex;
+  align-items: center;
+  /* Vertically align items in the center */
+}
+
+.input-box {
+  display: flex;
+  flex-grow: 1;
+  margin-right: 10px;
+  align-items: center;
+  background-color: #d6d1c9;
+  border-radius: 20px;
+  padding: 8px 12px;
+  max-width: 300px;
+}
+
+.input-box input {
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  flex: 1;
+  outline: none;
+}
+
+.edit-icon {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+
+h2 {
+  font-family: Georgia, serif;
+  font-weight: 900;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+form label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: 500;
+}
+
+form input {
+  width: 100%;
+  padding: 10px;
+  background-color: #CEC5BA;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.form-check-input {
+  margin-right: 10px;
+}
+
+
+button {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  align-items: center;
+}
+
+.getNowButton {
+  width: 50%;
+  background-color: hsl(217, 100%, 80%);
+  color: rgb(58, 59, 60);
+  margin: auto;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  align-items: center;
+  text-decoration: none;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+
+.faq-item {
+  background-color: #FFEB9A;
+  /* Your yellow color */
+  border: 1px solid #ffc862;
+  /* Optional border */
+  margin-bottom: 0px;
+  /* Space between items */
+  border-radius: 10px;
+  /*  rounded corners */
+  overflow: hidden;
+  /* Important for the slide-down effect */
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  /* Space out question and button */
+  align-items: center;
+  /* Vertically align them */
+  padding: 1px;
+  margin-left: 5px;
+  cursor: pointer;
+  /* Indicate it's interactive */
+}
+
+.faq-question p {
+  margin: 0;
+  font-size: 1rem;
+  /* Adjust as needed */
+  display: inline-block;
+  /* Make the h3 inline-level for vertical-align to work */
+  vertical-align: middle;
+  /* Align the h3 with the button */
+  color: rgba(68, 66, 66, 0.998);
+}
+
+
+.faq-answer {
+  padding: 0 15px;
+  max-height: 0;
+  /* Initially hide the answer */
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+  /* Smooth transition for the expand/collapse effect */
+}
+
+.faq-answer p {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+/* Style for when the answer is expanded */
+.faq-item.open .faq-answer {
+  max-height: 500px;
+  /* Adjust to a reasonable maximum height */
+}
+
+.tips-section {
+  padding: 30px;
+  background-color: #fce1ddda;
+  margin: 40px auto;
+  max-width: 800px;
+  border-left: 4px solid #ffe387;
+  border-radius: 10px;
+}
+
+.tips-section h2 {
+  font-size: 1.8rem;
+  color: #2e7d32;
+  margin-bottom: 20px;
+}
+
+.tips-list {
+  list-style: none;
+  padding: 0;
+}
+
+.tips-list li {
+  font-size: 1rem;
+  padding: 12px 0;
+  border-bottom: 1px solid #b8b6b6;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.tips-list li span {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.warning-text {
   color: #D16D6A;
-  font-weight:600;
+  font-weight: 600;
   margin-bottom: 15px;
 }
 
@@ -568,27 +599,36 @@ footer {
   vertical-align: middle;
   /* You might need to adjust other styles like width/height as needed */
 }
- 
+
 /*for index page scenery*/
 #scenery-container .carousel-item {
-    padding: 20px; /* Add some padding around the item */
+  padding: 20px;
+  /* Add some padding around the item */
 }
 
 .scenery-caption-left {
-    width: 40%; /* Adjust the width for the caption area */
-    padding-right: 20px; /* Add some spacing between the caption and the image */
-    text-align: left; /* Align text to the left */
+  width: 40%;
+  /* Adjust the width for the caption area */
+  padding-right: 20px;
+  /* Add some spacing between the caption and the image */
+  text-align: left;
+  /* Align text to the left */
 }
 
 .scenery-caption-left b {
-    font-size: 1.2em; /* Adjust the font size of the bold text */
-    display: block; /* Make it a block-level element to take full width of its container */
-    margin-bottom: 10px; /* Add some space below the title */
+  font-size: 1.2em;
+  /* Adjust the font size of the bold text */
+  display: block;
+  /* Make it a block-level element to take full width of its container */
+  margin-bottom: 10px;
+  /* Add some space below the title */
 }
 
 .scenery-container .carousel-inner img {
-    object-fit: cover; /* Ensure the image covers the area without distortion (adjust as needed) */
-    height: auto; /* Maintain aspect ratio */
+  object-fit: cover;
+  /* Ensure the image covers the area without distortion (adjust as needed) */
+  height: auto;
+  /* Maintain aspect ratio */
 }
 
 .carousel-inner img {
@@ -596,18 +636,16 @@ footer {
   object-fit: cover;
 }
 
-  p {
-    text-align: center;
-    margin-top: 15px;
-    font-size: 14px;
-  }
+p {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
 
-  h3 {
-    font-family: 'Gill Sans', serif;
-    font-weight: 600;
-    font-size: 17px;
-    text-transform: uppercase;
-    color: rgba(75, 74, 74, 0.998);
-  }
-
-
+h3 {
+  font-family: 'Gill Sans', serif;
+  font-weight: 600;
+  font-size: 17px;
+  text-transform: uppercase;
+  color: rgba(75, 74, 74, 0.998);
+}
