@@ -99,8 +99,12 @@ footer {
   text-align: center;
   padding: 10px 0;
   font-size: 0.9rem;
+  height: auto;
+  width: 100vw;         /* full width */
+  margin: 0;            /* prevent spacing around it */
+  box-sizing: border-box; /* include padding in width */
+  margin-top: auto; /* Makes sure it stays at the bottom of the page */
 }
-
 
 header {
   background-color: var(--primary);
