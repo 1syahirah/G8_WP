@@ -46,8 +46,10 @@
     display: flex; /* Arrange items in a row */
     align-items: center; /* Vertically align items in the center */
     gap: 5px;
-    position: fixed;
     left: 20px;
+    right: auto;
+    margin-right: auto;
+    position: fixed;
     z-index: 100;
   }
 
