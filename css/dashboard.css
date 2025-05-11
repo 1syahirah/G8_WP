@@ -49,7 +49,7 @@
     left: 20px;
     right: auto;
     margin-right: auto;
-    position: fixed;
+    position: absolute;
     z-index: 100;
   }
 
