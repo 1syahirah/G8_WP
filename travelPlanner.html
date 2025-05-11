@@ -46,59 +46,245 @@
 
     <section class="search-section">
       <input type="text" class="search-bar"
-        placeholder="Search eco-friendly stays, rides, or activities in Your Town..." />
+        placeholder="Search eco-friendly stays, rides, or activities in Kuala Lumpur..." />
 
       <div class="filters">
         <select>
-          <option>Accommodations</option>
-          <option>Transport</option>
           <option>Activities</option>
+          <option>Accommodation</option>
+          <option>Transport</option>
         </select>
         <input type="date" />
       </div>
 
-      <div class="results-grid">
-        <div class="card">
-          <strong>Eco Lodge</strong>
-          <div>ACCOMMODATION</div>
-          <div>Sustainability Score: 9/10</div>
-          <button>♥ Save</button>
+      <div class="carousel-container">
+        <button class="carousel-button prev" aria-label="Previous">&#10094;</button>
+        <div class="carousel">
+          <div class="card">
+            <img src="assets/images/hartamas_garden.jpg">
+            <strong>The Hartamas Garden</strong>
+            <h3>ACTIVITIES</h3>
+            <h3>Sustainability Score: 8/10</h3>
+            <button>♥ Save</button>
+          </div>
+          <div class="card">
+            <img src="assets/images/kebun_bangsar.jpg">
+            <strong>Kebun Kebun Bangsar</strong>
+            <h3>ACTIVITIES</h3>
+            <h3>Sustainability Score: 7/10</h3>
+            <button>♥ Save</button>
+          </div>
+          <div class="card">
+            <img src="assets/images/kl_forest_eco_park.jpg">
+            <strong>KL Forest Eco Park</strong>
+            <h3>ACTIVITIES</h3>
+            <h3>Sustainability Score: 9/10</h3>
+            <button>♥ Save</button>
+          </div>
+          <div class="card">
+            <img src="assets/images/farm_fresh.jpg">
+            <strong>Farm Fresh Malaysia</strong>
+            <h3>ACTIVITIES</h3>
+            <h3>Sustainability Score: 9/10</h3>
+            <button>♥ Save</button>
+          </div>
+          <div class="card">
+            <img src="assets/images/Goat-farm.jpg">
+            <strong>Janda Baik Goat Farm</strong>
+            <h3>ACTIVITIES</h3>
+            <h3>Sustainability Score: 8/10</h3>
+            <button>♥ Save</button>
+          </div>
+          <div class="card">
+            <img src="assets/images/aquaria_klcc.avif">
+            <strong>Aquaria KLCC</strong>
+            <h3>ACTIVITIES</h3>
+            <h3>Sustainability Score: 6/10</h3>
+            <button>♥ Save</button>
+          </div>
+          <div class="card">
+            <img src="assets/images/zoo_negara.jpg">
+            <strong>Zoo Negara</strong>
+            <h3>ACTIVITIES</h3>
+            <h3>Sustainability Score: 8/10</h3>
+            <button>♥ Save</button>
+          </div>
+          <div class="card">
+            <img src="assets/images/forest_skywalk.jpg">
+            <strong>The Forest Skywalk</strong>
+            <h3>ACTIVITIES</h3>
+            <h3>Sustainability Score: 8/10</h3>
+            <button>♥ Save</button>
+          </div>
+          <div class="card">
+            <img src="assets/images/kl_eco_city.jpeg">
+            <strong>KL Eco City</strong>
+            <h3>ACTIVITIES</h3>
+            <h3>Sustainability Score: 7/10</h3>
+            <button>♥ Save</button>
+          </div>
         </div>
-        <div class="card">
-          <strong>Bike Rental</strong>
-          <div>TRANSPORT</div>
-          <div>Sustainability Score: 8/10</div>
-          <button>♥ Save</button>
-        </div>
-        <!-- Add more cards as needed -->
+        <button class="carousel-button next" aria-label="Next">&#10095;</button>
       </div>
     </section>
 
     <section class="planner-section">
       <div class="planner-container">
-        <div class="itinerary">
+        <!-- Plan Your Trip Section -->
+        <div class="itinerary-container">
           <h3>Plan Your Trip</h3>
-          <div><strong>Day 1:</strong> Eco Lodge</div>
-          <div><strong>Day 2:</strong> City Bike Tour</div>
-          <div><strong>Day 3:</strong> Forest Walk</div>
-          <button>Optimize Eco Score</button>
+          <div class="itinerary-days">
+            <div class="day-card">
+              <div class="day-header">
+                <h4>Day 1</h4>
+                <button class="add-btn">+ Add Activity</button>
+              </div>
+              <div class="activity-item">
+                <span>Kebun Kebun Bangsar</span>
+                <div class="activity-actions">
+                  <button class="move-btn">↑↓</button>
+                  <button class="remove-btn">×</button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="day-card">
+              <div class="day-header">
+                <h4>Day 2</h4>
+                <button class="add-btn">+ Add Activity</button>
+              </div>
+              <div class="activity-item">
+                <span>Farm Fresh Malaysia</span>
+                <div class="activity-actions">
+                  <button class="move-btn">↑↓</button>
+                  <button class="remove-btn">×</button>
+                </div>
+              </div>
+              <div class="activity-item">
+                <span>KL Eco City</span>
+                <div class="activity-actions">
+                  <button class="move-btn">↑↓</button>
+                  <button class="remove-btn">×</button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="day-card">
+              <div class="day-header">
+                <h4>Day 3</h4>
+                <button class="add-btn">+ Add Activity</button>
+              </div>
+              <div class="activity-item">
+                <span>The Forest Skywalk</span>
+                <div class="activity-actions">
+                  <button class="move-btn">↑↓</button>
+                  <button class="remove-btn">×</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="itinerary-actions">
+            <button class="optimize-btn">Optimize Eco Score</button>
+            <button class="add-day-btn">+ Add Day</button>
+          </div>
         </div>
-
-        <div class="favorites">
-          <h3>Your Favorites</h3>
-          <div>Eco Lodge</div>
-          <div>Bike Rental</div>
+        
+        <!-- Favorites Section -->
+        <div class="favorites-container">
+          <h3 class="section-title">Your Favorites</h3>
+          <div class="favorites-list">
+            <div class="favorite-item">
+              <div class="favorite-content">
+                <img src="assets/images/aquaria_klcc.avif" alt="aquaria" class="favorite-image">
+                <div class="favorite-details">
+                  <span class="favorite-name">Aquaria KLCC</span>
+                  <div class="favorite-meta">
+                    <span class="favorite-type">ACTIVITIES</span>
+                  </div>
+                </div>
+              </div>
+              <div class="favorite-actions">
+                <button class="add-to-itinerary-btn" title="Add to itinerary">+ Add</button>
+                <button class="remove-favorite-btn" title="Remove favorite">×</button>
+              </div>
+            </div>
+            <div class="favorite-item">
+              <div class="favorite-content">
+                <img src="assets/images/mandarin_oriental.avif" alt="aquaria" class="favorite-image">
+                <div class="favorite-details">
+                  <span class="favorite-name">Mandarin Oriental Kuala Lumpur</span>
+                  <div class="favorite-meta">
+                    <span style="background: #fff3e0; color: #e65100; padding: 2px 6px; border-radius: 4px; font-size: 0.8rem;">ACCOMMODATION</span>
+                  </div>
+                </div>
+              </div>
+              <div class="favorite-actions">
+                <button class="add-to-itinerary-btn" title="Add to itinerary">+ Add</button>
+                <button class="remove-favorite-btn" title="Remove favorite">×</button>
+              </div>
+            </div>
+            <div class="favorite-item">
+              <div class="favorite-content">
+                <img src="assets/images/Goat-farm.jpg" alt="aquaria" class="favorite-image">
+                <div class="favorite-details">
+                  <span class="favorite-name">Janda Baik Goat Farm</span>
+                  <div class="favorite-meta">
+                    <span class="favorite-type">ACTIVITIES</span>
+                  </div>
+                </div>
+              </div>
+              <div class="favorite-actions">
+                <button class="add-to-itinerary-btn" title="Add to itinerary">+ Add</button>
+                <button class="remove-favorite-btn" title="Remove favorite">×</button>
+              </div>
+            </div>
+            <div class="favorite-item">
+              <div class="favorite-content">
+                <img src="assets/images/go_kl_bus.webp" alt="aquaria" class="favorite-image">
+                <div class="favorite-details">
+                  <span class="favorite-name">GoKL City Bus Green Line</span>
+                  <div class="favorite-meta">
+                    <span class="favorite-type"style="background: #e8f5e9; color: #2e7d32; padding: 2px 6px; border-radius: 4px;">TRANSPORT</span>
+                  </div>
+                </div>
+              </div>
+              <div class="favorite-actions">
+                <button class="add-to-itinerary-btn" title="Add to itinerary">+ Add</button>
+                <button class="remove-favorite-btn" title="Remove favorite">×</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
+    
 
-    <div class="bottom-bar">
+    <!-- <div class="bottom-bar">
       <button>Preview Itinerary</button>
       <button>Share / Save as PDF</button>
       <button>Clear All</button>
-    </div>
+    </div> -->
 
     <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const carousel = document.querySelector('.carousel');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        
+        // Calculate scroll amount based on card width
+        const card = document.querySelector('.card');
+        const cardWidth = card.offsetWidth + 20; // including gap
+        
+        prevBtn.addEventListener('click', () => {
+          carousel.scrollBy({ left: -cardWidth * 3, behavior: 'smooth' });
+        });
+        
+        nextBtn.addEventListener('click', () => {
+          carousel.scrollBy({ left: cardWidth * 3, behavior: 'smooth' });
+        });
+      });
+
       function confirmLogout() {
         return confirm("Are you sure you want to logout?")
       }
