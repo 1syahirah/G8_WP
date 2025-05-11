@@ -165,7 +165,7 @@
 }
 
 .member-image {
-    height: 20rem;
+    height: 18rem;
     width: 100%;
     background-color: #fef3c7;
     /* Equivalent to Tailwind's bg-yellow-100 */
