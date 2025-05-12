@@ -11,7 +11,7 @@ h3 {
     font-size: 24px;
     text-align: center;
     margin-bottom: 20px;
-    color: white;
+    color: rgb(131, 131, 131);
 }
 
 .location{
@@ -50,8 +50,8 @@ h3 {
 }
 
 .weather-data .current-weather {
-    color: #fff;
-    background: #45a049;
+    color: #888585;
+    background: #ffffff;
     border-radius: 5px;
     padding: 20px 70px 20px 20px;
     display: flex;
@@ -146,7 +146,7 @@ h3 {
 .weather-data h2 {
     font-weight: 700;
     font-size: 1.5rem;
-    color: white;
+    color: rgb(125, 122, 122);
 }
 
 .days-forecast h2 {
@@ -162,11 +162,11 @@ h3 {
 }
 
 .weather-cards .card {
-    color: #fff;
+    color: #999999;
     padding: 16px 16px;
     list-style: none;
     width: calc(100% / 4);
-    background: #6C757D;
+    background: #ffe784;
     margin-top: 20px;
     
 }
