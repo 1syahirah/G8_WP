@@ -2,8 +2,7 @@
 
 body {
   font-family: 'Lato', sans-serif;
-  background-color: #FEFEFA;
-  /*whitesmoke*/
+  background-color: #faf9f6;
   display: flex;
   flex-direction: column;
   /* Stack element vertically */
@@ -19,12 +18,12 @@ body {
 }
 
 :root {
-  --primary: #4CAF50;
-  --accent: #ffe16a;
+  --primary: #9f8170;
+  --accent: #4a5a42;
   --highlight: #ffe784;
-  --bg-light: #FBEBC5;
-  --text-color: #333;
-  --border: #ccc;
+  --bg-light: #5d5028;
+  --text-color: #4e4035;
+  --border: #d2ba8c;
   --radius: 20px;
 }
 
@@ -51,10 +50,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Centers the content horizontally */
   padding: 10px;
-  background-color: #4CAF50;
-  /* Change to your desired color */
+  background-color: #9f8170;
   color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin-bottom: 20px;
@@ -90,19 +87,20 @@ body {
 .main-content {
   flex-grow: 1;
   padding: 20px;
-  background-color: #ffeeaa;
+  background-color: #faf9f6;
   max-width: 100%;
   box-sizing: border-box;
   border-radius: 20px;
-  border-right: 3px solid #ddb872;
-  border-top: 3px solid #ddb872;
-  border-bottom: 3px solid #ddb872;
+  border-right: 3px solid #d2ba8c;
+  border-top: 3px solid #d2ba8c;
+  border-bottom: 3px solid #d2ba8c;
 }
 
 /* Footer styling */
 footer {
-  background-color: #fffbe9;
+  background-color: #4a5a42;
   text-align: center;
+  color:#ffffff;
   padding: 10px 0;
   font-size: 0.9rem;
   height: auto;
@@ -171,7 +169,7 @@ h1 {
 
 .feature-card {
   width: 100%;
-  border: 1.5px solid #a6a7b6;
+  border: 1.5px solid #9f8170;
   border-radius: 15px;
   padding: 25px;
   text-align: center;
@@ -188,7 +186,7 @@ h1 {
   font-size: 28px;
   padding: 5px 20px;
   cursor: pointer;
-  background-color: #fffcf1;
+  background-color: #9f8170;
   position: fixed;
   top: 10px;
   right: 10px;
@@ -204,7 +202,7 @@ h1 {
   /*100% for right, -100% for left bar*/
   transition: transform 0.3s ease;
   width: 250px;
-  background-color: #fffcf1;
+  background-color: #9f8170;
   padding: 20px;
   padding-top: 60px;
   height: 100vh;
@@ -226,13 +224,13 @@ h1 {
   display: block;
   margin-bottom: 10px;
   text-decoration: none;
-  color: #333;
+  color: #ffffff;
   padding: 10px;
   border-radius: 5px;
 }
 
 .mainsidebar a:hover {
-  background-color: #f7d858;
+  background-color: #4a5a42;
 }
 
 .content {
@@ -249,7 +247,7 @@ h1 {
 
 .section-divider {
   height: 20px;
-  background-color: #ecd47b;
+  background-color: #d2ba8c;
   padding-top: 10px;
   margin-top: 20px;
   /*space between divider and item above it*/
@@ -311,12 +309,12 @@ h1 {
 
 
 .profilesidebar {
-  background-color: #FFE784;
+  background-color: #faf9f6;
   padding: 20px;
   width: 250px;
   border-radius: 20px 0 0 20px;
   box-sizing: border-box;
-  border: 3px solid #ddb872;
+  border: 3px solid #d2ba8c;
 }
 
 .profilesidebar a {
@@ -329,7 +327,7 @@ h1 {
 }
 
 .profilesidebar a:hover {
-  background-color: #ffdc4f;
+  background-color: #ecebe8;
 }
 
 
@@ -383,7 +381,7 @@ h1 {
 
 .edit-btn {
   padding: 8px 12px;
-  background-color: #f9e07e;
+  background-color: #9f8170;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -501,7 +499,7 @@ form input {
 
 button {
   width: 100%;
-  background-color: #4CAF50;
+  background-color: #9f8170;
   color: white;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -517,8 +515,8 @@ button {
 
 .getNowButton {
   width: 50%;
-  background-color: hsl(217, 100%, 80%);
-  color: rgb(58, 59, 60);
+  background-color: #9f8170;
+  color: rgb(239, 239, 239);
   margin: auto;
   padding: 10px;
   border: none;
@@ -529,14 +527,18 @@ button {
   text-decoration: none;
 }
 
+.getNowButton:hover {
+  background-color: #4a5a42;
+}
+
 button:hover {
-  background-color: #45a049;
+  background-color: #4a5a42;
 }
 
 
 .faq-item {
-  background-color: #FFEB9A;
-  border: 1px solid #ffc862;
+  background-color: #f7f5ee;
+  border: 1px solid #d2ba8c;
   margin-bottom: 0px;
   /* Space between items */
   border-radius: 10px;
@@ -558,8 +560,6 @@ button:hover {
 
 .faq-question p {
   margin: 0;
-  font-size: 1rem;
-  /* Adjust as needed */
   display: inline-block;
   /* Make the h3 inline-level for vertical-align to work */
   vertical-align: middle;
@@ -579,7 +579,7 @@ button:hover {
 
 .faq-answer p {
   margin-top: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   text-align: left;
 }
 
@@ -591,10 +591,10 @@ button:hover {
 
 .tips-section {
   padding: 30px;
-  background-color: #faf5f4da;
+  background-color: #f7f5ee;
   margin: 40px auto;
   max-width: 800px;
-  border-left: 4px solid #ffe387;
+  border-left: 4px solid #d2ba8c;
   border-radius: 10px;
 }
 
@@ -701,6 +701,7 @@ button:hover {
 }
 
 p {
+  font-family: 'Lato', sans-serif;
   text-align: center;
   margin-top: 15px;
   font-size: 14px;

@@ -73,14 +73,14 @@ body {
 
   .login-signup-container a {
     text-decoration: none; /* Remove underline from the link */
-    color: #333; /* Example text color */
+    color: #ffffff; /* Example text color */
     font-weight: bold; /* Make it stand out */
     padding: 1px;
     white-space: nowrap; /*prevent text from wrapping*/
   }
 
   .login-signup-container button {
-    background-color: #C85F40; 
+    background-color: #896e5f; 
     color: white; /* White text color */
     border: none; /* Remove default button border */
     padding: 10px 10px 10px 10px; /* Add padding inside the button */
@@ -90,6 +90,6 @@ body {
   }
 
   .login-signup-container button:hover {
-    background-color: #be5139; /* Darker shade on hover */
+    background-color: #4a5a42; /* Darker shade on hover */
   }
   
