@@ -45,7 +45,7 @@ h3 {
     background-color: #FFFFFF;
     padding: 60px;
     border-radius: 20px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 20px rgba(194, 193, 193, 0.583);
     box-sizing: content-box;
 }
 
@@ -55,6 +55,7 @@ h3 {
     border-radius: 5px;
     padding: 20px 70px 20px 20px;
     display: flex;
+    width: max-content;
     justify-content: space-between;
     margin-bottom: 40px;
 }
@@ -71,7 +72,7 @@ h3 {
     font-size: 1.07rem;
     padding: 0 17px;
     margin: 10px 0 20px 0;
-    border-radius: 4px;
+    border-radius: 10px;
     border: 1px solid #ccc;
 }
   
@@ -105,7 +106,7 @@ h3 {
     cursor: pointer;
     outline: none;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     font-size: 1rem;
     color: #fff;
     background: #4CAF50;
@@ -117,12 +118,14 @@ h3 {
 }
 
 .weather-input .location-btn {
-    background: #6C757D;
+    color: #888585;
+    background: #ffe789;
     margin-bottom: 40px;
+    box-sizing: 10px;
 }
 
 .weather-input .location-btn:hover {
-    background: #5c636a;
+    background: #efdb8b;
 }
 
 .current-weather h2 {

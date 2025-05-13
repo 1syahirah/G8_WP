@@ -247,7 +247,7 @@ h1 {
 
 .section-divider {
   height: 20px;
-  background-color: #9b8e5f;
+  background-color: #ecd47b;
   padding-top: 10px;
   margin-top: 20px;
   /*space between divider and item above it*/
@@ -448,6 +448,7 @@ h1 {
 .input-button-group {
   display: flex;
   align-items: center;
+  justify-content: center;
   /* Vertically align items in the center */
 }
 
@@ -467,7 +468,6 @@ h1 {
   background: transparent;
   font-size: 16px;
   flex: 1;
-  outline: none;
 }
 
 .edit-icon {
@@ -598,7 +598,7 @@ button:hover {
 
 .tips-section {
   padding: 30px;
-  background-color: #fce1ddda;
+  background-color: #faf5f4da;
   margin: 40px auto;
   max-width: 800px;
   border-left: 4px solid #ffe387;
