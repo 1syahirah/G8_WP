@@ -1,7 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap');
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
 .dashboard-container {
     text-align: center;
     padding: 20px;
+    font-family: 'Playfair Display', serif;
   }
+
+.module-section h2,
+.module-section h3,
+.module-section .module-title {
+    font-family: 'Playfair Display', serif;
+}
+
+.module-section p,
+.module-section li,
+.module-section span {
+    font-family: 'Lato', sans-serif;
+}
   
   
   .card-img-top {

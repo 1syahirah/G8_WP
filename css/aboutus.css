@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap');
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
 .about-us-container {
     background: #ffffff;
     /* White background */
@@ -13,6 +19,7 @@
     font-size: large;
     color: #000000;
     text-align: left;
+    font-family: 'Playfair Display', serif;
 }
 
 .about-us-container p {
@@ -30,12 +37,14 @@
     font-size: 1.5rem;
     font-weight: 700;
     color: #000000;
+    font-family: 'Playfair Display', serif;
 }
 
 .subtitle {
     font-size: 1.125rem;
     margin-top: 0.25rem;
     color: #000000;
+    font-family: 'Playfair Display', serif;
 }
 
 .values-grid {
@@ -78,7 +87,7 @@
     font-weight: 600;
     margin-bottom: 0;
     text-align: center;
-
+    font-family: 'Playfair Display', serif;
 }
 
 .card-description {
@@ -115,6 +124,7 @@
     font-size: 2.25rem;
     font-weight: 800;
     color: #1f2937;
+    font-family: 'Playfair Display', serif;
 }
 
 @media (min-width: 640px) {
@@ -130,6 +140,7 @@
     color: #374151;
     margin-left: auto;
     margin-right: auto;
+    font-family: 'Playfair Display', serif;
 }
 
 /* Grid layout for team members */
@@ -190,12 +201,14 @@
     font-weight: 500;
     color: #1f2937;
     text-align: center;
+    font-family: 'Playfair Display', serif;
 }
 
 .member-title {
     color: #d97706;
     text-align: center;
     font-size: 1.15rem;
+    font-family: 'Playfair Display', serif;
 }
 
 .member-description {

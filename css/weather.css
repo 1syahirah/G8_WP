@@ -4,9 +4,14 @@
     max-width: 1200px;
     padding: 20px;
 }
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap');
+
+body {
+    font-family: 'Lato', sans-serif;
+}
 
 h3 {
-    font-family: Georgia, serif;
+    font-family: 'Playfair Display', serif;
     font-weight: 900;
     font-size: 24px;
     text-align: center;
@@ -177,6 +182,7 @@ h3 {
 .weather-cards .card h3 {
     font-size: 1.0rem;
     font-weight: 600;
+    font-family: 'Playfair Display', serif;
 }
 
 .weather-cards .card img {
