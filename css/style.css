@@ -125,12 +125,22 @@ header {
   margin-bottom: 30px;
 }
 
-h1 {
+.main-header h1 {
   font-family: 'Playfair Display', serif;
   font-weight: 900;
   font-size: 32px;
   text-transform: uppercase;
   color: white;
+}
+
+.content h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 32px;
+  text-transform: uppercase;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 .form-container {
@@ -163,6 +173,7 @@ h1 {
   padding: 20px;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
+  width:80%;
   max-width: 90%;
   margin: 0 auto;
 }
@@ -222,7 +233,7 @@ h1 {
 
 .mainsidebar a {
   display: block;
-  margin-bottom: 10px;
+  margin-top: 10px;
   text-decoration: none;
   color: #ffffff;
   padding: 10px;
@@ -350,17 +361,17 @@ h1 {
   height: 80px;
 }
 
-.menu a {
+.mainsidebar a {
   display: block;
   margin: 10px 0;
   text-decoration: none;
-  color: #333;
+  color: white;
   font-size: 18px;
 }
 
-.menu .icon {
-  width: 20px;
-  height: 20px;
+.mainsidebar .icon {
+  width: 25px;
+  height: 25px;
   margin-right: 10px;
   vertical-align: middle;
 }
@@ -713,6 +724,7 @@ h3 {
   font-size: 17px;
   text-transform: uppercase;
   color: rgba(75, 74, 74, 0.998);
+  margin-top: 20px;
 }
 
 .btn-carbon-footprint {
