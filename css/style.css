@@ -714,3 +714,9 @@ h3 {
   text-transform: uppercase;
   color: rgba(75, 74, 74, 0.998);
 }
+
+.btn-carbon-footprint {
+    background-color: #a4816b;
+    border-color: #a4816b;
+    color: white;
+}
