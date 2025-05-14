@@ -9,7 +9,8 @@ const API_KEY = "9f2e1f455e003246d00a9c41b725bbc8"; // API key for OpenWeatherMa
 const createWeatherCard = (cityName, weatherItem, index) => {
     if(index === 0) { // HTML for the main weather card
         return `<div class="details">
-                    <h2>${cityName} (${weatherItem.dt_txt.split(" ")[0]})</h2>
+                    <h2>${cityName} </h2> 
+                    <p><h2>(${weatherItem.dt_txt.split(" ")[0]})</h2></p>
                     <h6>Temperature : ${(weatherItem.main.temp - 273.15).toFixed(2)}°C</h6>
                     <h6>Wind : ${weatherItem.wind.speed} M/S</h6>
                     <h6>Humidity : ${weatherItem.main.humidity}%</h6>
