@@ -507,14 +507,25 @@ form input {
   margin-right: 10px;
 }
 
-
 button {
   width: 100%;
   background-color: #9f8170;
   color: white;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  margin-right: 5px;
+  margin-bottom: 30px;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  align-items: center;
+  text-decoration: none;
+}
+
+.button {
+  width: 100%;
+  background-color: #9f8170;
+  color: white;
+  margin-bottom: 30px;
   padding: 10px;
   border: none;
   border-radius: 8px;
@@ -542,7 +553,7 @@ button {
   background-color: #4a5a42;
 }
 
-button:hover {
+.button:hover {
   background-color: #4a5a42;
 }
 
