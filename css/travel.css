@@ -200,9 +200,9 @@ body {
   
   .day-header {
     display: flex;
-  align-items: center; /* Vertically center items */
-  gap: 10px; /* Space between elements */
-  white-space: nowrap;
+    align-items: center; /* Vertically center items */
+    gap: 10px; /* Space between elements */
+    white-space: nowrap;
   }
 
   .day-title-container {
@@ -274,12 +274,16 @@ body {
   }
   
   .optimize-btn {
-    background-color: var(--primary);
+    background-color: var(--accent);
     color: white;
     border: none;
     padding: 8px 15px;
     border-radius: 4px;
     cursor: pointer;
+  }
+
+  .optimize-btn:hover{
+    background-color: var(--primary);
   }
   
   .add-day-btn {
@@ -288,6 +292,10 @@ body {
     padding: 8px 15px;
     border-radius: 4px;
     cursor: pointer;
+  }
+
+  .add-day-btn:hover{
+    background-color: var(--primary);
   }
   
   .favorites-container {
