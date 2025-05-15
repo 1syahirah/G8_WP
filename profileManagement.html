@@ -95,7 +95,7 @@
                 <div class="info-labels">
                   <p><strong>Password</strong><br>yourpassword</p>
                 </div>
-                <button class="edit-btn">Change Password</button>
+                <button class="edit-btn" id="changePasswordBtn">Change Password</button>
               </div>
                <div id="passwordModal" class="modal">
                 <div class="modal-content">
@@ -507,9 +507,9 @@
       });
     });
 
-        //to change password
+    //to change password
     const modal = document.getElementById("passwordModal");
-    const btn = document.querySelector(".edit-btn");
+    const btn = document.getElementById("changePasswordBtn");
     const span = document.getElementById("closeModal");
 
     btn.onclick = function() {
