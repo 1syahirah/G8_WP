@@ -121,22 +121,22 @@ body {
 }
 
 .team-title {
-    font-size: 2.25rem;
-    font-weight: 800;
+    font-size: 1.8rem;
+    font-weight: 700;
     color: #1f2937;
     font-family: 'Playfair Display', serif;
 }
 
 @media (min-width: 640px) {
     .team-title {
-        font-size: 2.5rem;
+        font-size: 1.8rem;
     }
 }
 
 .team-subtitle {
     margin-top: 0.5rem;
     max-width: 42rem;
-    font-size: 1.5rem;
+    font-size: 1.125rem;
     color: #374151;
     margin-left: auto;
     margin-right: auto;
@@ -197,8 +197,8 @@ body {
 }
 
 .member-name {
-    font-size: 1.125rem;
-    font-weight: 500;
+    font-size: 1.25rem;
+    font-weight: 300;
     color: #1f2937;
     text-align: center;
     font-family: 'Playfair Display', serif;
@@ -207,7 +207,7 @@ body {
 .member-title {
     color: #d97706;
     text-align: center;
-    font-size: 1.15rem;
+    font-size: 1.115rem;
     font-family: 'Playfair Display', serif;
 }
 
