@@ -97,7 +97,7 @@
                 </div>
                 <button class="edit-btn" id="changePasswordBtn">Change Password</button>
               </div>
-               <div id="passwordModal" class="modal">
+              <div id="passwordModal" class="modal">
                 <div class="modal-content">
                   <span class="close-btn" id="closeModal">&times;</span>
                   <h2>Change Password</h2>
@@ -129,7 +129,7 @@
               <h2>Your Favorites</h2>
               <div class="favorites-count">4 items</div>
             </div>
-          
+
             <div class="favorites-container2">
               <!-- Favorite Card 1 -->
               <div class="favorite-card">
@@ -139,11 +139,11 @@
                 </div>
                 <div class="card-content">
                   <strong>Aquaria KLCC</strong>
-                  <div class="card-category">ACTIVITIES</div>                  
-                  <span class="rating-score">Sustainability Score: 6/10</span>                  
+                  <div class="card-category">ACTIVITIES</div>
+                  <span class="rating-score">Sustainability Score: 6/10</span>
                 </div>
               </div>
-          
+
               <!-- Favorite Card 2 -->
               <div class="favorite-card">
                 <div class="card-image-container">
@@ -159,7 +159,7 @@
                   <span class="rating-score">Sustainability Score: 7/10</span>
                 </div>
               </div>
-          
+
               <!-- Favorite Card 3 -->
               <div class="favorite-card">
                 <div class="card-image-container">
@@ -172,7 +172,7 @@
                   <span class="rating-score">Sustainability Score: 8/10</span>
                 </div>
               </div>
-          
+
               <!-- Favorite Card 4 -->
               <div class="favorite-card">
                 <div class="card-image-container">
@@ -181,15 +181,15 @@
                 </div>
                 <div class="card-content">
                   <strong>GoKL City Bus Green Line</strong>
-                  <div class="favorite-type"style="background: #e8f5e9; color: #2e7d32; font-size: 0.85rem;
+                  <div class="favorite-type" style="background: #e8f5e9; color: #2e7d32; font-size: 0.85rem;
                   font-weight: 600;
                   margin-bottom: 12px;
                   padding: 3px 8px; border-radius: 4px;">TRANSPORT</div>
-                    <span class="rating-score">Sustainability Score: 9/10</span>
+                  <span class="rating-score">Sustainability Score: 9/10</span>
                 </div>
               </div>
             </div>
-          
+
             <!-- Empty State -->
             <div class="empty-favorites" style="display: none;">
               <img src="icons/heart-outline.png" alt="No favorites">
@@ -205,7 +205,7 @@
               <p style="text-align: center; font-size: 20px;">Tell us your concern !</p>
               <div class="input-button-group">
                 <div class="input-box">
-                  <input type="text" id="concern" placeholder="Write here..."  />
+                  <input type="text" id="concern" placeholder="Write here..." />
                 </div>
                 <button class="edit-btn">Enter</button>
               </div>
@@ -228,7 +228,8 @@
                 <button class="edit-btn">+</button>
               </div>
               <div class="faq-answer">
-                <p>Green accommodations are selected based on certifications, sustainable practices and carbon footprint!</p>
+                <p>Green accommodations are selected based on certifications, sustainable practices and carbon
+                  footprint!</p>
               </div>
             </div>
 
@@ -512,15 +513,15 @@
     const btn = document.getElementById("changePasswordBtn");
     const span = document.getElementById("closeModal");
 
-    btn.onclick = function() {
+    btn.onclick = function () {
       modal.style.display = "block";
     }
 
-    span.onclick = function() {
+    span.onclick = function () {
       modal.style.display = "none";
     }
 
-    window.onclick = function(event) {
+    window.onclick = function (event) {
       if (event.target == modal) {
         modal.style.display = "none";
       }

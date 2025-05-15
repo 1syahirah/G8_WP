@@ -100,7 +100,7 @@ body {
 .team-section {
     max-width: 1000px;
     margin-top: 2rem;
-    background-color: #ddb872;
+    background-color: #d2ba8c;
     padding-top: 2rem;
     padding-bottom: 4rem;
     margin-left: auto;
@@ -114,6 +114,7 @@ body {
     margin-right: auto;
     padding-left: 1rem;
     padding-right: 1rem;
+    background-color: var(--border);
 }
 
 .team-header {
