@@ -25,6 +25,18 @@ app.get('/weatherModule', (req, res) => {
     res.render('weatherModule');
 });
 
+app.get('/travelPlanner', (req, res) => {
+    res.render('travelPlanner');
+});
+
+app.get('/carbonFootprint', (req, res) => {
+    res.render('carbonFootprint');
+});
+
+app.get('/profileManagement', (req, res) => {
+    res.render('profileManagement');
+});
+
 // Start server
 app.listen(3000, () => {
     console.log('Server is running on http://localhost:3000');
