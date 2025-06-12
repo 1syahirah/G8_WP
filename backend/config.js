@@ -5,11 +5,21 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const Review = require('./models/Review'); 
 
 const app = express();
 
 //middleware
-app.use(cors());
+app.use(cors()); //safari block this
+// Add this instead of simple app.use(cors())
+// const corsOptions = {
+//   origin: "127.0.0.1:5500",  // This is where Live Server runs
+//   methods: "GET,POST,PUT,DELETE",
+//   allowedHeaders: "Content-Type",
+//   credentials: true
+// };
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
@@ -55,7 +65,7 @@ app.post('/api/register', async (req, res) => {
         res.status(500).send('Server error');
     }
 });
-// ENDPOINTS
+
 //create login (POST)
 app.post('/api/login', async (req, res) => {
     const { username, password } = req.body;
@@ -89,6 +99,37 @@ app.post('/api/login', async (req, res) => {
         );
     } catch (err) {
         console.error(err.message);
+        res.status(500).send('Server error');
+    }
+});
+
+// POST endpoint for submitting reviews
+// Create review (POST)
+//still error, smtg with the cors (?) data express etc
+app.post('/api/reviews', async (req, res) => {
+    const { username, review } = req.body;
+
+    if (!username || !review) {
+        return res.status(400).json({ msg: 'Missing username or review' });
+    }
+
+    try {
+        const newReview = new Review({ username, review });
+        await newReview.save();
+        res.status(201).json({ msg: 'Review submitted successfully' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server error');
+    }
+});
+
+// Get all reviews (GET)
+app.get('/api/reviews', async (req, res) => {
+    try {
+        const reviews = await Review.find().sort({ createdAt: -1 });
+        res.json(reviews);
+    } catch (err) {
+        console.error(err);
         res.status(500).send('Server error');
     }
 });
