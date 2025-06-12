@@ -1,3 +1,4 @@
+//basic setup = load necessary packages
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
@@ -6,11 +7,14 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const app = express();
+
+//middleware
 app.use(cors());
 app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
 
+//mongoDB connection
 const mongodburi = "mongodb+srv://TerraGo:terrago123@cluster0.9deb0ii.mongodb.net/terragodb?retryWrites=true&w=majority";
 
 mongoose.connect(mongodburi, {
@@ -29,7 +33,7 @@ const userSchema = new mongoose.Schema({
 });
 
 const User = mongoose.model('User', userSchema);
-
+//create register (POST)
 app.post('/api/register', async (req, res) => {
     const { username, password } = req.body;
 
@@ -51,7 +55,8 @@ app.post('/api/register', async (req, res) => {
         res.status(500).send('Server error');
     }
 });
-
+// ENDPOINTS
+//create login (POST)
 app.post('/api/login', async (req, res) => {
     const { username, password } = req.body;
 
