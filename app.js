@@ -1,44 +1,181 @@
+// Load environment variables from a .env file (if present)
+require('dotenv').config();
+
+// Import necessary modules
 const express = require('express');
-const app = express();
+const mongoose = require('mongoose');
+const cors = require('cors');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const path = require('path');
+const multer = require('multer'); // For file uploads
+const fs = require('fs'); // For file system operations
 
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+// Initialize the Express application
+const app = express();
 
-// Middleware to serve static files like CSS and JS
-app.use(express.static(path.join(__dirname, 'public')));
+// --- Middleware Setup ---
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true })); // For form data
 
-// Routes
-app.get('/login', (req, res) => {
-    res.render('login');
+// --- File Upload Configuration ---
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        const uploadDir = 'public/uploads/';
+        if (!fs.existsSync(uploadDir)) {
+            fs.mkdirSync(uploadDir, { recursive: true });
+        }
+        cb(null, uploadDir);
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + path.extname(file.originalname));
+    }
 });
 
+const upload = multer({
+    storage: storage,
+    fileFilter: (req, file, cb) => {
+        if (file.mimetype.startsWith('image/')) {
+            cb(null, true);
+        } else {
+            cb(new Error('Only image files are allowed!'), false);
+        }
+    }
+});
+
+// --- Frontend Serving Configuration ---
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(path.join(__dirname, 'public')));
+
+// --- MongoDB Connection ---
+const PORT = process.env.PORT || 3000;
+const MONGODB_URI = "mongodb+srv://TerraGo:terrago123@cluster0.9deb0ii.mongodb.net/terragodb?retryWrites=true&w=majority";
+
+mongoose.connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+    .then(() => {
+        console.log('Connected to MongoDB Atlas');
+        app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
+    })
+    .catch((error) => {
+        console.error('MongoDB connection error:', error.message);
+        process.exit(1);
+    });
+
+// --- User Schema and Model ---
+const userSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+        lowercase: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    profilePic: {
+        type: String
+    }
+});
+
+const User = mongoose.model('User', userSchema, 'users');
+
+// --- View Routes ---
 app.get('/register', (req, res) => {
-    res.render('register');
+    res.render('register', { error: null, formData: null });
+});
+
+app.get('/login', (req, res) => {
+    res.render('login');
 });
 
 app.get('/', (req, res) => {
     res.render('index');
 });
 
-app.get('/weatherModule', (req, res) => {
-    res.render('weatherModule');
+// --- API Routes ---
+app.post('/register', upload.single('profilePic'), async (req, res) => {
+    try {
+        const { name, email, password } = req.body;
+        const profilePicPath = req.file ? '/uploads/' + req.file.filename : null;
+
+        // Check if user exists
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            // Remove uploaded file if user already exists
+            if (req.file) fs.unlinkSync(req.file.path);
+            return res.render('register', {
+                error: 'Email already exists',
+                formData: req.body
+            });
+        }
+
+        // Hash password
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+
+        // Create user
+        const newUser = new User({
+            name,
+            email,
+            password: hashedPassword,
+            profilePic: profilePicPath
+        });
+
+        await newUser.save();
+        res.redirect('/login?registration=success');
+    } catch (error) {
+        // Remove uploaded file if error occurs
+        if (req.file) fs.unlinkSync(req.file.path);
+        console.error('Registration error:', error);
+        res.render('register', {
+            error: 'Registration failed. Please try again.',
+            formData: req.body
+        });
+    }
 });
 
-app.get('/travelPlanner', (req, res) => {
-    res.render('travelPlanner');
-});
+// Login route remains the same as your original
+app.post('/api/login', async (req, res) => {
+    const { email, password } = req.body;
 
-app.get('/carbonFootprint', (req, res) => {
-    res.render('carbonFootprint');
-});
+    try {
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(400).json({ msg: 'Invalid credentials' });
+        }
 
-app.get('/profileManagement', (req, res) => {
-    res.render('profileManagement');
-});
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(400).json({ msg: 'Invalid credentials' });
+        }
 
-// Start server
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+        const payload = {
+            user: {
+                id: user.id,
+            },
+        };
+
+        jwt.sign(
+            payload,
+            'secret_key',
+            { expiresIn: '1h' },
+            (err, token) => {
+                if (err) throw err;
+                res.json({ token });
+            }
+        );
+    } catch (err) {
+        console.error('Login error:', err.message);
+        res.status(500).send('Server error during login');
+    }
 });

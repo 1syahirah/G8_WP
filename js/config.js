@@ -1,3 +1,4 @@
+/* 
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
@@ -86,3 +87,4 @@ app.post('/api/login', async (req, res) => {
         res.status(500).send('Server error');
     }
 });
+*/
