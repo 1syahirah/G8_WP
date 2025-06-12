@@ -74,7 +74,7 @@ app.post('/api/login', async (req, res) => {
 
         jwt.sign(
             payload,
-            'secret_key', // Hardcoded secret for signing the token
+            'secret_key',
             { expiresIn: 3600 },
             (err, token) => {
                 if (err) throw err;

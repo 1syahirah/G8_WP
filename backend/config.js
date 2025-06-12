@@ -1,3 +1,4 @@
+/* 
 //basic setup = load necessary packages
 require('dotenv').config();
 const express = require('express');
@@ -133,3 +134,5 @@ app.get('/api/reviews', async (req, res) => {
         res.status(500).send('Server error');
     }
 });
+*/
+
