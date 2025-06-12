@@ -7,39 +7,29 @@
     <title>Eco Travel Planner - Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css"> <!--css for generally-->
-    <link rel="stylesheet" href="css/dashboard.css"> <!--css for dashboard-->
-    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="/css/style.css"> <!--css for generally-->
+    <link rel="stylesheet" href="/css/dashboard.css"> <!--css for dashboard-->
+    <link rel="stylesheet" href="/css/profile.css">
 
 </head>
 
 
 <body>
     <div class="wrapper">
-        <header class="main-header">
-
-            <!-- sign up/log in button-->
-            <div class="login-signup-container">
-                <a href="login.html">Log in</a>
-                <button><a href="register.html">Sign up</a></button>
-            </div>
-
-            <h1 class="app-title">TerraGo</h1>
-
-        </header>
+        <%- include('partials/header') %>
 
 
         <!-- Main Side Bar -->
         <div class="mainHamburger" onclick="toggleSidebar()">☰</div>
         <div class="mainsidebar" id="mainsidebar">
-            <a href="profileManagement.html"><img src="icons/accountIcon.png" alt="Profile" class="icon"> Profile</a>
-            <a href="index.html"><img src="icons/homeIcon.png" alt="Home" class="icon"> Home</a>
-            <a href="travelPlanner.html"><img src="icons/travelIcon.png" alt="Travel Planner" class="icon"> Travel
+            <a href="/profileManagement"><img src="/icons/accountIcon.png" alt="Profile" class="icon"> Profile</a>
+            <a href="/"><img src="/icons/homeIcon.png" alt="Home" class="icon"> Home</a>
+            <a href="/travelPlanner"><img src="/icons/travelIcon.png" alt="Travel Planner" class="icon"> Travel
                 Planner</a>
-            <a href="weatherModule.html"><img src="icons/sunWeatherIcon.png" alt="Weather" class="icon"> Weather</a>
-            <a href="carbonFootprint.html"><img src="icons/calculatorIcon.png" alt="Calculator" class="icon">
+            <a href="/weatherModule"><img src="/icons/sunWeatherIcon.png" alt="Weather" class="icon"> Weather</a>
+            <a href="/carbonFootprint"><img src="/icons/calculatorIcon.png" alt="Calculator" class="icon">
                 Calculator</a>
-            <a href="login.html" onclick="return confirmLogout()"><img src="icons/logout.png" alt="Logout"
+            <a href="/login" onclick="return confirmLogout()"><img src="/icons/logout.png" alt="Logout"
                     class="icon">Logout</a>
         </div>
 
@@ -54,7 +44,7 @@
                                 style="color:rgb(199, 135, 46);">!</span></h1>
                         <p style="text-align: left; font-size: 30px;">Get your discounted vacation<br>before promotion
                             ends !!</p>
-                        <a href="travelPlanner.html" class="getNowButton">Get Now</a>
+                        <a href="/travelPlanner" class="getNowButton">Get Now</a>
                     </div>
 
                     <!-- Image Carousel (Right) -->
@@ -62,13 +52,13 @@
                         <div id="sceneryCarousel" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-inner rounded-4">
                                 <div class="carousel-item active">
-                                    <img src="assets/images/scenery1.jpg" class="d-block w-100" alt="Scenery 1">
+                                    <img src="/assets/images/scenery1.jpg" class="d-block w-100" alt="Scenery 1">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="assets/images/scenery2.jpeg" class="d-block w-100" alt="Scenery 2">
+                                    <img src="/assets/images/scenery2.jpeg" class="d-block w-100" alt="Scenery 2">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="assets/images/scenery3.avif" class="d-block w-100" alt="Scenery 3">
+                                    <img src="/assets/images/scenery3.avif" class="d-block w-100" alt="Scenery 3">
                                 </div>
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#sceneryCarousel"
@@ -92,32 +82,32 @@
             <div class="container">
                 <div class="feature-section">
                     <div class="feature-card">
-                        <img src="assets/images/feature1.jpg" alt="Feature 1">
+                        <img src="/assets/images/feature1.jpg" alt="Feature 1">
                         <h3>Organise your journey</h3>
                         <p>With us, your trip will be planned from A to Z without any loopholes!</p>
                     </div>
                     <div class="feature-card">
-                        <img src="assets/images/feature2.jpg" alt="Feature 2">
+                        <img src="/assets/images/feature2.jpg" alt="Feature 2">
                         <h3>Discover Places</h3>
                         <p>Explore new destinations and find exciting attractions everywhere.</p>
                     </div>
                     <div class="feature-card">
-                        <img src="assets/images/feature3.jpg" alt="Feature 3">
+                        <img src="/assets/images/feature3.jpg" alt="Feature 3">
                         <h3>Plan Your Trip</h3>
                         <p>Easily schedule your activities and manage your itinerary with our intuitive planner.</p>
                     </div>
                     <div class="feature-card">
-                        <img src="assets/images/feature4.jpg" alt="Feature 4">
+                        <img src="/assets/images/feature4.jpg" alt="Feature 4">
                         <h3>Add places from guides with 1 click</h3>
                         <p>We crawled the web so you don't have to. Easily add mentioned places to your plan.</p>
                     </div>
                     <div class="feature-card">
-                        <img src="assets/images/feature5.jpg" alt="Feature 5">
+                        <img src="/assets/images/feature5.jpg" alt="Feature 5">
                         <h3>Facilitates green itinerary planning</h3>
                         <p>Create travel plans along with your friends based on eco-friendly recommandation.</p>
                     </div>
                     <div class="feature-card">
-                        <img src="assets/images/feature6.jpg" alt="Feature 6">
+                        <img src="/assets/images/feature6.jpg" alt="Feature 6">
                         <h3>Expense tracking and splitting</h3>
                         <p>Keep track of your budget and split the cost between your tripmates.</p>
                     </div>
@@ -135,14 +125,14 @@
                     <div class="col">
                         <div class="card">
                             <div class="card">
-                                <img src="assets/images/profile_management.jpg" class="card-img-top" alt="...">
+                                <img src="/assets/images/profile_management.jpg" class="card-img-top" alt="...">
 
                                 <div class="card-body">
                                     <h5 style="text-align: center;">Manage Profile</h5>
                                     <p style="text-align: center;padding: 0px 10px 31px 10px;">Edit and update your
                                         profile here if needed.</p>
                                     <div class="col text-center" style="margin-bottom: 20px;">
-                                        <a href="profileManagement.html" class="button">Manage Your Profile</a>
+                                        <a href="/profileManagement" class="button">Manage Your Profile</a>
                                     </div>
                                 </div>
                             </div>
@@ -151,14 +141,14 @@
                     <div class="col">
                         <div class="card">
                             <div class="card">
-                                <img src="assets/images/travel_img.jpeg" class="card-img-top" alt="...">
+                                <img src="/assets/images/travel_img.jpeg" class="card-img-top" alt="...">
 
                                 <div class="card-body">
                                     <h5 style="text-align: center;">Travel Planner</h5>
                                     <p style="text-align: center;padding: 0px 10px 10px 10px;">Plan you travel wisely
                                         and save the earth in the process!</p>
                                     <div class="col text-center" style="margin-bottom: 20px;">
-                                        <a href="travelPlanner.html" class="button">Plan Your Travel</a>
+                                        <a href="/travelPlanner" class="button">Plan Your Travel</a>
                                     </div>
                                 </div>
                             </div>
@@ -167,14 +157,14 @@
                     <div class="col">
                         <div class="card">
                             <div class="card">
-                                <img src="assets/images/weather.jpeg" class="card-img-top" alt="...">
+                                <img src="/assets/images/weather.jpeg" class="card-img-top" alt="...">
 
                                 <div class="card-body">
                                     <h5 style="text-align: center;">Weather Checker</h5>
                                     <p style="text-align: center;padding: 0px 10px 10px 10px;">Should you bring your
                                         umbrella with you today?</p>
                                     <div class="col text-center" style="margin-bottom: 20px;">
-                                        <a href="weatherModule.html" class="button">Check the Weather</a>
+                                        <a href="/weatherModule" class="button">Check the Weather</a>
                                     </div>
                                 </div>
                             </div>
@@ -183,14 +173,14 @@
                     <div class="col">
                         <div class="card">
                             <div class="card">
-                                <img src="assets/images/carbonfootprint.jpeg" class="card-img-top" alt="...">
+                                <img src="/assets/images/carbonfootprint.jpeg" class="card-img-top" alt="...">
 
                                 <div class="card-body">
                                     <h5 style="text-align: center;">Calculator</h5>
                                     <p style="text-align: center;padding: 0px 10px 10px 10px;">Curious about how much
                                         carbon footprint your trip is?</p>
                                     <div class="col text-center" style="margin-bottom: 20px;">
-                                        <a href="carbonFootprint.html" class="button">Calculate Carbon Footprint</a>
+                                        <a href="/carbonFootprint" class="button">Calculate Carbon Footprint</a>
                                     </div>
                                 </div>
                             </div>
@@ -203,7 +193,7 @@
             <div class="section-divider"> </div>
             <div class="image-wrapper">
                 <div class="hero-image">
-                    <img src="assets/images/carbonHomeBG.jpg" alt="Scenery">
+                    <img src="/assets/images/carbonHomeBG.jpg" alt="Scenery">
                 </div>
 
                 <!-- Content Section -->
@@ -213,7 +203,7 @@
                         <p style="color: #ffffff;">A carbon footprint is the total greenhouse gas emissions caused
                             directly and
                             indirectly by an individual, organization, event, or product.</p>
-                        <button><a style="text-decoration: none; color: #ffffff;" href="carbonFootprint.html">Count
+                        <button><a style="text-decoration: none; color: #ffffff;" href="/carbonFootprint">Count
                                 Now</a></button>
                     </div>
                 </div>
@@ -226,16 +216,14 @@
 
 
     <!--Footer for copywrite-->
-    <footer>
-        <p>&copy; Group 8 – OCC 3 Web Programming</p>
-    </footer>
+    <%- include('partials/footer') %>
     </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
         crossorigin="anonymous"></script>
-    <script src="js/index.js"></script>
+    <script src="/js/index.js"></script>
 
     <script>
         function confirmLogout() {

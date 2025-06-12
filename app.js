@@ -17,6 +17,10 @@ app.get('/register', (req, res) => {
     res.render('register');
 });
 
+app.get('/', (req, res) => {
+    res.render('index');
+});
+
 // Start server
 app.listen(3000, () => {
     console.log('Server is running on http://localhost:3000');
