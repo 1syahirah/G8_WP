@@ -10,14 +10,14 @@ const Review = require('./models/Review');
 const app = express();
 
 //middleware
-app.use(cors()); //safari block this
+//app.use(cors()); //safari block this
 // Add this instead of simple app.use(cors())
-// const corsOptions = {
-//   origin: "127.0.0.1:5500",  // This is where Live Server runs
-//   methods: "GET,POST,PUT,DELETE",
-//   allowedHeaders: "Content-Type",
-//   credentials: true
-// };
+const corsOptions = {
+  origin: "http://127.0.0.1:5500",  // This is where Live Server runs
+  methods: "GET,POST,PUT,DELETE",
+  allowedHeaders: "Content-Type",
+  credentials: true
+};
 
 app.use(cors(corsOptions));
 app.use(express.json());
