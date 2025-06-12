@@ -8,9 +8,13 @@ app.set('views', path.join(__dirname, 'views'));
 // Middleware to serve static files like CSS and JS
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Route
+// Routes
 app.get('/login', (req, res) => {
     res.render('login');
+});
+
+app.get('/register', (req, res) => {
+    res.render('register');
 });
 
 // Start server
