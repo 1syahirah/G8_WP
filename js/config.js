@@ -72,7 +72,6 @@ app.post('/api/login', async (req, res) => {
             },
         };
 
-        // 2. Hardcoded JWT Secret
         jwt.sign(
             payload,
             'secret_key', // Hardcoded secret for signing the token

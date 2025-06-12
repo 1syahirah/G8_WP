@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const Review = require('./models/Review'); 
+const Review = require('./models/Review');
 
 const app = express();
 
@@ -13,16 +13,16 @@ const app = express();
 //app.use(cors()); //safari block this
 // Add this instead of simple app.use(cors())
 const corsOptions = {
-  origin: "http://127.0.0.1:5500",  // This is where Live Server runs
-  methods: "GET,POST,PUT,DELETE",
-  allowedHeaders: "Content-Type",
-  credentials: true
+    origin: "http://127.0.0.1:3000",  // This is where Live Server runs
+    methods: "GET,POST,PUT,DELETE",
+    allowedHeaders: "Content-Type",
+    credentials: true
 };
 
 app.use(cors(corsOptions));
 app.use(express.json());
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 //mongoDB connection
 const mongodburi = "mongodb+srv://TerraGo:terrago123@cluster0.9deb0ii.mongodb.net/terragodb?retryWrites=true&w=majority";
