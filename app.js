@@ -21,6 +21,10 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+app.get('/weatherModule', (req, res) => {
+    res.render('weatherModule');
+});
+
 // Start server
 app.listen(3000, () => {
     console.log('Server is running on http://localhost:3000');
