@@ -208,6 +208,25 @@ app.post('/api/login', async (req, res) => {
     }
 });
 
+app.post('/updateProfilePic', authenticateUser, upload.single('profilePic'), async (req, res) => {
+    try {
+        const user = await User.findById(req.userId);
+
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+
+        // Save new profile picture path
+        user.profilePic = '/uploads/' + req.file.filename;
+        await user.save();
+
+        res.redirect('/profileManagement');
+    } catch (error) {
+        console.error('Error updating profile picture:', error);
+        res.status(500).send('Failed to update profile picture');
+    }
+});
+
 function authenticateUser(req, res, next) {
     const token = req.cookies.token;
 
