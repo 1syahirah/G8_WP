@@ -30,8 +30,8 @@
       <!-- Main Side Bar -->
       <div class="mainHamburger" onclick="toggleSidebar()">☰</div>
       <div class="mainsidebar" id="mainsidebar">
-        <a href="/views/profileManagement.ejs"><img src="icons/accountIcon.png" alt="Profile" class="icon"> Profile</a>
-        <a href="/index"><img src="icons/homeIcon.png" alt="Home" class="icon"> Home</a>
+        <a href="profileManagement"><img src="icons/accountIcon.png" alt="Profile" class="icon"> Profile</a>
+        <a href="/"><img src="icons/homeIcon.png" alt="Home" class="icon"> Home</a>
         <a href="/travelPlanner"><img src="icons/travelIcon.png" alt="Travel Planner" class="icon"> Travel Planner</a>
         <a href="/weatherModule"><img src="icons/sunWeatherIcon.png" alt="Weather" class="icon"> Weather</a>
         <a href="/carbonFootprint"><img src="icons/calculatorIcon.png" alt="Calculator" class="icon"> Calculator</a>
@@ -65,19 +65,23 @@
 
           <main class="main-content">
 
-            <!-- SECTION ACCOUNT INFO-->
-            <section id="userAccount" class="content-section"> <!--account info style for account detail pg-->
+            <!-- SECTION ACCOUNT INFO -->
+            <section id="userAccount" class="content-section">
               <h2 style="text-align: left;">Account Information</h2>
+
               <div class="user-details">
                 <div class="photo-section">
-                  <div class="avatar large" id="avatarPreview"></div>
+                  <div class="avatar large" id="avatarPreview"
+                    style="background-image: url('<%= user.profilePic %>'); background-size: cover; background-position: center;">
+                  </div>
                   <label for="photoUpload" class="add-photo">Change Photo</label>
                   <input type="file" id="photoUpload" accept="image/*" style="display: none;" />
                 </div>
+
                 <div class="field">
                   <label for="username" style="padding-left: 7px;">Username</label>
                   <div class="input-box">
-                    <input type="text" id="username" value="yourname" disabled />
+                    <input type="text" id="username" value="<%= user.name %>" disabled />
                     <span class="edit-icon"><img src="/icons/pencilEditIcon.png" alt="Edit" class="icon"></span>
                   </div>
                 </div>
@@ -86,10 +90,13 @@
               <div class="info-edit">
                 <div class="info-row">
                   <div class="info-labels">
-                    <p><strong>Email</strong><br>yourname@gmail.com</p>
+                    <p><strong>Email</strong><br>
+                      <%= user.email %>
+                    </p>
                   </div>
                   <button class="edit-btn" id="changeEmailBtn">Change Email</button>
                 </div>
+
                 <div id="emailModal" class="modal">
                   <div class="modal-content">
                     <span class="close-btn" id="closeEmailModal">&times;</span>
@@ -104,10 +111,11 @@
 
                 <div class="info-row">
                   <div class="info-labels">
-                    <p><strong>Password</strong><br>yourpassword</p>
+                    <p><strong>Password</strong><br>********</p>
                   </div>
                   <button class="edit-btn" id="changePasswordBtn">Change Password</button>
                 </div>
+
                 <div id="passwordModal" class="modal">
                   <div class="modal-content">
                     <span class="close-btn" id="closePasswordModal">&times;</span>
@@ -126,7 +134,9 @@
 
                 <div class="info-row">
                   <div class="info-labels">
-                    <p><strong>Phone number</strong><br>+60-12 3456789</p>
+                    <p><strong>Phone number</strong><br>
+                      <%= user.phoneNumber || "Not provided" %>
+                    </p>
                   </div>
                   <button class="edit-btn">Change Phone number</button>
                 </div>
