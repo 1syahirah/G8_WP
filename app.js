@@ -6,10 +6,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 const path = require('path');
 const multer = require('multer'); // For file uploads
 const fs = require('fs'); // For file system operations
+const { type } = require('os');
+const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
 
 // Initialize the Express application
 const app = express();
@@ -18,7 +20,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // For form data
-
+app.use(cookieParser());
 
 // --- File Upload Configuration ---
 const storage = multer.diskStorage({
@@ -85,6 +87,9 @@ const userSchema = new mongoose.Schema({
     },
     profilePic: {
         type: String
+    },
+    phoneNumber: {
+        type: String
     }
 });
 
@@ -103,8 +108,19 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-app.get('/profileManagement', (req, res) => {
-    res.render('profileManagement');
+app.get('/profileManagement', authenticateUser, async (req, res) => {
+    try {
+        const user = await User.findById(req.userId);
+
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+
+        res.render('profileManagement', { user });
+    } catch (err) {
+        console.error('Profile error:', err);
+        res.status(500).send('Server error');
+    }
 });
 
 app.get('/carbonFootprint', (req, res) => {
@@ -177,23 +193,34 @@ app.post('/api/login', async (req, res) => {
             return res.status(400).json({ msg: 'Invalid credentials' });
         }
 
-        const payload = {
-            user: {
-                id: user.id,
-            },
-        };
+        const payload = { userId: user._id };
+        const token = jwt.sign(payload, 'secret_key', { expiresIn: '1h' });
 
-        jwt.sign(
-            payload,
-            'secret_key',
-            { expiresIn: '1h' },
-            (err, token) => {
-                if (err) throw err;
-                res.json({ token });
-            }
-        );
+        res
+            .cookie('token', token, {
+                httpOnly: true,
+                maxAge: 3600000 // 1 hour
+            })
+            .json({ msg: 'Login successful' });
     } catch (err) {
         console.error('Login error:', err.message);
         res.status(500).send('Server error during login');
     }
 });
+
+function authenticateUser(req, res, next) {
+    const token = req.cookies.token;
+
+    if (!token) {
+        return res.redirect('/login');
+    }
+
+    try {
+        const decoded = jwt.verify(token, 'secret_key');
+        req.userId = decoded.userId;
+        next();
+    } catch (err) {
+        console.error('JWT verification failed:', err);
+        res.redirect('/login');
+    }
+}
