@@ -135,6 +135,10 @@ app.get('/weatherModule', (req, res) => {
     res.render('weatherModule');
 });
 
+app.get('/logout', (req, res) => {
+    res.clearCookie('token'); // clear the JWT token cookie
+    res.redirect('/login');   // redirect to login page (or use '/' for home)
+});
 
 
 // --- API Routes ---
