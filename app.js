@@ -102,6 +102,24 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+app.get('/profileManagement', (req, res) => {
+    res.render('profileManagement');
+});
+
+app.get('/carbonFootprint', (req, res) => {
+    res.render('carbonFootprint');
+});
+
+app.get('/travelPlanner', (req, res) => {
+    res.render('travelPlanner');
+});
+
+app.get('/weatherModule', (req, res) => {
+    res.render('weatherModule');
+});
+
+
+
 // --- API Routes ---
 app.post('/register', upload.single('profilePic'), async (req, res) => {
     try {
