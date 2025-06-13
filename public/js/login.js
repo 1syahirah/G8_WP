@@ -1,40 +1,43 @@
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("login-form");
 
-    form.addEventListener("submit", (e) => {
-        e.preventDefault(); // stop page from reloading
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault(); // Stop page reload
 
         const email = form.email.value.trim();
         const password = form.password.value;
 
-        if (!email || !password){
+        if (!email || !password) {
             alert("Please enter both email and password.");
             return;
         }
 
-        //Get user form local storage, if no data just assign empty string
-        const users = JSON.parse(localStorage.getItem("users")) || [];
+        try {
+            const response = await fetch("http://localhost:3000/api/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email, password }),
+            });
 
-        //find user with email
-        const foundUser = users.find(user => user.email == email);
+            const data = await response.json();
 
-        //user not found
-        if (!foundUser){
-            alert("Usesr not found. Please register first.");
-            return;
+            if (response.ok) {
+                alert("Login successful!");
+
+                // Save token to localStorage to "simulate" user being logged in
+                localStorage.setItem("token", data.token);
+                localStorage.setItem("loggedInUserEmail", email);
+
+                // Redirect to homepage/dashboard
+                window.location.href = "/";
+            } else {
+                alert(data.msg || "Login failed.");
+            }
+        } catch (error) {
+            console.error("Login error:", error);
+            alert("Error connecting to server. Please try again.");
         }
-
-        //wrong password
-        if (foundUser.password != password) {
-            alert("Incorrect password.");
-            return;
-        }
-
-        //Stimulate login : store user session, so that we know who is currently logged in
-        localStorage.setItem("loggedInUser", JSON.stringify(foundUser));
-
-        alert("Login successful!");
-        window.location.href = "index.html"; // redirect to homepage
-
     });
 });

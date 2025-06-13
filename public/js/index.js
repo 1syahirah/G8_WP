@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
     const user = JSON.parse(localStorage.getItem("loggedInUser")); // find out which user is currently login
 
-    if (!user) {
-        alert("Your're not logged in.");
-        window.location.href = "/login"; //if there is no user, display message and go to login page
-        return;
-    }
+    // if (!user) {
+    //     alert("Your're not logged in.");
+    //     window.location.href = "/login"; //if there is no user, display message and go to login page
+    //     return;
+    // }
 
     document.getElementById("user-name").textContent = user.name; // the span element in index.html, change based of the current user name
 
