@@ -44,8 +44,11 @@
         <div class="container">
           <aside class="profilesidebar">
             <div class="profile">
-              <div class="avatar"></div>
-              <p>yourname</p>
+              <div class="avatar" style="background-image: url('<%= user.profilePic %>'); background-size: cover;">
+              </div>
+              <p>
+                <%= user.name %>
+              </p>
             </div>
             <nav class="menu">
               <a href="#" onclick="showSection('userAccount')"><img src="/icons/account2Icon.png" alt="Your Account"
@@ -70,7 +73,6 @@
               <h2 style="text-align: left;">Account Information</h2>
 
               <div class="user-details">
-                <!-- Profile Picture Update Form -->
                 <form action="/updateProfilePic" method="POST" enctype="multipart/form-data">
                   <div class="photo-section">
                     <div class="avatar large" id="avatarPreview"
@@ -81,7 +83,6 @@
                       onchange="this.form.submit()" />
                   </div>
                 </form>
-
                 <div class="field">
                   <label for="username" style="padding-left: 7px;">Username</label>
                   <div class="input-box">
@@ -92,7 +93,6 @@
               </div>
 
               <div class="info-edit">
-                <!-- Email -->
                 <div class="info-row">
                   <div class="info-labels">
                     <p><strong>Email</strong><br>
@@ -102,7 +102,6 @@
                   <button class="edit-btn" id="changeEmailBtn">Change Email</button>
                 </div>
 
-                <!-- Email Modal -->
                 <div id="emailModal" class="modal">
                   <div class="modal-content">
                     <span class="close-btn" id="closeEmailModal">&times;</span>
@@ -115,7 +114,6 @@
                   </div>
                 </div>
 
-                <!-- Password -->
                 <div class="info-row">
                   <div class="info-labels">
                     <p><strong>Password</strong><br>********</p>
@@ -123,7 +121,6 @@
                   <button class="edit-btn" id="changePasswordBtn">Change Password</button>
                 </div>
 
-                <!-- Password Modal -->
                 <div id="passwordModal" class="modal">
                   <div class="modal-content">
                     <span class="close-btn" id="closePasswordModal">&times;</span>
@@ -140,7 +137,6 @@
                   </div>
                 </div>
 
-                <!-- Phone Number -->
                 <div class="info-row">
                   <div class="info-labels">
                     <p><strong>Phone number</strong><br>
@@ -149,344 +145,346 @@
                   </div>
                   <button class="edit-btn">Change Phone number</button>
                 </div>
-              </div <!-- SECTION FAVOURITE-->
-              <section id="favourite" class="content-section" style="display: none;">
-                <div class="favorites-header">
-                  <h2>Your Favorites</h2>
-                  <div class="favorites-count">4 items</div>
+              </div>
+            </section>
+
+
+            <!-- SECTION FAVOURITE-->
+            <section id="favourite" class="content-section" style="display: none;">
+              <div class="favorites-header">
+                <h2>Your Favorites</h2>
+                <div class="favorites-count">4 items</div>
+              </div>
+
+              <div class="favorites-container2">
+                <!-- Favorite Card 1 -->
+                <div class="favorite-card">
+                  <div class="card-image-container">
+                    <img src="/assets/images/aquaria_klcc.avif" alt="aquaria">
+                    <button class="delete-favorite-btn" title="Remove from favorites">×</button>
+                  </div>
+                  <div class="card-content">
+                    <strong>Aquaria KLCC</strong>
+                    <div class="card-category">ACTIVITIES</div>
+                    <span class="rating-score">Sustainability Score: 6/10</span>
+                  </div>
                 </div>
 
-                <div class="favorites-container2">
-                  <!-- Favorite Card 1 -->
-                  <div class="favorite-card">
-                    <div class="card-image-container">
-                      <img src="/assets/images/aquaria_klcc.avif" alt="aquaria">
-                      <button class="delete-favorite-btn" title="Remove from favorites">×</button>
-                    </div>
-                    <div class="card-content">
-                      <strong>Aquaria KLCC</strong>
-                      <div class="card-category">ACTIVITIES</div>
-                      <span class="rating-score">Sustainability Score: 6/10</span>
-                    </div>
+                <!-- Favorite Card 2 -->
+                <div class="favorite-card">
+                  <div class="card-image-container">
+                    <img src="/assets/images/mandarin_oriental.avif" alt="mandarin oriental">
+                    <button class="delete-favorite-btn" title="Remove from favorites">×</button>
                   </div>
-
-                  <!-- Favorite Card 2 -->
-                  <div class="favorite-card">
-                    <div class="card-image-container">
-                      <img src="/assets/images/mandarin_oriental.avif" alt="mandarin oriental">
-                      <button class="delete-favorite-btn" title="Remove from favorites">×</button>
-                    </div>
-                    <div class="card-content">
-                      <strong>Mandarin Oriental</strong>
-                      <div style="background: #fff3e0; color: #e65100; font-size: 0.85rem;
+                  <div class="card-content">
+                    <strong>Mandarin Oriental</strong>
+                    <div style="background: #fff3e0; color: #e65100; font-size: 0.85rem;
                   font-weight: 600;
                   margin-bottom: 12px;
                   padding: 3px 8px; border-radius: 4px;">ACCOMMODATION</div>
-                      <span class="rating-score">Sustainability Score: 7/10</span>
-                    </div>
+                    <span class="rating-score">Sustainability Score: 7/10</span>
                   </div>
+                </div>
 
-                  <!-- Favorite Card 3 -->
-                  <div class="favorite-card">
-                    <div class="card-image-container">
-                      <img src="/assets/images/Goat-farm.jpg" alt="goat farm">
-                      <button class="delete-favorite-btn" title="Remove from favorites">×</button>
-                    </div>
-                    <div class="card-content">
-                      <strong>Janda Baik Goat Farm</strong>
-                      <div class="card-category">ACTIVITIES</div>
-                      <span class="rating-score">Sustainability Score: 8/10</span>
-                    </div>
+                <!-- Favorite Card 3 -->
+                <div class="favorite-card">
+                  <div class="card-image-container">
+                    <img src="/assets/images/Goat-farm.jpg" alt="goat farm">
+                    <button class="delete-favorite-btn" title="Remove from favorites">×</button>
                   </div>
+                  <div class="card-content">
+                    <strong>Janda Baik Goat Farm</strong>
+                    <div class="card-category">ACTIVITIES</div>
+                    <span class="rating-score">Sustainability Score: 8/10</span>
+                  </div>
+                </div>
 
-                  <!-- Favorite Card 4 -->
-                  <div class="favorite-card">
-                    <div class="card-image-container">
-                      <img src="/assets/images/go_kl_bus.webp" alt="gokl bus">
-                      <button class="delete-favorite-btn" title="Remove from favorites">×</button>
-                    </div>
-                    <div class="card-content">
-                      <strong>GoKL City Bus Green Line</strong>
-                      <div class="favorite-type" style="background: #e8f5e9; color: #2e7d32; font-size: 0.85rem;
+                <!-- Favorite Card 4 -->
+                <div class="favorite-card">
+                  <div class="card-image-container">
+                    <img src="/assets/images/go_kl_bus.webp" alt="gokl bus">
+                    <button class="delete-favorite-btn" title="Remove from favorites">×</button>
+                  </div>
+                  <div class="card-content">
+                    <strong>GoKL City Bus Green Line</strong>
+                    <div class="favorite-type" style="background: #e8f5e9; color: #2e7d32; font-size: 0.85rem;
                   font-weight: 600;
                   margin-bottom: 12px;
                   padding: 3px 8px; border-radius: 4px;">TRANSPORT</div>
-                      <span class="rating-score">Sustainability Score: 9/10</span>
-                    </div>
+                    <span class="rating-score">Sustainability Score: 9/10</span>
                   </div>
                 </div>
+              </div>
 
-                <!-- Empty State -->
-                <div class="empty-favorites" style="display: none;">
-                  <img src="/icons/heart-outline.png" alt="No favorites">
-                  <h3>No favorites yet</h3>
-                  <p>Save your favorite eco-friendly places and they'll appear here</p>
+              <!-- Empty State -->
+              <div class="empty-favorites" style="display: none;">
+                <img src="/icons/heart-outline.png" alt="No favorites">
+                <h3>No favorites yet</h3>
+                <p>Save your favorite eco-friendly places and they'll appear here</p>
+              </div>
+            </section>
+
+            <!-- SECTION HELP CENTER-->
+            <section id="help" class="content-section" style="display: none;">
+              <h2 style="text-align: left;">Help Center</h2>
+              <div class="field">
+                <p style="text-align: center; font-size: 20px;">Tell us your concern !</p>
+                <div class="input-button-group">
+                  <div class="input-box">
+                    <input type="text" id="concern" placeholder="Write here..." />
+                  </div>
+                  <button class="edit-btn" id="submitReviewBtn">Enter</button>
                 </div>
-              </section>
+              </div>
 
-              <!-- SECTION HELP CENTER-->
-              <section id="help" class="content-section" style="display: none;">
-                <h2 style="text-align: left;">Help Center</h2>
-                <div class="field">
-                  <p style="text-align: center; font-size: 20px;">Tell us your concern !</p>
-                  <div class="input-button-group">
-                    <div class="input-box">
-                      <input type="text" id="concern" placeholder="Write here..." />
-                    </div>
-                    <button class="edit-btn" id="submitReviewBtn">Enter</button>
-                  </div>
+              <h3 style="margin-bottom: 10px;">FAQs</h3>
+              <div class="faq-item">
+                <div class="faq-question">
+                  <p><strong> How do you calculate eco-friendliness?</strong></p>
+                  <button class="edit-btn">+</button>
                 </div>
-
-                <h3 style="margin-bottom: 10px;">FAQs</h3>
-                <div class="faq-item">
-                  <div class="faq-question">
-                    <p><strong> How do you calculate eco-friendliness?</strong></p>
-                    <button class="edit-btn">+</button>
-                  </div>
-                  <div class="faq-answer">
-                    <p>Our eco-friendliness score is calculated based on a variety of factors...</p>
-                  </div>
+                <div class="faq-answer">
+                  <p>Our eco-friendliness score is calculated based on a variety of factors...</p>
                 </div>
+              </div>
 
-                <div class="faq-item">
-                  <div class="faq-question">
-                    <p><strong> How are green accommodations selected? </strong></p>
-                    <button class="edit-btn">+</button>
-                  </div>
-                  <div class="faq-answer">
-                    <p>Green accommodations are selected based on certifications, sustainable practices and carbon
-                      footprint!</p>
-                  </div>
+              <div class="faq-item">
+                <div class="faq-question">
+                  <p><strong> How are green accommodations selected? </strong></p>
+                  <button class="edit-btn">+</button>
                 </div>
-
-                <div class="faq-item">
-                  <div class="faq-question">
-                    <p><strong> How do I recover my account?</strong></p>
-                    <button class="edit-btn">+</button>
-                  </div>
-                  <div class="faq-answer">
-                    <p>There is no way to recover your account as we will delete all of your trace.</p>
-                  </div>
+                <div class="faq-answer">
+                  <p>Green accommodations are selected based on certifications, sustainable practices and carbon
+                    footprint!</p>
                 </div>
+              </div>
 
-                <div class="faq-item">
-                  <div class="faq-question">
-                    <p><strong> I forgot my password. What should I do?</strong></p>
-                    <button class="edit-btn">+</button>
-                  </div>
-                  <div class="faq-answer">
-                    <p>On the login page, click Forgot Password? Follow the instructions to reset your password using
-                      your
-                      email.</p>
-                  </div>
+              <div class="faq-item">
+                <div class="faq-question">
+                  <p><strong> How do I recover my account?</strong></p>
+                  <button class="edit-btn">+</button>
                 </div>
-
-                <div class="faq-item">
-                  <div class="faq-question">
-                    <p><strong> Is the information accurate and up to date?</strong></p>
-                    <button class="edit-btn">+</button>
-                  </div>
-                  <div class="faq-answer">
-                    <p>Yes, we update our data sources regularly and aim to provide current recommendations, especially
-                      for
-                      weather, transportation, and eco-ratings.</p>
-                  </div>
+                <div class="faq-answer">
+                  <p>There is no way to recover your account as we will delete all of your trace.</p>
                 </div>
+              </div>
 
-                <div class="faq-item">
-                  <div class="faq-question">
-                    <p><strong> Is this a free service?</strong></p>
-                    <button class="edit-btn">+</button>
-                  </div>
-                  <div class="faq-answer">
-                    <p>Yes! All core features are free to use. </p>
-                  </div>
+              <div class="faq-item">
+                <div class="faq-question">
+                  <p><strong> I forgot my password. What should I do?</strong></p>
+                  <button class="edit-btn">+</button>
                 </div>
-
-                <section class="tips-section">
-                  <h3 style="margin-bottom: 10px; margin-top: 10px;">Tips for Sustainable Travel</h3>
-                  <ul class="tips-list">
-                    <li><span>🚆</span> Choose eco-friendly transport like trains, buses, or walking.</li>
-                    <li><span>🛍️</span> Support local businesses for food, crafts, and stays.</li>
-                    <li><span>🎒</span> Pack light to reduce emissions.</li>
-                    <li><span>♻️</span> Bring reusable bottles and bags to cut plastic waste.</li>
-                    <li><span>🌱</span> Respect local cultures and natural sites.</li>
-                    <li><span>💡</span> Save energy by unplugging and switching off unused electronics.</li>
-                    <li><span>🌍</span> Offset your travel emissions with verified carbon offset programs.</li>
-                  </ul>
-                </section>
-                <p style="text-align: center;"> Need more help? Feel free to contact our support team. We're happy to
-                  help
-                  !
-                </p>
-                <p style="text-align: center;"> Support team: ecotravelplanner@gmail.com | 012-5429812</p>
-              </section>
-
-              <!-- SECTION ABOUT US-->
-              <section id="aboutUs" class="content-section" style="display: none;">
-                <h2 style="text-align: left;">About Us</h2>
-
-                <div class="about-us-container">
-                  <h2>Our Story</h2>
-                  <p>TerraGo was born from a simple idea: travel should enrich our lives without depleting our
-                    planet. Founded in 2025
-                    by a group of environmentally conscious students, we set out to create a platform that makes
-                    sustainable
-                    travel accessible to everyone.</p>
-
-                  <p>We believe that exploring the world and protecting it can go hand in hand. By connecting travelers
-                    with
-                    eco-friendly accommodations, transportation options, and activities, we're helping to reduce the
-                    environmental impact of tourism while supporting local communities.
-                  </p>
+                <div class="faq-answer">
+                  <p>On the login page, click Forgot Password? Follow the instructions to reset your password using your
+                    email.</p>
                 </div>
+              </div>
 
-                <div class="text-center">
-                  <h2 class="title">Our Values</h2>
-                  <p class="subtitle">The principles that guide everything we do at TerraGo.</p>
+              <div class="faq-item">
+                <div class="faq-question">
+                  <p><strong> Is the information accurate and up to date?</strong></p>
+                  <button class="edit-btn">+</button>
                 </div>
-
-                <div class="values-grid">
-                  <div class="card">
-                    <div class="icon-container">
-                      <svg class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </div>
-                    <h3 class="card-title">Environmental Responsibility</h3>
-                    <p class="card-description">We prioritize the health of our planet in every decision we make, from
-                      the partners we work with to the features we develop.</p>
-                  </div>
-
-                  <div class="card">
-                    <div class="icon-container">
-                      <svg class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                      </svg>
-                    </div>
-                    <h3 class="card-title">Transparency</h3>
-                    <p class="card-description">We provide clear, honest information about the environmental impact of
-                      travel options, empowering users to make informed choices.</p>
-                  </div>
+                <div class="faq-answer">
+                  <p>Yes, we update our data sources regularly and aim to provide current recommendations, especially
+                    for
+                    weather, transportation, and eco-ratings.</p>
                 </div>
+              </div>
 
-                <div class="team-section">
-                  <div class="team-container">
-                    <div class="team-header">
-                      <h2 class="team-title">Meet Our Team</h2>
-                      <p class="team-subtitle">The passionate individuals behind TerraGo.</p>
-                    </div>
-
-                    <div class="team-grid">
-                      <!-- Team Member 1 -->
-                      <div class="team-member">
-                        <div class="member-image">
-                          <img src="/assets/images/syukri.jpeg" alt="Muhammad Syukri">
-                        </div>
-                        <div class="member-content">
-                          <h3 class="member-name">Muhammad Syukri Bin Othman</h3>
-                          <p class="member-title">Project Leader</p>
-                          <p class="member-description">Oversees the project direction, aligns all modules with the
-                            sustainability mission,
-                            and ensures smooth collaboration throughout the development process.
-                          </p>
-                        </div>
-                      </div>
-
-                      <!-- Team Member 2 -->
-                      <div class="team-member">
-                        <div class="member-image">
-                          <img src="assets/images/amnaprof.jpeg" alt="Amna Suraya">
-                        </div>
-                        <div class="member-content">
-                          <h3 class="member-name">Amna Suraya Binti Abdul Halim</h3>
-                          <p class="member-title">UI/UX Designer & Profile Interface Developer</p>
-                          <p class="member-description">Leads the visual design of the platform and co-develops the user
-                            profile interface to ensure a seamless,
-                            engaging, and user-friendly experience.</p>
-                        </div>
-                      </div>
-
-                      <!-- Team Member 3 -->
-                      <div class="team-member">
-                        <div class="member-image">
-                          <img src="/assets/images/sya.jpeg" alt="Wan Nur Syahirah">
-                        </div>
-                        <div class="member-content">
-                          <h3 class="member-name">Wan Nur Syahirah Binti Wan Aziz</h3>
-                          <p class="member-title">Data Engineer & User Systems Specialist</p>
-                          <p class="member-description">Designs and maintains the database infrastructure while also
-                            developing the user
-                            profile management system to ensure secure and efficient data handling..</p>
-                        </div>
-                      </div>
-
-                      <!-- Team Member 4 -->
-                      <div class="team-member">
-                        <div class="member-image">
-                          <img src="assets/images/dina.jpeg" alt="Dina Zahirah">
-                        </div>
-                        <div class="member-content">
-                          <h3 class="member-name">Dina Zahirah Binti Zaidi</h3>
-                          <p class="member-title">Sustainable Travel Experience Engineer</p>
-                          <p class="member-description">Builds the travel options module focused on offering low-impact,
-                            environmentally
-                            friendly transportation and route suggestions.</p>
-                        </div>
-                      </div>
-                      <!-- Team Member 5 -->
-                      <div class="team-member">
-                        <div class="member-image">
-                          <img src="/assets/images/insyee.jpeg" alt="Nur Insyirah">
-                        </div>
-                        <div class="member-content">
-                          <h3 class="member-name">Nur Insyirah Binti Mohd Isham</h3>
-                          <p class="member-title">Eco Impact Analyst & Calculator Developer</p>
-                          <p class="member-description">Creates the carbon footprint calculator to deliver actionable
-                            insights into travel-related emissions,
-                            promoting awareness and sustainable decision-making.</p>
-                        </div>
-                      </div>
-                      <!-- Team Member 6 -->
-                      <div class="team-member">
-                        <div class="member-image">
-                          <img src="/assets/images/aisya.jpeg" alt="Nur Aisya">
-                        </div>
-                        <div class="member-content">
-                          <h3 class="member-name">Nur Aisya Binti Che Zulkifli</h3>
-                          <p class="member-title">Environmental Insights Developer</p>
-                          <p class="member-description">Develops the weather forecast module to provide real-time,
-                            location-based environmental data that
-                            supports smart and eco-conscious travel planning.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              <div class="faq-item">
+                <div class="faq-question">
+                  <p><strong> Is this a free service?</strong></p>
+                  <button class="edit-btn">+</button>
                 </div>
-              </section>
+                <div class="faq-answer">
+                  <p>Yes! All core features are free to use. </p>
+                </div>
+              </div>
 
-              <!-- SECTION DELETE ACC-->
-              <section id="delete" class="content-section" style="display: none;">
-                <h2 style="text-align: left;">Delete Account</h2>
-                <p class="warning-text">
-                  Deleting your account is permanent and cannot be undone. This will remove all your data, saved travel
-                  plans, preferences, and profile information.
-                </p>
-
-                <ul class="delete-consequences">
-                  <li><img src="/icons/XIcon.png" alt="X" class="icon"> All saved trips and data will be erased</li>
-                  <li> <img src="/icons/XIcon.png" alt="X" class="icon">Your profile and preferences will be lost</li>
-                  <li><img src="/icons/XIcon.png" alt="X" class="icon"> You won't be able to log in again</li>
-                  <!-- ❌ -->
+              <section class="tips-section">
+                <h3 style="margin-bottom: 10px; margin-top: 10px;">Tips for Sustainable Travel</h3>
+                <ul class="tips-list">
+                  <li><span>🚆</span> Choose eco-friendly transport like trains, buses, or walking.</li>
+                  <li><span>🛍️</span> Support local businesses for food, crafts, and stays.</li>
+                  <li><span>🎒</span> Pack light to reduce emissions.</li>
+                  <li><span>♻️</span> Bring reusable bottles and bags to cut plastic waste.</li>
+                  <li><span>🌱</span> Respect local cultures and natural sites.</li>
+                  <li><span>💡</span> Save energy by unplugging and switching off unused electronics.</li>
+                  <li><span>🌍</span> Offset your travel emissions with verified carbon offset programs.</li>
                 </ul>
-
-                <p>Are you absolutely sure you want to delete your account?</p>
-
-                <button class="delete-btn" onclick="confirmDelete()">Delete My Account</button>
-                <button class="cancel-btn" onclick="showSection('userAccount')">Cancel</button>
               </section>
+              <p style="text-align: center;"> Need more help? Feel free to contact our support team. We're happy to help
+                !
+              </p>
+              <p style="text-align: center;"> Support team: ecotravelplanner@gmail.com | 012-5429812</p>
+            </section>
+
+            <!-- SECTION ABOUT US-->
+            <section id="aboutUs" class="content-section" style="display: none;">
+              <h2 style="text-align: left;">About Us</h2>
+
+              <div class="about-us-container">
+                <h2>Our Story</h2>
+                <p>TerraGo was born from a simple idea: travel should enrich our lives without depleting our
+                  planet. Founded in 2025
+                  by a group of environmentally conscious students, we set out to create a platform that makes
+                  sustainable
+                  travel accessible to everyone.</p>
+
+                <p>We believe that exploring the world and protecting it can go hand in hand. By connecting travelers
+                  with
+                  eco-friendly accommodations, transportation options, and activities, we're helping to reduce the
+                  environmental impact of tourism while supporting local communities.
+                </p>
+              </div>
+
+              <div class="text-center">
+                <h2 class="title">Our Values</h2>
+                <p class="subtitle">The principles that guide everything we do at TerraGo.</p>
+              </div>
+
+              <div class="values-grid">
+                <div class="card">
+                  <div class="icon-container">
+                    <svg class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <h3 class="card-title">Environmental Responsibility</h3>
+                  <p class="card-description">We prioritize the health of our planet in every decision we make, from
+                    the partners we work with to the features we develop.</p>
+                </div>
+
+                <div class="card">
+                  <div class="icon-container">
+                    <svg class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                  </div>
+                  <h3 class="card-title">Transparency</h3>
+                  <p class="card-description">We provide clear, honest information about the environmental impact of
+                    travel options, empowering users to make informed choices.</p>
+                </div>
+              </div>
+
+              <div class="team-section">
+                <div class="team-container">
+                  <div class="team-header">
+                    <h2 class="team-title">Meet Our Team</h2>
+                    <p class="team-subtitle">The passionate individuals behind TerraGo.</p>
+                  </div>
+
+                  <div class="team-grid">
+                    <!-- Team Member 1 -->
+                    <div class="team-member">
+                      <div class="member-image">
+                        <img src="/assets/images/syukri.jpeg" alt="Muhammad Syukri">
+                      </div>
+                      <div class="member-content">
+                        <h3 class="member-name">Muhammad Syukri Bin Othman</h3>
+                        <p class="member-title">Project Leader</p>
+                        <p class="member-description">Oversees the project direction, aligns all modules with the
+                          sustainability mission,
+                          and ensures smooth collaboration throughout the development process.
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- Team Member 2 -->
+                    <div class="team-member">
+                      <div class="member-image">
+                        <img src="assets/images/amnaprof.jpeg" alt="Amna Suraya">
+                      </div>
+                      <div class="member-content">
+                        <h3 class="member-name">Amna Suraya Binti Abdul Halim</h3>
+                        <p class="member-title">UI/UX Designer & Profile Interface Developer</p>
+                        <p class="member-description">Leads the visual design of the platform and co-develops the user
+                          profile interface to ensure a seamless,
+                          engaging, and user-friendly experience.</p>
+                      </div>
+                    </div>
+
+                    <!-- Team Member 3 -->
+                    <div class="team-member">
+                      <div class="member-image">
+                        <img src="/assets/images/sya.jpeg" alt="Wan Nur Syahirah">
+                      </div>
+                      <div class="member-content">
+                        <h3 class="member-name">Wan Nur Syahirah Binti Wan Aziz</h3>
+                        <p class="member-title">Data Engineer & User Systems Specialist</p>
+                        <p class="member-description">Designs and maintains the database infrastructure while also
+                          developing the user
+                          profile management system to ensure secure and efficient data handling..</p>
+                      </div>
+                    </div>
+
+                    <!-- Team Member 4 -->
+                    <div class="team-member">
+                      <div class="member-image">
+                        <img src="assets/images/dina.jpeg" alt="Dina Zahirah">
+                      </div>
+                      <div class="member-content">
+                        <h3 class="member-name">Dina Zahirah Binti Zaidi</h3>
+                        <p class="member-title">Sustainable Travel Experience Engineer</p>
+                        <p class="member-description">Builds the travel options module focused on offering low-impact,
+                          environmentally
+                          friendly transportation and route suggestions.</p>
+                      </div>
+                    </div>
+                    <!-- Team Member 5 -->
+                    <div class="team-member">
+                      <div class="member-image">
+                        <img src="/assets/images/insyee.jpeg" alt="Nur Insyirah">
+                      </div>
+                      <div class="member-content">
+                        <h3 class="member-name">Nur Insyirah Binti Mohd Isham</h3>
+                        <p class="member-title">Eco Impact Analyst & Calculator Developer</p>
+                        <p class="member-description">Creates the carbon footprint calculator to deliver actionable
+                          insights into travel-related emissions,
+                          promoting awareness and sustainable decision-making.</p>
+                      </div>
+                    </div>
+                    <!-- Team Member 6 -->
+                    <div class="team-member">
+                      <div class="member-image">
+                        <img src="/assets/images/aisya.jpeg" alt="Nur Aisya">
+                      </div>
+                      <div class="member-content">
+                        <h3 class="member-name">Nur Aisya Binti Che Zulkifli</h3>
+                        <p class="member-title">Environmental Insights Developer</p>
+                        <p class="member-description">Develops the weather forecast module to provide real-time,
+                          location-based environmental data that
+                          supports smart and eco-conscious travel planning.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- SECTION DELETE ACC-->
+            <section id="delete" class="content-section" style="display: none;">
+              <h2 style="text-align: left;">Delete Account</h2>
+              <p class="warning-text">
+                Deleting your account is permanent and cannot be undone. This will remove all your data, saved travel
+                plans, preferences, and profile information.
+              </p>
+
+              <ul class="delete-consequences">
+                <li><img src="/icons/XIcon.png" alt="X" class="icon"> All saved trips and data will be erased</li>
+                <li> <img src="/icons/XIcon.png" alt="X" class="icon">Your profile and preferences will be lost</li>
+                <li><img src="/icons/XIcon.png" alt="X" class="icon"> You won't be able to log in again</li>
+                <!-- ❌ -->
+              </ul>
+
+              <p>Are you absolutely sure you want to delete your account?</p>
+
+              <button class="delete-btn" onclick="confirmDelete()">Delete My Account</button>
+              <button class="cancel-btn" onclick="showSection('userAccount')">Cancel</button>
+            </section>
           </main>
         </div>
       </main>
