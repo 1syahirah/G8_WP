@@ -41,25 +41,43 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-//to change password
-const modal = document.getElementById("passwordModal");
-const btn = document.getElementById("changePasswordBtn");
-const span = document.getElementById("closeModal");
+// change email
+const emailModal = document.getElementById("emailModal");
+const emailBtn = document.getElementById("changeEmailBtn");
+const closeEmailModal = document.getElementById("closeEmailModal");
 
-btn.onclick = function () {
-  modal.style.display = "block";
-}
+emailBtn.onclick = () => {
+  emailModal.style.display = "block";
+};
 
-span.onclick = function () {
-  modal.style.display = "none";
-}
+closeEmailModal.onclick = () => {
+  emailModal.style.display = "none";
+};
 
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+window.onclick = (event) => {
+  if (event.target == emailModal) {
+    emailModal.style.display = "none";
   }
-}
+};
 
+//to change password
+const passwordModal = document.getElementById("passwordModal");
+const passwordBtn = document.getElementById("changePasswordBtn");
+const closePasswordModal = document.getElementById("closePasswordModal");
+
+passwordBtn.onclick = () => {
+  passwordModal.style.display = "block";
+};
+
+closePasswordModal.onclick = () => {
+  passwordModal.style.display = "none";
+};
+
+window.onclick = (event) => {
+  if (event.target == passwordModal) {
+    passwordModal.style.display = "none";
+  }
+};
 
 function confirmDelete() {
   if (confirm("Are you sure you want to permanently delete your account?")) {
