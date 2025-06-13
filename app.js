@@ -19,6 +19,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // For form data
 
+
 // --- File Upload Configuration ---
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -162,7 +163,6 @@ app.post('/register', upload.single('profilePic'), async (req, res) => {
     }
 });
 
-// Login route remains the same as your original
 app.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
 
