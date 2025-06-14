@@ -274,3 +274,28 @@ function authenticateUser(req, res, next) {
         res.redirect('/login');
     }
 }
+
+// Route for changing password
+app.post('/changePassword', authenticateUser, async (req, res) => {
+    const { currentPassword, newPassword, confirmPassword } = req.body;
+
+    try {
+        const user = await User.findById(req.userId);
+        if (!user) return res.status(404).send("User not found");
+
+        const isMatch = await bcrypt.compare(currentPassword, user.password);
+        if (!isMatch) return res.status(400).send("Current password is incorrect");
+
+        if (newPassword !== confirmPassword)
+            return res.status(400).send("New passwords do not match");
+
+        const hashed = await bcrypt.hash(newPassword, 10);
+        user.password = hashed;
+        await user.save();
+
+        res.redirect('/profileManagement');
+    } catch (err) {
+        console.error("Password change error:", err);
+        res.status(500).send("Server error");
+    }
+});
