@@ -139,14 +139,19 @@ body {
     font-size: 20px;
     cursor: pointer;
     z-index: 10;
+    display: flex;
+    text-align: center;
+    justify-content: center;
   }
   
   .prev {
     left: 10px;
+    color: black;
   }
   
   .next {
     right: 10px;
+    color: black;
   }
   
   .carousel-button:hover {
