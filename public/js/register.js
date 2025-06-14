@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const name = form.name.value.trim();
     const email = form.email.value.trim();
     const password = form.password.value;
-    const phoneNumber = form.phoneNumber.value;
+    const phoneNumber = form.phoneNum.value;
     const profilePic = form.profilePic.files[0];
 
     if (!name || !email || !password || !phoneNumber) {
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     formData.append("name", name);
     formData.append("email", email);
     formData.append("password", password);
-    formData.append("Phone Number", phoneNumber);
+    formData.append("phoneNum", phoneNumber);
     if (profilePic) {
       formData.append("profilePic", profilePic);
     }
