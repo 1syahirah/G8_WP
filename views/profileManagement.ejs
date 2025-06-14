@@ -68,7 +68,7 @@
 
           <main class="main-content">
 
-            <!-- SECTION ACCOUNT INFO -->
+            <!-- ///////////////////   SECTION ACCOUNT INFO ////////////////////////////-->
             <section id="userAccount" class="content-section">
               <h2 style="text-align: left;">Account Information</h2>
 
@@ -83,15 +83,29 @@
                       onchange="this.form.submit()" />
                   </div>
                 </form>
+                
                 <div class="field">
                   <label for="username" style="padding-left: 7px;">Username</label>
                   <div class="input-box">
                     <input type="text" id="username" value="<%= user.name %>" disabled />
-                    <span class="edit-icon"><img src="/icons/pencilEditIcon.png" alt="Edit" class="icon"></span>
+                    <span class="edit-icon" id="changeNameBtn" style="cursor: pointer;"><img src="/icons/pencilEditIcon.png" alt="Edit" class="icon"></span>
                   </div>
                 </div>
               </div>
 
+              <div id="nameModal" class="modal">
+                <div class="modal-content">
+                  <span class="close-btn" id="closeNameModal">&times;</span>
+                  <h2>Change Username</h2>
+                  <form action="/updateName" method="POST">
+                    <label>New Username</label>
+                    <input type="text" name="newName" required><br>
+                    <button type="submit">Update Username</button>
+                  </form>
+                </div>
+              </div>
+
+              <!-- email  -->
               <div class="info-edit">
                 <div class="info-row">
                   <div class="info-labels">
@@ -106,9 +120,9 @@
                   <div class="modal-content">
                     <span class="close-btn" id="closeEmailModal">&times;</span>
                     <h2>Change Email</h2>
-                    <form>
+                    <form action="/updateEmail" method="POST">
                       <label>New Email</label>
-                      <input type="email" required><br>
+                      <input type="email" name="newEmail" required><br>
                       <button type="submit">Update Email</button>
                     </form>
                   </div>
@@ -137,16 +151,44 @@
                   </div>
                 </div>
 
-                <div class="info-row">
+
+                <!-- phonenumber -->
+                <!-- <div class="info-row">
                   <div class="info-labels">
                     <p><strong>Phone number</strong><br>
-                      <%= user.phoneNumber || "Not provided" %>
+                      <%= user.phoneNum || "Not provided" %>
                     </p>
                   </div>
                   <button class="edit-btn">Change Phone number</button>
                 </div>
               </div>
-            </section>
+            </section> -->
+
+            <div class="info-edit">
+                <div class="info-row">
+                  <div class="info-labels">
+                    <p><strong>Phone Number</strong><br>
+                      <%= user.phoneNum %>
+                    </p>
+                  </div>
+                  <button class="edit-btn" id="changePhoneBtn">Change Phone Number</button>
+                </div>
+
+                <div id="phoneModal" class="modal">
+                  <div class="modal-content">
+                    <span class="close-btn" id="closePhoneModal">&times;</span>
+                    <h2>Change Phone Number</h2>
+                    <form action="/updatePhoneNumber" method="POST">
+                      <label>New Phone Number</label>
+                      <input type="text" name="phoneNum" required><br>
+                      <button type="submit">Update Phone Number</button>
+                    </form>
+                  </div>
+                </div>
+
+
+
+
 
 
             <!-- SECTION FAVOURITE-->
@@ -508,6 +550,28 @@
     crossorigin="anonymous"></script>
   <script src="/js/index.js"></script>
   <script src="/js/profile.js"></script>
+
+  <script>
+  // Username modal
+  document.getElementById('changeNameBtn').onclick = function() {
+    document.getElementById('nameModal').style.display = 'block';
+  };
+  document.getElementById('closeNameModal').onclick = function() {
+    document.getElementById('nameModal').style.display = 'none';
+  };
+</script>
+
+<script>
+  // Phone Number modal
+  document.getElementById('changePhoneBtn').onclick = function() {
+    document.getElementById('phoneModal').style.display = 'block';
+  };
+  document.getElementById('closePhoneModal').onclick = function() {
+    document.getElementById('phoneModal').style.display = 'none';
+  };
+</script>
+
+
 </body>
 
 <!--Footer for copywrite-->
