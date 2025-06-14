@@ -13,6 +13,7 @@ const { type } = require('os');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const Review = require('./backend/models/Review');
+const Transport = require('./backend/models/Transport');
 
 // Initialize the Express application
 const app = express();
@@ -396,6 +397,17 @@ app.get('/api/reviews', async (req, res) => {
     try {
         const reviews = await Review.find().sort({ createdAt: -1 });
         res.json(reviews);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server error');
+    }
+});
+
+//get transport
+app.get('/api/transports', async (req, res) => {
+    try {
+        const transports = await Transport.find();
+        res.json(transports);
     } catch (err) {
         console.error(err);
         res.status(500).send('Server error');
