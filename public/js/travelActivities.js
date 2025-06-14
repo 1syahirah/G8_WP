@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const url = `https://api.opentripmap.com/0.1/en/places/radius?radius=5000&lon=101.6869&lat=3.1390&rate=2&format=json&apikey=5ae2e3f221c38a28845f05b6dda50982728e1c40dd2a9e374924f4f0`;
 
+
   fetch(url)
     .then(res => res.json())
     .then(async data => {

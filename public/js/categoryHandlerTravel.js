@@ -44,9 +44,13 @@ function loadActivities() {
 }
 
 function loadAccommodation() {
-  // Similar implementation for accommodation
-  console.log("Loading accommodation...");
-  // Implement similar to loadActivities()
+  const oldScript = document.querySelector('script[data-type="accommodation"]');
+  if (oldScript) oldScript.remove();
+  
+  const script = document.createElement('script');
+  script.src = '/js/travelAccom.js';
+  script.setAttribute('data-type', 'accommodation');
+  document.body.appendChild(script);
 }
 
 function loadTransport() {
