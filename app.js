@@ -212,6 +212,7 @@ app.post('/api/login', async (req, res) => {
     }
 });
 
+
 app.post('/updateProfilePic', authenticateUser, upload.single('profilePic'), async (req, res) => {
     try {
         const user = await User.findById(req.userId);
@@ -230,6 +231,32 @@ app.post('/updateProfilePic', authenticateUser, upload.single('profilePic'), asy
         res.status(500).send('Failed to update profile picture');
     }
 });
+
+// Route for deleting a profile
+app.post('/deleteProfile', authenticateUser, async (req, res) => {
+    try {
+        const user = await User.findByIdAndDelete(req.userId);
+
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+
+        // Optional: delete the profile picture file if it exists
+        if (user.profilePic) {
+            const filePath = path.join(__dirname, 'public', user.profilePic);
+            if (fs.existsSync(filePath)) {
+                fs.unlinkSync(filePath);
+            }
+        }
+
+        res.clearCookie('token'); // Logout the user
+        res.redirect('/register'); // Redirect to register or homepage
+    } catch (err) {
+        console.error('Delete error:', err);
+        res.status(500).send('Error deleting profile');
+    }
+});
+
 
 function authenticateUser(req, res, next) {
     const token = req.cookies.token;

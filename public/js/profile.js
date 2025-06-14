@@ -81,9 +81,12 @@ window.onclick = (event) => {
 
 function confirmDelete() {
   if (confirm("Are you sure you want to permanently delete your account?")) {
-    // Here, you would send a request to your backend to delete the account.
-    alert("Account deleted. (Simulated)");
-    // Redirect or clear session, etc.
+    // Submit a hidden form to trigger backend delete route
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = "/deleteProfile";
+    document.body.appendChild(form);
+    form.submit();
   }
 }
 //for log out top bar
