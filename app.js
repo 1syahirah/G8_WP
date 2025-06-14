@@ -168,7 +168,8 @@ app.post('/register', upload.single('profilePic'), async (req, res) => {
             name,
             email,
             password: hashedPassword,
-            profilePic: profilePicPath
+            profilePic: profilePicPath,
+            phoneNum
         });
 
         await newUser.save();
