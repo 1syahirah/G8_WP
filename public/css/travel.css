@@ -672,3 +672,14 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+.error-message {
+  color: red;
+  font-size: 18px;
+  text-align: center;
+  padding: 20px;
+  z-index: 10;
+  position: relative;
+  justify-content: center;
+}
+
