@@ -89,7 +89,7 @@ const userSchema = new mongoose.Schema({
     profilePic: {
         type: String
     },
-    phoneNumber: {
+    phoneNum: {
         type: String
     }
 });
@@ -169,7 +169,7 @@ app.post('/register', upload.single('profilePic'), async (req, res) => {
             email,
             password: hashedPassword,
             profilePic: profilePicPath,
-            phoneNumber: phoneNum
+            phoneNum
         });
 
         await newUser.save();
@@ -301,6 +301,66 @@ app.post('/changePassword', authenticateUser, async (req, res) => {
         res.status(500).send("Server error");
     }
 });
+
+// update Username
+app.post('/updateName', authenticateUser, async (req, res) => {
+    const { newName } = req.body;
+    try {
+        const user = await User.findById(req.userId);
+        if (!user) return res.status(404).send('User not found');
+        user.name = newName;
+        await user.save();
+        res.redirect('/profileManagement');
+    } catch (err) {
+        console.error('Name update error:', err);
+        res.status(500).send('Failed to update name');
+    }
+});
+
+// Update Email
+app.post('/updateEmail', authenticateUser, async (req, res) => {
+    const { newEmail } = req.body;
+    try {
+        const user = await User.findById(req.userId);
+        if (!user) return res.status(404).send('User not found');
+        user.email = newEmail;
+        await user.save();
+        res.redirect('/profileManagement');
+    } catch (err) {
+        console.error('Email update error:', err);
+        res.status(500).send('Failed to update email');
+    }
+});
+
+// Update Phone Number
+// app.post('/updatePhoneNumber', authenticateUser, async (req, res) => {
+//     const { phoneNum } = req.body;
+//     try {
+//         const user = await User.findById(req.userId);
+//         if (!user) return res.status(404).send('User not found');
+//         user.phoneNum = phoneNum;
+//         await user.save();
+//         res.redirect('/profileManagement');
+//     } catch (err) {
+//         console.error('Phone number update error:', err);
+//         res.status(500).send('Failed to update phone number');
+//     }
+// });
+app.post('/updatePhoneNumber', authenticateUser, async (req, res) => {
+    const { phoneNum } = req.body;
+    try {
+        const user = await User.findById(req.userId);
+        if (!user) return res.status(404).send('User not found');
+        user.phoneNum = phoneNum;
+        await user.save();
+        res.redirect('/profileManagement');
+    } catch (err) {
+        console.error('Phone number update error:', err);
+        res.status(500).send('Failed to update phone number');
+    }
+});
+
+
 
 // POST endpoint for submitting reviews
 // Create review (POST)
