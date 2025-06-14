@@ -145,7 +145,7 @@ app.get('/logout', (req, res) => {
 // --- API Routes ---
 app.post('/register', upload.single('profilePic'), async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const { name, email, password, phoneNum } = req.body;
         const profilePicPath = req.file ? '/uploads/' + req.file.filename : null;
 
         // Check if user exists
@@ -169,7 +169,7 @@ app.post('/register', upload.single('profilePic'), async (req, res) => {
             email,
             password: hashedPassword,
             profilePic: profilePicPath,
-            phoneNumber
+            phoneNum
         });
 
         await newUser.save();
