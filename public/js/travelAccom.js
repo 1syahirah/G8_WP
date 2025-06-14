@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
   };
-
+  
   const url = 'https://travel-advisor.p.rapidapi.com/locations/search?query=Kuala%20Lumpur&lang=en_US&units=km';
 
   fetch(url, options)
