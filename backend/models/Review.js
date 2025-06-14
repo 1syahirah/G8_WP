@@ -1,9 +1,16 @@
 const mongoose = require('mongoose');
 
 const reviewSchema = new mongoose.Schema({
-  username: { type: String, required: true },
-  review: { type: String, required: true },
-  createdAt: { type: Date, default: Date.now }
-});
+    username: {
+        type: String,
+        required: true
+    },
+    review: {
+        type: String,
+        required: true
+    },
+}, { timestamps: true });
 
-module.exports = mongoose.model('Review', reviewSchema);
+const Review = mongoose.model('Review', reviewSchema);
+
+module.exports = Review;

@@ -95,34 +95,31 @@ function confirmLogout() {
 }
 
 //user submit review button on help center section
-document.getElementById("submitReviewBtn").addEventListener("click", async () => {
-  const username = "testuser"; // TEMPORARY hardcoded username
-  const review = document.getElementById("concern").value.trim();
+function submitReview() {
+    const reviewText = document.getElementById('concern').value;
 
-  if (!review) {
-    alert("Please enter your concern!");
-    return;
-  }
-
-  try {
-    const response = await fetch("http://localhost:3000/api/reviews", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ username, review })
-    });
-
-    const data = await response.json();
-
-    if (response.ok) {
-      alert("Your review has been submitted!");
-      document.getElementById("concern").value = "";
-    } else {
-      alert("Failed to submit review: " + data.message);
+    if (!reviewText) {
+      alert("Please enter a review first.");
+      return;
     }
-  } catch (err) {
-    console.error("Error details:", err);
-    alert("Something went wrong while submitting your review.");
+
+    fetch('http://localhost:3000/api/reviews', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',  // important for sending cookie with token
+      body: JSON.stringify({ review: reviewText })
+    })
+    .then(response => {
+      if (response.ok) {
+        alert("Your review has been submitted!");
+        document.getElementById('concern').value = ''; // clear input
+      } else {
+        alert("Something went wrong while submitting your review.");
+      }
+    })
+    .catch(err => {
+      console.error("Error details:", err);
+      alert("Something went wrong while submitting your review.");
+    });
   }
-});
+

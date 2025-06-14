@@ -12,6 +12,7 @@ const fs = require('fs'); // For file system operations
 const { type } = require('os');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
+const Review = require('./backend/models/Review');
 
 // Initialize the Express application
 const app = express();
@@ -297,5 +298,45 @@ app.post('/changePassword', authenticateUser, async (req, res) => {
     } catch (err) {
         console.error("Password change error:", err);
         res.status(500).send("Server error");
+    }
+});
+
+// POST endpoint for submitting reviews
+// Create review (POST)
+// POST endpoint for submitting reviews (with user authentication)
+app.post('/api/reviews', authenticateUser, async (req, res) => {
+    const { review } = req.body;
+
+    if (!review) {
+        return res.status(400).json({ msg: 'Missing review text' });
+    }
+
+    try {
+        const user = await User.findById(req.userId);
+        if (!user) {
+            return res.status(404).json({ msg: 'User not found' });
+        }
+
+        const newReview = new Review({
+            username: user.name, // automatically pulls the logged-in user's name
+            review: review
+        });
+
+        await newReview.save();
+        res.status(201).json({ msg: 'Review submitted successfully' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server error');
+    }
+});
+
+// Get all reviews (GET)
+app.get('/api/reviews', async (req, res) => {
+    try {
+        const reviews = await Review.find().sort({ createdAt: -1 });
+        res.json(reviews);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server error');
     }
 });
