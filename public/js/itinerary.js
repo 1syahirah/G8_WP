@@ -2,12 +2,32 @@
 let activeDay = null;
 let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 let itinerary = JSON.parse(localStorage.getItem('itinerary')) || {};
+let selectedDayForDeletion = null;
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', () => {
     initializeFavorites();
     initializeItinerary();
     setupEventListeners();
+
+
+    // Add event listener for the Delete Selected Day button
+    document.querySelector('.delete-selected-day-btn').addEventListener('click', deleteSelectedDay);
+
+    // // Event delegation for selecting a day card
+    // document.querySelector('.itinerary-days').addEventListener('click', function(e) {
+    //     const dayCard = e.target.closest('.day-card');
+    //     if (dayCard) {
+    //         // Remove 'selected' class from all day cards
+    //         document.querySelectorAll('.day-card').forEach(card => {
+    //             card.classList.remove('selected');
+    //         });
+    //         // Add 'selected' class to the clicked day card
+    //         dayCard.classList.add('selected');
+    //         selectedDayForDeletion = dayCard.querySelector('h4').textContent;
+    //     }
+    // });
+    
 
     // Event delegation for dynamically added Save buttons
     document.body.addEventListener('click', function(e) {
@@ -41,6 +61,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const day = dayCard.querySelector('h4').textContent;
             const index = parseInt(activityDiv.getAttribute('data-index'));
             moveActivityInDay(day, index);
+        }
+        const dayCard = e.target.closest('.day-card');
+        if (dayCard) {
+            const dayName = dayCard.querySelector('h4').textContent;
+            if (dayName === selectedDayForDeletion) {
+                // If already selected, unselect it
+                dayCard.classList.remove('selected');
+                selectedDayForDeletion = null;
+            } else {
+                // Remove 'selected' class from all day cards
+                document.querySelectorAll('.day-card').forEach(card => {
+                    card.classList.remove('selected');
+                });
+                // Add 'selected' class to the clicked day card
+                dayCard.classList.add('selected');
+                selectedDayForDeletion = dayName;
+            }
         }
     });
 
@@ -239,4 +276,19 @@ function addNewDay() {
     itinerary[newDay] = [];
     localStorage.setItem('itinerary', JSON.stringify(itinerary));
     initializeItinerary();
+} 
+
+// Delete selected day from the itinerary
+function deleteSelectedDay() {
+    if (!selectedDayForDeletion) {
+        alert('Please select a day to delete first by clicking on its card.');
+        return;
+    }
+
+    if (confirm(`Are you sure you want to delete ${selectedDayForDeletion} and all its activities?`)) {
+        delete itinerary[selectedDayForDeletion];
+        localStorage.setItem('itinerary', JSON.stringify(itinerary));
+        initializeItinerary();
+        selectedDayForDeletion = null;
+    }
 } 

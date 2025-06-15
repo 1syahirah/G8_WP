@@ -202,6 +202,13 @@ body {
     border-radius: 6px;
     padding: 10px;
     background-color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .day-card.selected {
+    background-color: #dcdcdc;
+    border-color: #a0a0a0;
   }
   
   .day-header {
