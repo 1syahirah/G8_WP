@@ -23,6 +23,26 @@ document.addEventListener('DOMContentLoaded', () => {
             addToFavorites(item);
         }
     });
+
+    // Event delegation for itinerary actions (remove and move)
+    document.querySelector('.itinerary-days').addEventListener('click', function(e) {
+        // Remove activity
+        if (e.target.classList.contains('remove-btn')) {
+            const activityDiv = e.target.closest('.activity-item');
+            const dayCard = e.target.closest('.day-card');
+            const day = dayCard.querySelector('h4').textContent;
+            const index = parseInt(activityDiv.getAttribute('data-index'));
+            removeActivityFromDay(day, index);
+        }
+        // Move activity (up or down)
+        if (e.target.classList.contains('move-btn')) {
+            const activityDiv = e.target.closest('.activity-item');
+            const dayCard = e.target.closest('.day-card');
+            const day = dayCard.querySelector('h4').textContent;
+            const index = parseInt(activityDiv.getAttribute('data-index'));
+            moveActivityInDay(day, index);
+        }
+    });
 });
 
 // Initialize favorites from localStorage
@@ -94,12 +114,12 @@ function createDayCard(day, activities) {
             <button class="add-btn">+ Add Activity</button>
         </div>
         <div class="activities-container">
-            ${activities.map(activity => `
-                <div class="activity-item">
+            ${activities.map((activity, idx) => `
+                <div class="activity-item" data-index="${idx}">
                     <span>${activity.name}</span>
                     <div class="activity-actions">
-                        <button class="move-btn">↑↓</button>
-                        <button class="remove-btn">×</button>
+                        <button class="move-btn" title="Move up/down">↑↓</button>
+                        <button class="remove-btn" title="Remove">×</button>
                     </div>
                 </div>
             `).join('')}
@@ -180,4 +200,27 @@ function getTypeTextColor(type) {
         case 'TRANSPORT': return '#2e7d32';
         default: return '#616161';
     }
+}
+
+// Remove activity from a day by index
+function removeActivityFromDay(day, index) {
+    if (!itinerary[day]) return;
+    itinerary[day].splice(index, 1);
+    localStorage.setItem('itinerary', JSON.stringify(itinerary));
+    initializeItinerary();
+}
+
+// Move activity up or down in a day (cycle order)
+function moveActivityInDay(day, index) {
+    if (!itinerary[day]) return;
+    // Move down if not last, else move to top
+    if (index < itinerary[day].length - 1) {
+        [itinerary[day][index], itinerary[day][index + 1]] = [itinerary[day][index + 1], itinerary[day][index]];
+    } else {
+        // Move last to first
+        const [last] = itinerary[day].splice(index, 1);
+        itinerary[day].unshift(last);
+    }
+    localStorage.setItem('itinerary', JSON.stringify(itinerary));
+    initializeItinerary();
 } 
