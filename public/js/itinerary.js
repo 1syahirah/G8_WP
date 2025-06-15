@@ -43,6 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
             moveActivityInDay(day, index);
         }
     });
+
+    // Add event listener for the Add Day button
+    document.querySelector('.add-day-btn').addEventListener('click', addNewDay);
 });
 
 // Initialize favorites from localStorage
@@ -221,6 +224,19 @@ function moveActivityInDay(day, index) {
         const [last] = itinerary[day].splice(index, 1);
         itinerary[day].unshift(last);
     }
+    localStorage.setItem('itinerary', JSON.stringify(itinerary));
+    initializeItinerary();
+}
+
+// Add a new day to the itinerary
+function addNewDay() {
+    const days = Object.keys(itinerary);
+    const lastDay = days[days.length - 1];
+    const lastDayNumber = parseInt(lastDay.split(' ')[1]);
+    const newDayNumber = lastDayNumber + 1;
+    const newDay = `Day ${newDayNumber}`;
+    
+    itinerary[newDay] = [];
     localStorage.setItem('itinerary', JSON.stringify(itinerary));
     initializeItinerary();
 } 
