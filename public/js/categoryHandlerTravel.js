@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Category change
     select.addEventListener('change', function () {
       const selected = select.value;
+      window.setCurrentCategory(selected);  // <-- tell search bar which category
       carousel.innerHTML = '<div class="loading-spinner">Loading...</div>';
 
       if (selected === 'Transport') {
@@ -27,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
           loadAccommodation();
           break;
         case 'Transport':
-          loadTransport(); // Just load script
+          loadTransport(); 
           break;
         default:
           loadActivities();

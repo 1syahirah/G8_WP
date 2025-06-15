@@ -22,8 +22,11 @@
       carousel.innerHTML = "";  // Clear carousel
 
       // Filter only lodging results
-      const hotels = data.data.filter(item => item.result_type === 'lodging').slice(0, 5);
+      const hotels = data.data.filter(item => item.result_type === 'lodging').slice(0, 10);
 
+      //store globally so search can access
+      window.hotelsData = hotels;
+      
       hotels.forEach(hotel => {
         const name = hotel.result_object.name || "Unnamed";
         const image = hotel.result_object.photo?.images.original.url || "https://via.placeholder.com/300x200?text=No+Image";
@@ -62,68 +65,4 @@
 })();
 
 
-
-
-
-
-// console.log("Accommodation script loaded!");
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   const carousel = document.querySelector('.carousel');
-
-//   async function loadAccommodations() {
-//     const url = 'https://travel-advisor.p.rapidapi.com/locations/search?query=Kuala%20Lumpur&limit=10&offset=0&units=km&currency=MYR&sort=relevance&lang=en_US';
-
-//     const options = {
-//       method: 'GET',
-//       headers: {
-//         'X-RapidAPI-Key': '12c41cc1a9msh7ccbaaf540f4f5fp12042fjsn93428f272724',
-//         'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com'
-//       }
-//     };
-
-//     try {
-//       const response = await fetch(url, options);
-//       const result = await response.json();
-
-//       const hotels = result.data;
-//       console.log("Hotels data:", hotels);
-
-//         // Filter only lodging results
-//         const lodgingHotels = hotels.filter(item => item.result_type === 'lodging');
-
-//         // Check how many are lodging
-//         console.log("Filtered Lodging Hotels:", lodgingHotels);
-//         // Clear previous carousel items
-//         carousel.innerHTML = '';
-
-//         lodgingHotels.forEach(item => {
-//         const hotelObj = item.result_object;
-
-//         const name = hotelObj?.name || "Unnamed Hotel";
-//         const imageUrl = hotelObj?.photo?.images?.original?.url || "https://placehold.co/300x200?text=No+Image";
-//         const address = hotelObj?.address || "No address available";
-
-//         console.log("Appending hotel:", name);
-
-//         const card = document.createElement('div');
-//         card.className = 'carousel-item';
-//         card.innerHTML = `
-//             <img src="${imageUrl}" alt="${name}">
-//             <h4>${name}</h4>
-//             <p>${address}</p>
-//         `;
-//         carousel.appendChild(card);
-//         });
-
-
-
-//     } catch (error) {
-//       console.error('Error fetching accommodations:', error);
-//       carousel.innerHTML = '<p>Something went wrong while loading accommodations.</p>';
-//     }
-//   }
-
-//   loadAccommodations();
-// });
 
