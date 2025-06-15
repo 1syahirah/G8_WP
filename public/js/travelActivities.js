@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+(function () {
   const carousel = document.querySelector('.carousel');
   const prevBtn = document.querySelector('.prev');
   const nextBtn = document.querySelector('.next');
@@ -62,4 +62,4 @@ document.addEventListener('DOMContentLoaded', function () {
   window.confirmLogout = function () {
     return confirm("Are you sure you want to logout?");
   };
-});
+})();

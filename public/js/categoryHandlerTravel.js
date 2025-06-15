@@ -54,7 +54,11 @@ function loadAccommodation() {
 }
 
 function loadTransport() {
-  // Similar implementation for transport
-  console.log("Loading transport...");
-  // Implement similar to loadActivities()
+  const oldScript = document.querySelector('script[data-type="transport"]');
+  if (oldScript) oldScript.remove();
+  
+  const script = document.createElement('script');
+  script.src = '/js/travelTransport.js';
+  script.setAttribute('data-type', 'transport');
+  document.body.appendChild(script);
 }
