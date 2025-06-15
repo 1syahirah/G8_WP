@@ -35,7 +35,7 @@
             <img src="${imgPath}" alt="${name}" />
             <strong>${name} <br>${desc}</br></strong>
             <h3>TRANSPORT</h3>
-            <button>♥ Save</button>
+            <button data-name="${name}" data-type="TRANSPORT" data-image="${imgPath}">♥ Save</button>
           `;
 
           carousel.appendChild(card);

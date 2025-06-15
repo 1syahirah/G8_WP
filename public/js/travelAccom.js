@@ -1,4 +1,3 @@
-
 (function () {
   const carousel = document.querySelector('.carousel');
   const prevBtn = document.querySelector('.prev');
@@ -38,7 +37,7 @@
           <img src="${image}" alt="${name}" />
           <strong>${name}</strong>
           <h3>ACCOMMODATION</h3>
-          <button>♥ Save</button>
+          <button data-name="${name}" data-type="ACCOMMODATION" data-image="${image}">♥ Save</button>
         `;
 
         carousel.appendChild(card);
