@@ -1,12 +1,10 @@
 // State management
 let activeDay = null;
-let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 let itinerary = JSON.parse(localStorage.getItem('itinerary')) || {};
 let selectedDayForDeletion = null;
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', () => {
-    initializeFavorites();
     initializeItinerary();
     setupEventListeners();
 
@@ -85,17 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.add-day-btn').addEventListener('click', addNewDay);
 });
 
-// Initialize favorites from localStorage
-function initializeFavorites() {
-    const favoritesList = document.querySelector('.favorites-list');
-    favoritesList.innerHTML = ''; // Clear existing items
-    
-    favorites.forEach(favorite => {
-        const favoriteItem = createFavoriteItem(favorite);
-        favoritesList.appendChild(favoriteItem);
-    });
-}
-
 // Initialize itinerary from localStorage
 function initializeItinerary() {
     const itineraryDays = document.querySelector('.itinerary-days');
@@ -115,33 +102,6 @@ function initializeItinerary() {
         const dayCard = createDayCard(day, activities);
         itineraryDays.appendChild(dayCard);
     });
-}
-
-// Create a favorite item element
-function createFavoriteItem(item) {
-    const div = document.createElement('div');
-    div.className = 'favorite-item';
-    div.innerHTML = `
-        <div class="favorite-content">
-            <img src="${item.image}" alt="${item.name}" class="favorite-image">
-            <div class="favorite-details">
-                <span class="favorite-name">${item.name}</span>
-                <div class="favorite-meta">
-                    <span class="favorite-type" style="background: ${getTypeColor(item.type)}; color: ${getTypeTextColor(item.type)}; padding: 2px 6px; border-radius: 4px;">${item.type}</span>
-                </div>
-            </div>
-        </div>
-        <div class="favorite-actions">
-            <button class="add-to-itinerary-btn" title="Add to itinerary">+ Add</button>
-            <button class="remove-favorite-btn" title="Remove favorite">×</button>
-        </div>
-    `;
-    
-    // Add event listeners
-    div.querySelector('.add-to-itinerary-btn').addEventListener('click', () => addToItinerary(item));
-    div.querySelector('.remove-favorite-btn').addEventListener('click', () => removeFavorite(item));
-    
-    return div;
 }
 
 // Create a day card element
@@ -175,22 +135,6 @@ function createDayCard(day, activities) {
 // Setup all event listeners
 function setupEventListeners() {
     // No need to attach Save button listeners here anymore
-}
-
-// Add item to favorites
-function addToFavorites(item) {
-    if (!favorites.some(fav => fav.name === item.name)) {
-        favorites.push(item);
-        localStorage.setItem('favorites', JSON.stringify(favorites));
-        initializeFavorites();
-    }
-}
-
-// Remove item from favorites
-function removeFavorite(item) {
-    favorites = favorites.filter(fav => fav.name !== item.name);
-    localStorage.setItem('favorites', JSON.stringify(favorites));
-    initializeFavorites();
 }
 
 // Set active day for adding activities
