@@ -86,123 +86,266 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // --- Activities search ---
-  function searchActivities(query) {
+  async function searchActivities(query) {
     const lat = 3.1390;
     const lon = 101.6869;
     const radius = 10000;
-
+    const carousel = document.querySelector('.carousel');
     const searchUrl = `https://api.opentripmap.com/0.1/en/places/radius?radius=${radius}&lon=${lon}&lat=${lat}&format=json&name=${query}&apikey=${activityApiKey}`;
-
-    fetch(searchUrl)
-      .then(res => res.json())
-      .then(async data => {
-        carousel.innerHTML = "";
-
-        if (data.length === 0) {
-          carousel.innerHTML = "<div class='error-message'>No place found.</div>";
-          return;
-        }
-
-        for (const place of data.slice(0, 10)) {
-          const detailRes = await fetch(`https://api.opentripmap.com/0.1/en/places/xid/${place.xid}?apikey=${activityApiKey}`);
-          const detail = await detailRes.json();
-
-          const name = detail.name || "Unnamed";
-          const image = detail.preview?.source || "https://via.placeholder.com/300x200?text=No+Image";
-
-          const card = document.createElement('div');
-          card.className = 'card';
-
-          card.innerHTML = `
-            <img src="${image}" alt="${name}" />
-            <strong>${name}</strong>
-            <button>♥ Save</button>
-          `;
-
-          carousel.appendChild(card);
-        }
-      })
-      .catch(err => {
-        console.error("Error while searching activities:", err);
-        carousel.innerHTML = "<p style='color:red;'>Error occurred during search.</p>";
+  
+    carousel.innerHTML = "";
+  
+    try {
+      const [activityData, favourites] = await Promise.all([
+        fetch(searchUrl).then(res => res.json()),
+        fetch('/api/favourites').then(res => res.json())
+      ]);
+  
+      if (!activityData || activityData.length === 0) {
+        carousel.innerHTML = "<div class='error-message'>No activity found.</div>";
+        return;
+      }
+  
+      const results = activityData.slice(0, 10);
+  
+      for (const place of results) {
+        const detailRes = await fetch(`https://api.opentripmap.com/0.1/en/places/xid/${place.xid}?apikey=${activityApiKey}`);
+        const detail = await detailRes.json();
+  
+        const name = detail.name || "Unnamed";
+        const imgPath = detail.preview?.source || "https://via.placeholder.com/300x200?text=No+Image";
+  
+        // Normalize for comparison
+        const normalizedName = name.trim().toLowerCase();
+  
+        const isSaved = favourites.some(fav =>
+          fav.type === 'ACTIVITIES' && fav.name?.trim().toLowerCase() === normalizedName
+        );
+  
+        const card = document.createElement('div');
+        card.className = 'card';
+  
+        card.innerHTML = `
+          <img src="${imgPath}" alt="${name}" />
+          <strong>${name}</strong>
+          <h3>ACTIVITY</h3>
+          <button 
+            class="save-btn" 
+            data-name="${name}" 
+            data-type="ACTIVITIES" 
+            data-img="${imgPath}"
+            style="${isSaved ? 'background-color: #4a5a42; color: white;' : ''}"
+            ${isSaved ? 'disabled' : ''}>
+            ${isSaved ? '✓ Saved' : '♥ Save'}
+          </button>
+        `;
+  
+        carousel.appendChild(card);
+      }
+  
+      // Add save button listeners
+      document.querySelectorAll('.save-btn').forEach(button => {
+        button.addEventListener('click', () => {
+          const name = button.getAttribute('data-name');
+          const type = button.getAttribute('data-type');
+          const image = button.getAttribute('data-img');
+  
+          try {
+            window.dispatchEvent(new CustomEvent('save-to-favorites', {
+              detail: { name, type, image }
+            }));
+  
+            button.textContent = "✓ Saved";
+            button.style.backgroundColor = "#4a5a42";
+            button.style.color = "white";
+            button.disabled = true;
+          } catch (err) {
+            console.error("Error saving to favourites:", err);
+            alert("Failed to save.");
+          }
+        });
       });
+  
+    } catch (err) {
+      console.error("Error while searching activities:", err);
+      carousel.innerHTML = "<p style='color:red;'>Error occurred during search.</p>";
+    }
   }
+  
 
 
   // --- Hotels search ---
-  function searchAccommodation(query) {
-    const filtered = (window.hotelsData || []).filter(hotel =>
-      hotel.result_object?.name?.toLowerCase().includes(query.toLowerCase())
-    );
+  async function searchTransport(query) {
+  try {
+    const [transportRes, favRes] = await Promise.all([
+      fetch('/api/transports'),
+      fetch('/api/favourites')
+    ]);
 
+    const data = await transportRes.json();
+    const favourites = await favRes.json();
+
+    const carousel = document.querySelector('.carousel');
     carousel.innerHTML = "";
 
+    const normalizedQuery = query.toLowerCase().trim();
+
+    const filtered = data.filter(item =>
+      (item.name && item.name.toLowerCase().includes(normalizedQuery)) ||
+      (item.line && item.line.toLowerCase().includes(normalizedQuery))
+    );
+
     if (filtered.length === 0) {
-      carousel.innerHTML = "<div class='error-message'>No hotels found.</div>";
+      carousel.innerHTML = "<div class='error-message'>No transport option found.</div>";
       return;
     }
 
-    filtered.forEach(hotel => {
-      const name = hotel.result_object.name || "Unnamed Hotel";
-      const image = hotel.result_object.photo?.images?.original?.url || "https://via.placeholder.com/300x200?text=No+Image";
+    for (const place of filtered) {
+      const name = place.name || "Unnamed";
+      const desc = place.line || "No description available.";
+      const imgPath = place.image
+        ? `${window.location.origin}/${place.image.replace(/^public\//, '')}`
+        : "https://via.placeholder.com/300x200?text=No+Image";
+
+      const isSaved = favourites.some(fav => fav.name === name && fav.type === 'TRANSPORT');
 
       const card = document.createElement('div');
       card.className = 'card';
 
       card.innerHTML = `
-        <img src="${image}" alt="${name}" />
+        <img src="${imgPath}" alt="${name}" />
         <strong>${name}</strong>
-        <button>♥ Save</button>
+        <h3>TRANSPORT</h3>
+        <button 
+          class="save-btn" 
+          data-name="${name}" 
+          data-type="TRANSPORT" 
+          data-img="${imgPath}"
+          style="${isSaved ? 'background-color: #4a5a42; color: white;' : ''}"
+          ${isSaved ? 'disabled' : ''}>
+          ${isSaved ? '✓ Saved' : '♥ Save'}
+        </button>
       `;
+
       carousel.appendChild(card);
+    }
+
+    // Add event listeners to newly added save buttons
+    document.querySelectorAll('.save-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const name = button.getAttribute('data-name');
+        const type = button.getAttribute('data-type');
+        const image = button.getAttribute('data-img');
+
+        try {
+          window.dispatchEvent(new CustomEvent('save-to-favorites', {
+            detail: { name, type, image }
+          }));
+
+          button.textContent = "✓ Saved";
+          button.style.backgroundColor = "#4a5a42";
+          button.style.color = "white";
+          button.disabled = true;
+        } catch (err) {
+          console.error("Error saving to favourites:", err);
+          alert("Failed to save.");
+        }
+      });
     });
+
+  } catch (err) {
+    console.error("Error while searching transport:", err);
+    const carousel = document.querySelector('.carousel');
+    carousel.innerHTML = "<p style='color:red;'>Error occurred during search.</p>";
   }
+}
 
-function searchTransport(query) {
-    fetch('/api/transports')
-      .then(res => res.json())
-      .then(data => {
-        carousel.innerHTML = "";
 
-        //handle extra spaces, casing etc
-        const normalizedQuery = query.toLowerCase().trim();
-
-        const filtered = data.filter(item => 
+  async function searchTransport(query) {
+    try {
+      const [transportRes, favRes] = await Promise.all([
+        fetch('/api/transports'),
+        fetch('/api/favourites')
+      ]);
+  
+      const data = await transportRes.json();
+      const favourites = await favRes.json();
+  
+      const carousel = document.querySelector('.carousel');
+      carousel.innerHTML = "";
+  
+      const normalizedQuery = query.toLowerCase().trim();
+  
+      const filtered = data.filter(item =>
         (item.name && item.name.toLowerCase().includes(normalizedQuery)) ||
         (item.line && item.line.toLowerCase().includes(normalizedQuery))
-        );;
-
-
-        if (filtered.length === 0) {
-          carousel.innerHTML = "<div class='error-message'>No transport option found.</div>";
-          return;
-        }
-
-        for (const place of filtered) {
-          const name = place.name || "Unnamed";
-          const desc = place.line || "No description available.";
-          const imgPath = place.image
-            ? `${window.location.origin}/${place.image.replace(/^public\//, '')}`
-            : "https://via.placeholder.com/300x200?text=No+Image";
-
-          const card = document.createElement('div');
-          card.className = 'card';
-
-          card.innerHTML = `
-            <img src="${imgPath}" alt="${name}" />
-            <strong>${name} <br>${desc}</br></strong>
-            <h3>TRANSPORT</h3>
-            <button>♥ Save</button>
-          `;
-
-          carousel.appendChild(card);
-        }
-      })
-      .catch(err => {
-        console.error("Error while searching transport:", err);
-        carousel.innerHTML = "<p style='color:red;'>Error occurred during search.</p>";
+      );
+  
+      if (filtered.length === 0) {
+        carousel.innerHTML = "<div class='error-message'>No transport option found.</div>";
+        return;
+      }
+  
+      for (const place of filtered) {
+        const name = place.name || "Unnamed";
+        const desc = place.line || "No description available.";
+        const imgPath = place.image
+          ? `${window.location.origin}/${place.image.replace(/^public\//, '')}`
+          : "https://via.placeholder.com/300x200?text=No+Image";
+  
+        const isSaved = favourites.some(fav => fav.name === name && fav.type === 'TRANSPORT');
+  
+        const card = document.createElement('div');
+        card.className = 'card';
+  
+        card.innerHTML = `
+          <img src="${imgPath}" alt="${name}" />
+          <strong>${name}</strong>
+          <h3>TRANSPORT</h3>
+          <button 
+            class="save-btn" 
+            data-name="${name}" 
+            data-type="TRANSPORT" 
+            data-img="${imgPath}"
+            style="${isSaved ? 'background-color: #4a5a42; color: white;' : ''}"
+            ${isSaved ? 'disabled' : ''}>
+            ${isSaved ? '✓ Saved' : '♥ Save'}
+          </button>
+        `;
+  
+        carousel.appendChild(card);
+      }
+  
+      // Add event listeners to newly added save buttons
+      document.querySelectorAll('.save-btn').forEach(button => {
+        button.addEventListener('click', () => {
+          const name = button.getAttribute('data-name');
+          const type = button.getAttribute('data-type');
+          const image = button.getAttribute('data-img');
+  
+          try {
+            window.dispatchEvent(new CustomEvent('save-to-favorites', {
+              detail: { name, type, image }
+            }));
+  
+            button.textContent = "✓ Saved";
+            button.style.backgroundColor = "#4a5a42";
+            button.style.color = "white";
+            button.disabled = true;
+          } catch (err) {
+            console.error("Error saving to favourites:", err);
+            alert("Failed to save.");
+          }
+        });
       });
+  
+    } catch (err) {
+      console.error("Error while searching transport:", err);
+      const carousel = document.querySelector('.carousel');
+      carousel.innerHTML = "<p style='color:red;'>Error occurred during search.</p>";
+    }
   }
+  
 
   // --- Expose a function so categoryHandlerTravel can call this ---
   window.setCurrentCategory = function (category) {
