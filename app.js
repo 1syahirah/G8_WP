@@ -15,7 +15,7 @@ const cookieParser = require('cookie-parser');
 const Review = require('./backend/models/Review');
 const Transport = require('./backend/models/Transport');
 const Favourite = require('./backend/models/Favourite');
-
+const Accomodation = require('./backend/models/Accomodation');
 
 // Initialize the Express application
 const app = express();
@@ -25,6 +25,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // For form data
 app.use(cookieParser());
+app.use(express.static(path.join(__dirname, '../public')));
 
 // --- File Upload Configuration ---
 const storage = multer.diskStorage({
@@ -414,6 +415,17 @@ app.get('/api/transports', async (req, res) => {
         console.error(err);
         res.status(500).send('Server error');
     }
+});
+
+app.get('/api/accomodation', async (req, res) => {
+  try {
+    const accomodation = await Accomodation.find();
+     console.log("✅ Accommodations from DB:", accomodation);  // 🐞 DEBUG: log output
+    res.json(accomodation);
+  } catch (err) {
+    console.error("❌ Error fetching accommodations:", err);
+    res.status(500).json({ error: 'Failed to fetch accomodation' });
+  }
 });
 
 //get fav
