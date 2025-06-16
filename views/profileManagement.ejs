@@ -161,8 +161,8 @@
                   </div>
                   <button class="edit-btn">Change Phone number</button>
                 </div>
-              </div>
-            </section> -->
+              </div> -->
+            <!-- </section> -->
 
             <div class="info-edit">
                 <div class="info-row">
@@ -185,86 +185,33 @@
                     </form>
                   </div>
                 </div>
-
+              </div>
+              </div>
+              </section>
 
 
 
 
 
             <!-- SECTION FAVOURITE-->
-            <section id="favourite" class="content-section" style="display: none;">
+            <section id="favourite" class="content-section">
               <div class="favorites-header">
                 <h2>Your Favorites</h2>
-                <div class="favorites-count">4 items</div>
+                <div class="favorites-count">0 items</div>
               </div>
 
-              <div class="favorites-container2">
-                <!-- Favorite Card 1 -->
-                <div class="favorite-card">
-                  <div class="card-image-container">
-                    <img src="/assets/images/aquaria_klcc.avif" alt="aquaria">
-                    <button class="delete-favorite-btn" title="Remove from favorites">×</button>
-                  </div>
-                  <div class="card-content">
-                    <strong>Aquaria KLCC</strong>
-                    <div class="card-category">ACTIVITIES</div>
-                    <span class="rating-score">Sustainability Score: 6/10</span>
-                  </div>
-                </div>
-
-                <!-- Favorite Card 2 -->
-                <div class="favorite-card">
-                  <div class="card-image-container">
-                    <img src="/assets/images/mandarin_oriental.avif" alt="mandarin oriental">
-                    <button class="delete-favorite-btn" title="Remove from favorites">×</button>
-                  </div>
-                  <div class="card-content">
-                    <strong>Mandarin Oriental</strong>
-                    <div style="background: #fff3e0; color: #e65100; font-size: 0.85rem;
-                  font-weight: 600;
-                  margin-bottom: 12px;
-                  padding: 3px 8px; border-radius: 4px;">ACCOMMODATION</div>
-                    <span class="rating-score">Sustainability Score: 7/10</span>
-                  </div>
-                </div>
-
-                <!-- Favorite Card 3 -->
-                <div class="favorite-card">
-                  <div class="card-image-container">
-                    <img src="/assets/images/Goat-farm.jpg" alt="goat farm">
-                    <button class="delete-favorite-btn" title="Remove from favorites">×</button>
-                  </div>
-                  <div class="card-content">
-                    <strong>Janda Baik Goat Farm</strong>
-                    <div class="card-category">ACTIVITIES</div>
-                    <span class="rating-score">Sustainability Score: 8/10</span>
-                  </div>
-                </div>
-
-                <!-- Favorite Card 4 -->
-                <div class="favorite-card">
-                  <div class="card-image-container">
-                    <img src="/assets/images/go_kl_bus.webp" alt="gokl bus">
-                    <button class="delete-favorite-btn" title="Remove from favorites">×</button>
-                  </div>
-                  <div class="card-content">
-                    <strong>GoKL City Bus Green Line</strong>
-                    <div class="favorite-type" style="background: #e8f5e9; color: #2e7d32; font-size: 0.85rem;
-                  font-weight: 600;
-                  margin-bottom: 12px;
-                  padding: 3px 8px; border-radius: 4px;">TRANSPORT</div>
-                    <span class="rating-score">Sustainability Score: 9/10</span>
-                  </div>
-                </div>
+              <div class="favorites-container2" style="display: flex; flex-wrap: wrap; gap: 1rem;">
+                <!-- JavaScript will insert .favorite-card elements here -->
               </div>
 
               <!-- Empty State -->
-              <div class="empty-favorites" style="display: none;">
-                <img src="/icons/heart-outline.png" alt="No favorites">
+              <div class="empty-favorites" style="display: none; text-align: center; margin-top: 2rem;">
+                <img src="/icons/heart-outline.png" alt="No favorites" style="width: 80px;">
                 <h3>No favorites yet</h3>
                 <p>Save your favorite eco-friendly places and they'll appear here</p>
               </div>
             </section>
+
 
             <!-- SECTION HELP CENTER-->
             <section id="help" class="content-section" style="display: none;">
@@ -534,13 +481,13 @@
       <form id="deleteForm" action="/deleteProfile" method="POST" style="display: none;"></form>
 
       <script>
-  function confirmDelete() {
-    const confirmed = confirm("Are you sure you want to delete your account? This action is permanent.");
-    if (confirmed) {
-      document.getElementById('deleteForm').submit();
-    }
-  }
-</script>
+        function confirmDelete() {
+          const confirmed = confirm("Are you sure you want to delete your account? This action is permanent.");
+          if (confirmed) {
+            document.getElementById('deleteForm').submit();
+          }
+        }
+      </script>
 
 
   </div>

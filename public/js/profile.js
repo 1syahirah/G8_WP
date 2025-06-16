@@ -123,3 +123,108 @@ function submitReview() {
     });
   }
 
+
+  //favourites
+  document.addEventListener('DOMContentLoaded', displayFavourites);
+
+// Util: background & text color
+function getTypeColor(type) {
+  switch (type.toUpperCase()) {
+    case 'ACTIVITIES': return '#e3f2fd';
+    case 'ACCOMMODATION': return '#fff3e0';
+    case 'TRANSPORT': return '#e8f5e9';
+    default: return '#f5f5f5';
+  }
+}
+
+function getTypeTextColor(type) {
+  switch(type.toUpperCase()) {
+    case 'ACTIVITIES': return '#1976d2';
+    case 'ACCOMMODATION': return '#e65100';
+    case 'TRANSPORT': return '#2e7d32';
+    default: return '#616161';
+  }
+}
+
+// Create new favorite-card structure
+function createFavoriteCard(item) {
+  const card = document.createElement('div');
+  card.className = 'favorite-card';
+
+  card.innerHTML = `
+    <div class="card-image-container">
+      <img src="${item.image || 'https://via.placeholder.com/120x120?text=No+Image'}" alt="${item.name}">
+      <button class="delete-favorite-btn" title="Remove from favorites">×</button>
+    </div>
+    <div class="card-content">
+      <strong>${item.name}</strong>
+      <div style="background: ${getTypeColor(item.type)};
+                  color: ${getTypeTextColor(item.type)};
+                  font-size: 0.85rem;
+                  font-weight: 600;
+                  margin-bottom: 12px;
+                  padding: 3px 8px; 
+                  border-radius: 4px;">
+        ${item.type}
+      </div>
+    </div>
+  `;
+
+  card.querySelector('.delete-favorite-btn').addEventListener('click', () => {
+    removeFavorite(item);
+  });
+
+  return card;
+}
+
+// Display favourites in new layout
+async function displayFavourites() {
+  const container = document.querySelector('.favorites-container2');
+  const countDisplay = document.querySelector('.favorites-count');
+  const emptyState = document.querySelector('.empty-favorites');
+
+  container.innerHTML = ""; // Clear cards
+
+  try {
+    const res = await fetch('/api/favourites');
+    const favourites = await res.json();
+
+    if (favourites.length === 0) {
+      container.style.display = 'none';
+      emptyState.style.display = 'block';
+      countDisplay.textContent = '0 items';
+      return;
+    }
+
+    container.style.display = 'flex';
+    emptyState.style.display = 'none';
+    countDisplay.textContent = `${favourites.length} item${favourites.length > 1 ? 's' : ''}`;
+
+    for (const item of favourites) {
+      const card = createFavoriteCard(item);
+      container.appendChild(card);
+    }
+
+  } catch (err) {
+    console.error("Error loading favourites:", err);
+    container.innerHTML = "<p style='color:red;'>Failed to load favourites.</p>";
+  }
+}
+
+// DELETE fav (keep existing logic, but triggers full refresh)
+function removeFavorite(item) {
+  fetch(`/api/favourites/${encodeURIComponent(item.name)}`, {
+    method: 'DELETE'
+  })
+  .then(res => {
+    if (res.ok) {
+      displayFavourites(); // Refresh cards
+    } else {
+      alert("Failed to remove favorite.");
+    }
+  })
+  .catch(err => {
+    console.error("Remove error:", err);
+    alert("Error removing favorite.");
+  });
+}
