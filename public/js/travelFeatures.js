@@ -1,67 +1,10 @@
-//SEARCH BAR
+//SEARCH BAR  
 document.addEventListener('DOMContentLoaded', function () {
   const searchBar = document.getElementById('search-bar');
   const carousel = document.querySelector('.carousel');
-  const apiKey = '12c41cc1a9msh7ccbaaf540f4f5fp12042fjsn93428f272724';
-  const apiHost = 'travel-advisor.p.rapidapi.com';
   const activityApiKey = '5ae2e3f221c38a28845f05b6dda50982728e1c40dd2a9e374924f4f0';
 
-  let klLocationId = null;
-  let hotelsData = [];
   let currentCategory = 'Activities';  // default category
-
-  // --- GET KL location_id ---
-  async function fetchKLLocationId() {
-    const url = `https://${apiHost}/locations/search?query=Kuala%20Lumpur&lang=en_US&units=km`;
-
-    const options = {
-      method: 'GET',
-      headers: {
-        'X-RapidAPI-Key': apiKey,
-        'X-RapidAPI-Host': apiHost
-      }
-    };
-
-    try {
-      const response = await fetch(url, options);
-      const data = await response.json();
-
-      const locationObj = data.data.find(item => item.result_type === 'geos');
-      if (locationObj) {
-        klLocationId = locationObj.result_object.location_id;
-        await fetchHotels();
-      } else {
-        console.error("Kuala Lumpur not found");
-      }
-    } catch (err) {
-      console.error("Error getting location_id:", err);
-    }
-  }
-
-  // --- Fetch hotels list ---
-  async function fetchHotels() {
-    const url = `https://${apiHost}/hotels/list?location_id=${klLocationId}&lang=en_US&currency=USD&limit=50`;
-
-    const options = {
-      method: 'GET',
-      headers: {
-        'X-RapidAPI-Key': apiKey,
-        'X-RapidAPI-Host': apiHost
-      }
-    };
-
-    try {
-      const response = await fetch(url, options);
-      const data = await response.json();
-
-      if (data.data) {
-        hotelsData = data.data.filter(item => item.result_type === 'lodging');
-        console.log("Hotels loaded into hotelsData");
-      }
-    } catch (err) {
-      console.error("Error fetching hotels:", err);
-    }
-  }
 
   // --- Main Search Function ---
   searchBar.addEventListener('keypress', function (e) {
@@ -175,39 +118,43 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   // --- Hotels search ---
-  async function searchTransport(query) {
+  // --- Accommodation search ---
+async function searchAccommodation(query) {
+  const carousel = document.querySelector('.carousel');
+  carousel.innerHTML = "";
+
+  //const normalizedQuery = query.trim().toLowerCase();
+
   try {
-    const [transportRes, favRes] = await Promise.all([
-      fetch('/api/transports'),
+    const [accomRes, favRes] = await Promise.all([
+      fetch('/api/accomodation'),
       fetch('/api/favourites')
     ]);
 
-    const data = await transportRes.json();
+    const accomodation = await accomRes.json();
+    console.log("Accommodation API response:", accomodation);
     const favourites = await favRes.json();
 
-    const carousel = document.querySelector('.carousel');
-    carousel.innerHTML = "";
+    const filtered = accomodation.filter(item => {
+  const hotelName = normalizeString(item.hotelname);
+  const userQuery = normalizeString(query);
 
-    const normalizedQuery = query.toLowerCase().trim();
-
-    const filtered = data.filter(item =>
-      (item.name && item.name.toLowerCase().includes(normalizedQuery)) ||
-      (item.line && item.line.toLowerCase().includes(normalizedQuery))
-    );
+  return hotelName.includes(userQuery);
+});
 
     if (filtered.length === 0) {
-      carousel.innerHTML = "<div class='error-message'>No transport option found.</div>";
+      carousel.innerHTML = "<div class='error-message'>No accommodation found.</div>";
       return;
     }
 
     for (const place of filtered) {
-      const name = place.name || "Unnamed";
-      const desc = place.line || "No description available.";
-      const imgPath = place.image
-        ? `${window.location.origin}/${place.image.replace(/^public\//, '')}`
-        : "https://via.placeholder.com/300x200?text=No+Image";
+      const name = place.hotelname || "Unnamed";
+      const imgPath = place.image_url || "https://via.placeholder.com/300x200?text=No+Image";
 
-      const isSaved = favourites.some(fav => fav.name === name && fav.type === 'TRANSPORT');
+      const isSaved = favourites.some(fav =>
+        fav.type === 'ACCOMMODATION' &&
+        fav.name?.trim().toLowerCase() === name.trim().toLowerCase()
+      );
 
       const card = document.createElement('div');
       card.className = 'card';
@@ -215,11 +162,11 @@ document.addEventListener('DOMContentLoaded', function () {
       card.innerHTML = `
         <img src="${imgPath}" alt="${name}" />
         <strong>${name}</strong>
-        <h3>TRANSPORT</h3>
+        <h3>ACCOMMODATION</h3>
         <button 
           class="save-btn" 
           data-name="${name}" 
-          data-type="TRANSPORT" 
+          data-type="ACCOMMODATION" 
           data-img="${imgPath}"
           style="${isSaved ? 'background-color: #4a5a42; color: white;' : ''}"
           ${isSaved ? 'disabled' : ''}>
@@ -230,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function () {
       carousel.appendChild(card);
     }
 
-    // Add event listeners to newly added save buttons
+    // Add event listeners to save buttons
     document.querySelectorAll('.save-btn').forEach(button => {
       button.addEventListener('click', () => {
         const name = button.getAttribute('data-name');
@@ -254,11 +201,22 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
   } catch (err) {
-    console.error("Error while searching transport:", err);
-    const carousel = document.querySelector('.carousel');
-    carousel.innerHTML = "<p style='color:red;'>Error occurred during search.</p>";
+    console.error("Error while searching accommodation:", err);
+    document.querySelector('.carousel').innerHTML =
+      "<p style='color:red;'>Error occurred during search.</p>";
   }
 }
+
+  
+function normalizeString(str) {
+  return str
+    ?.toLowerCase()
+    .normalize("NFKD")  // Decompose Unicode
+    .replace(/[^\w\s]/gi, '') // remove punctuation
+    .replace(/\s+/g, ' ') // replace multiple spaces with single space
+    .trim();
+}
+
 
 
   async function searchTransport(query) {

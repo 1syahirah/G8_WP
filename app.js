@@ -420,7 +420,6 @@ app.get('/api/transports', async (req, res) => {
 app.get('/api/accomodation', async (req, res) => {
   try {
     const accomodation = await Accomodation.find();
-     console.log("✅ Accommodations from DB:", accomodation);  // 🐞 DEBUG: log output
     res.json(accomodation);
   } catch (err) {
     console.error("❌ Error fetching accommodations:", err);
