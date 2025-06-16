@@ -119,6 +119,9 @@ body {
     margin: 10px auto;
     margin-bottom: 20px;
     width: calc(100% - 30px);
+    margin-top: auto; /* Pushes to the bottom */
+    align-self: center;
+    transition: background-color 0.2s ease;
   }
 
   .card button:hover {

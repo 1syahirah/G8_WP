@@ -13,6 +13,11 @@
     .then(async data => {
         carousel.innerHTML = ""; // Clear carousel
 
+      // fetch favourites
+      const favResponse = await fetch('/api/favourites');
+      const favourites = await favResponse.json();
+
+      // loop through places
       for (const place of data.slice(0, 5)) {
         const detailRes = await fetch(`https://api.opentripmap.com/0.1/en/places/xid/${place.xid}?apikey=${apiKey}`);
         const detail = await detailRes.json();
@@ -21,6 +26,9 @@
         const desc = detail.wikipedia_extracts?.text || "No description available.";
         const image = detail.preview?.source || "https://via.placeholder.com/300x200?text=No+Image";
 
+        // check if saved
+        const isSaved = favourites.some(fav => fav.name === name && fav.type === 'ACTIVITIES');
+
         const card = document.createElement('div');
         card.className = 'card';
 
@@ -28,7 +36,10 @@
           <img src="${image}" alt="${name}" />
           <strong>${name}</strong>
           <h3>ACTIVITIES</h3>
-          <button data-name="${name}" data-type="ACTIVITIES" data-image="${image}">♥ Save</button>
+          <button class="save-btn" data-name="${name}" data-type="ACTIVITIES" data-img="${image}"
+            style="${isSaved ? 'background-color: #4a5a42; color: white;' : ''}">
+            ${isSaved ? '✓ Saved' : '♥ Save'}
+          </button>
         `;
 
         carousel.appendChild(card);
@@ -47,6 +58,42 @@
       nextBtn.addEventListener('click', () => {
         carousel.scrollBy({ left: cardWidth * 3, behavior: 'smooth' });
       });
+      
+      //save button listener
+    const saveButtons = document.querySelectorAll('.save-btn');
+    saveButtons.forEach(button => {
+      button.addEventListener('click', async () => {
+        const name = button.getAttribute('data-name'); 
+        const type = button.getAttribute('data-type');
+        const image = button.getAttribute('data-img');
+    
+        try {
+          const res = await fetch('/api/favourites', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name, type, image })
+          });
+    
+          if (!res.ok) {
+            throw new Error("Failed to save to favourites.");
+          }
+    
+          // Only update UI if saving succeeded
+          button.textContent = "✓ Saved";
+          button.style.backgroundColor = "#4a5a42";
+          button.style.color = "white";
+          button.disabled = true;
+          button.classList.add("saved-btn");
+          displayFavourites();
+    
+        } catch (err) {
+          console.error("Error saving favourite:", err);
+          alert("Failed to save favorite. Please try again.");
+        }
+      });
+    });
     })
     .catch(err => {
       console.error("Failed to load data:", err);
