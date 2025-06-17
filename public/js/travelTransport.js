@@ -63,41 +63,8 @@
       });
     }
 
-    //save button listener
-    const saveButtons = document.querySelectorAll('.save-btn');
-    saveButtons.forEach(button => {
-      button.addEventListener('click', async () => {
-        const name = button.getAttribute('data-name'); 
-        const type = button.getAttribute('data-type');
-        const image = button.getAttribute('data-img');
-    
-        try {
-          const res = await fetch('/api/favourites', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ name, type, image })
-          });
-    
-          if (!res.ok) {
-            throw new Error("Failed to save to favourites.");
-          }
-    
-          // Only update UI if saving succeeded
-          button.textContent = "✓ Saved";
-          button.style.backgroundColor = "#4a5a42";
-          button.style.color = "white";
-          button.disabled = true;
-          button.classList.add("saved-btn");
-          displayFavourites();
-    
-        } catch (err) {
-          console.error("Error saving favourite:", err);
-          alert("Failed to save favorite. Please try again.");
-        }
-      });
-    });
+    // save to db btn listener
+    addBtnFavourite();
 
   } catch (err) {
     console.error("Failed to load transport data or favourites:", err);

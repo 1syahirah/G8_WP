@@ -28,6 +28,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  function normalizeString(str) {
+    return str
+      ?.toLowerCase()
+      .normalize("NFKD")  // Decompose Unicode
+      .replace(/[^\w\s]/gi, '') // remove punctuation
+      .replace(/\s+/g, ' ') // replace multiple spaces with single space
+      .trim();
+  }
+
   // --- Activities search ---
   async function searchActivities(query) {
     const lat = 3.1390;
@@ -86,38 +95,15 @@ document.addEventListener('DOMContentLoaded', function () {
         carousel.appendChild(card);
       }
   
-      // Add save button listeners
-      document.querySelectorAll('.save-btn').forEach(button => {
-        button.addEventListener('click', () => {
-          const name = button.getAttribute('data-name');
-          const type = button.getAttribute('data-type');
-          const image = button.getAttribute('data-img');
-  
-          try {
-            window.dispatchEvent(new CustomEvent('save-to-favorites', {
-              detail: { name, type, image }
-            }));
-  
-            button.textContent = "✓ Saved";
-            button.style.backgroundColor = "#4a5a42";
-            button.style.color = "white";
-            button.disabled = true;
-          } catch (err) {
-            console.error("Error saving to favourites:", err);
-            alert("Failed to save.");
-          }
-        });
-      });
+      // save to db btn listener
+      addBtnFavourite();
   
     } catch (err) {
       console.error("Error while searching activities:", err);
       carousel.innerHTML = "<p style='color:red;'>Error occurred during search.</p>";
     }
   }
-  
 
-
-  // --- Hotels search ---
   // --- Accommodation search ---
 async function searchAccommodation(query) {
   const carousel = document.querySelector('.carousel');
@@ -177,28 +163,8 @@ async function searchAccommodation(query) {
       carousel.appendChild(card);
     }
 
-    // Add event listeners to save buttons
-    document.querySelectorAll('.save-btn').forEach(button => {
-      button.addEventListener('click', () => {
-        const name = button.getAttribute('data-name');
-        const type = button.getAttribute('data-type');
-        const image = button.getAttribute('data-img');
-
-        try {
-          window.dispatchEvent(new CustomEvent('save-to-favorites', {
-            detail: { name, type, image }
-          }));
-
-          button.textContent = "✓ Saved";
-          button.style.backgroundColor = "#4a5a42";
-          button.style.color = "white";
-          button.disabled = true;
-        } catch (err) {
-          console.error("Error saving to favourites:", err);
-          alert("Failed to save.");
-        }
-      });
-    });
+    // save to db btn listener
+    addBtnFavourite();
 
   } catch (err) {
     console.error("Error while searching accommodation:", err);
@@ -207,18 +173,7 @@ async function searchAccommodation(query) {
   }
 }
 
-  
-function normalizeString(str) {
-  return str
-    ?.toLowerCase()
-    .normalize("NFKD")  // Decompose Unicode
-    .replace(/[^\w\s]/gi, '') // remove punctuation
-    .replace(/\s+/g, ' ') // replace multiple spaces with single space
-    .trim();
-}
-
-
-
+// --- Transport search ---
   async function searchTransport(query) {
     try {
       const [transportRes, favRes] = await Promise.all([
@@ -274,28 +229,8 @@ function normalizeString(str) {
         carousel.appendChild(card);
       }
   
-      // Add event listeners to newly added save buttons
-      document.querySelectorAll('.save-btn').forEach(button => {
-        button.addEventListener('click', () => {
-          const name = button.getAttribute('data-name');
-          const type = button.getAttribute('data-type');
-          const image = button.getAttribute('data-img');
-  
-          try {
-            window.dispatchEvent(new CustomEvent('save-to-favorites', {
-              detail: { name, type, image }
-            }));
-  
-            button.textContent = "✓ Saved";
-            button.style.backgroundColor = "#4a5a42";
-            button.style.color = "white";
-            button.disabled = true;
-          } catch (err) {
-            console.error("Error saving to favourites:", err);
-            alert("Failed to save.");
-          }
-        });
-      });
+      // save to db btn listener
+      addBtnFavourite();
   
     } catch (err) {
       console.error("Error while searching transport:", err);

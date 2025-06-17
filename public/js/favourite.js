@@ -83,8 +83,46 @@ function getTypeColor(type) {
       container.innerHTML = "<p style='color:red;'>Failed to load favourites.</p>";
     }
   }
+
+  // add to fav db
+  function addBtnFavourite(){
+    const saveButtons = document.querySelectorAll('.save-btn');
+  saveButtons.forEach(button => {
+    button.addEventListener('click', async () => {
+      const name = button.getAttribute('data-name'); 
+      const type = button.getAttribute('data-type'); // will work for ACTIVITIES, ACCOMMODATION, TRANSPORT
+      const image = button.getAttribute('data-img');
+
+      try {
+        const res = await fetch('/api/favourites', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ name, type, image })
+        });
+
+        if (res.ok) {
+          if (typeof displayFavourites === "function") {
+            displayFavourites();
+            button.textContent = "✓ Saved";
+            button.style.backgroundColor = "#4a5a42";
+            button.style.color = "white";
+            button.disabled = true;
+            button.classList.add("saved-btn");
+          }
+        } else{
+          throw new Error("Failed to save to favourites.");
+        }
+      } catch (err) {
+        console.error("Error saving favourite:", err);
+        alert("Failed to save favorite. Please try again.");
+      }
+    });
+  });
+  }
   
-  // remove fav
+  // remove from fav db
   function removeFavorite(item) {
     fetch(`/api/favourites/${encodeURIComponent(item.name)}`, {
       method: 'DELETE'
