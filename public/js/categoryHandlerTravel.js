@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Category change
     select.addEventListener('change', function () {
       const selected = select.value;
-      //window.setCurrentCategory(selected);  // Optional: if you use this for search bar context
+      window.setCurrentCategory(selected);  // Optional: if you use this for search bar context
       carousel.innerHTML = '<div class="loading-spinner">Loading...</div>';
 
       switch (selected) {
