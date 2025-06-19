@@ -418,66 +418,66 @@ app.get('/api/transports', async (req, res) => {
 });
 
 app.get('/api/accomodation', async (req, res) => {
-  try {
-    const accomodation = await Accomodation.find();
-    res.json(accomodation);
-  } catch (err) {
-    console.error("❌ Error fetching accommodations:", err);
-    res.status(500).json({ error: 'Failed to fetch accomodation' });
-  }
+    try {
+        const accomodation = await Accomodation.find();
+        res.json(accomodation);
+    } catch (err) {
+        console.error("❌ Error fetching accommodations:", err);
+        res.status(500).json({ error: 'Failed to fetch accomodation' });
+    }
 });
 
 //get fav
 app.get('/api/favourites', async (req, res) => {
     try {
-      const favs = await Favourite.find();
-      res.json(favs);
+        const favs = await Favourite.find();
+        res.json(favs);
     } catch (err) {
-      res.status(500).json({ error: 'Failed to fetch favourites' });
-    }
-  });
-
-//save to favourites
-app.post('/api/favourites', async (req, res) => {
-    const { name, type, image} = req.body;
-  
-    try {
-      const existing = await Favourite.findOne({ name, type , image});
-  
-      if (existing) {
-        return res.status(200).json({ message: 'Already in favourites', alreadySaved: true });
-      }
-  
-      const favourite = new Favourite({ name, type, image });
-      await favourite.save();
-  
-      res.status(201).json({ message: 'Favourite saved', alreadySaved: false });
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Failed to save favourite' });
+        res.status(500).json({ error: 'Failed to fetch favourites' });
     }
 });
 
-  //delete fav
-  app.delete('/api/favourites/:name', async (req, res) => {
+//save to favourites
+app.post('/api/favourites', async (req, res) => {
+    const { name, type, image } = req.body;
+
+    try {
+        const existing = await Favourite.findOne({ name, type, image });
+
+        if (existing) {
+            return res.status(200).json({ message: 'Already in favourites', alreadySaved: true });
+        }
+
+        const favourite = new Favourite({ name, type, image });
+        await favourite.save();
+
+        res.status(201).json({ message: 'Favourite saved', alreadySaved: false });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Failed to save favourite' });
+    }
+});
+
+//delete fav
+app.delete('/api/favourites/:name', async (req, res) => {
     const { name } = req.params;
     const { type, image } = req.query; // optional filters
-  
+
     try {
-      // Build a query object
-      const query = { name };
-      if (type) query.type = type;
-      if (image) query.image = image;
-  
-      const deleted = await Favourite.findOneAndDelete(query);
-  
-      if (!deleted) {
-        return res.status(404).json({ message: 'Favourite not found' });
-      }
-  
-      res.status(200).json({ message: 'Favourite removed' });
+        // Build a query object
+        const query = { name };
+        if (type) query.type = type;
+        if (image) query.image = image;
+
+        const deleted = await Favourite.findOneAndDelete(query);
+
+        if (!deleted) {
+            return res.status(404).json({ message: 'Favourite not found' });
+        }
+
+        res.status(200).json({ message: 'Favourite removed' });
     } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Failed to delete favourite' });
+        console.error(err);
+        res.status(500).json({ error: 'Failed to delete favourite' });
     }
-  });
+});   
