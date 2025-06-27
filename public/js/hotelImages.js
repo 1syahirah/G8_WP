@@ -14,9 +14,7 @@ fs.createReadStream('HotelNames.csv')
   .on('data', (row) => hotels.push(row))
   .on('end', async () => {
     for (let hotel of hotels) {
-        //console.log(Object.keys(hotel));  // <--- put it here
-        //console.log(hotel);
-
+      
       const name = hotel.hotelname;
       const query = `${name} hotel Kuala Lumpur`;
 

@@ -12,12 +12,7 @@
 
     const hotels = await hotelRes.json();
     const favourites = await favRes.json();
-
-     // 👉 ADD THESE 2 LINES HERE 👇
-    console.log('Accommodations:', hotels);
-    console.log('Favourites:', favourites);
-
-
+    
     carousel.innerHTML = "";
 
     if (!hotels || hotels.length === 0) {
@@ -26,7 +21,7 @@
     }
 
     hotels.forEach(hotel => {
-      console.log("DEBUG hotel object:", hotel);  // <-- add this
+      console.log("DEBUG hotel object:", hotel);  
       const name = hotel.hotelname || "Unnamed";
       const imgPath = hotel.image_url
         ? hotel.image_url
